@@ -1,0 +1,30 @@
+<head>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="js/jquery.loadTemplate-1.4.3.min.js"></script>
+    <script src="../../common/typeDef.js"></script>
+    <script>
+
+        modelTemplate = "templates/modelTemplate.html";
+        modelStatusTemplate = "templates/modelStatusTemplate.html";
+        modelInSpyOverlayTemplate = "templates/modelInSpyOverlayTemplate.html";
+
+        var socket = io.connect(serverAddress);
+        socket.on('connect', function(){
+            socket.emit('data', {cmd: 'getOnlineModels'});
+        });
+    </script>
+
+    <script src="modelsEvents.js"></script>
+    <script src="socketEvents.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <link rel="stylesheet" href="http://new.naked.com/min/?g=homecss&v=1.6.77" media="screen"/>
+        <link rel="stylesheet" href="http://new.naked.com/css/fullwidth.css?v=1.6.77" media="screen"/>
+        <div id="models"></div>
+    </div>
+</body>

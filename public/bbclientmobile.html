@@ -1,0 +1,75 @@
+<html>
+
+<head>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.mobile-git.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="css/chat.css" rel="stylesheet" type="text/css">
+    <link href="css/gui.css" rel="stylesheet" type="text/css">
+    <link href="css/bblclient.css" rel="stylesheet" type="text/css">
+    <script src="js/typeDef.js"></script>
+
+    <script>
+        var socket = io.connect(serverAddress);
+        var clientType = CLIENT_TYPE.SUBSCRIBER;
+    </script>
+
+    <script src="js/common.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/mobileVideo.js"></script>
+    <script src="js/mobileChat.js"></script>
+
+</head>
+
+<body>
+    <!---- HLS Video Player Start--->
+    <div id="video_player" >
+        <div class="model_overlay" id="model_overlay"><img src="images/model.jpg" width="100%"></div>
+        <div class="load_overlay"  id="load_overlay" style="display:none;"><img src="images/loading_ani.gif"></div>
+        <button class="play_button" id="play_button" onclick="onPressedPlay();"><img src="images/playbutton.png"></button>
+        <div id="videotag"></div>
+    </div>
+    <!---- HLS Video Player End--->
+
+    <div style="clear:both"></div>
+
+    <!---- Chat Module Start--->
+    <div id="chatContainer">
+        <div id="chat_box_container">
+            <input type="text" name="chat_box" value="" id="chat_box" placeholder="type to chat..." /><button id="sendMessageButton" type="submit">Send</button>
+        </div>
+        <div id="chatroom">
+            <div id="chat_log"></div>
+        </div>
+    </div>
+    <!---- Chat Module End--->
+
+    <!---- View Specific Script ---->
+    <script>
+        //** View Specific Resizing Start **//
+            function resizeChat(){
+                stretchW("#chat_box", -105);
+                stretchW("#chatroom", -15);
+            }
+            window.addEventListener('resize', resizeChat);
+            resizeChat();
+        //** View Specific Resizing End **//
+
+        jQuery('#chat_box').keypress(function (event) {
+            if (event.which == 13) {
+                if(orientationLayout == 'portrait') {
+                    jQuery('html, body').animate({scrollTop: '0px'}, 300);
+                }else{
+                    //$("#chat_box").blur();
+                }
+            }
+        });
+    </script>
+    <!---- View Specific Script ---->
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "gatewayCommunicationHelper",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^0.4.35",
+    "yaml": "^0.2.3",
+    "socket.io-client": "^0.9.16"
+  }
+}

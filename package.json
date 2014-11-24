@@ -1,0 +1,20 @@
+{
+  "name": "get",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha",
+    "start": "NODE_CONFIG_DIR=../config node_modules/.bin/supervisor server.js",
+    "dev": "node_modules/.bin/supervisor server.js",
+    "build": "chmod a+x ./buildAll.sh && ./buildAll.sh"
+  },
+  "dependencies": {
+    "socket.io": "0.9.6",
+    "connect": "1.9.2",
+    "supervisor": "^0.5.7",
+    "express": "^3.5.1"
+  },
+  "author": "Derrek Cordova <derrek.cordova@juntacorp.com>",
+  "license": "BSD",
+  "devDependencies": {}
+}
