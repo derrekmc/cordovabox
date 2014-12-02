@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-    var username = _GET('username');
+    var username = _GET('displayName');
     var clientId = 0;
 
     /***
@@ -43,7 +43,6 @@ jQuery(document).ready(function () {
 
     socket.on('connect', function (data) {
         log_chat_message('Welcome to Bang Bros Live', 'system');
-
     });
 
     socket.on('disconnect', function (data) {
@@ -84,7 +83,6 @@ jQuery(document).ready(function () {
     });
 
     $('#chat_box').keypress(function (event) {
-
         if (event.which == 13) {
             var msg = $('#chat_box').val();
             sendMessage(msg);
