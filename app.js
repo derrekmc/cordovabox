@@ -11,8 +11,7 @@ var RedisStore = require('connect-redis')(session);
 var rootFolder = __dirname + '/' + ((config.site && config.site.rootFolder) || 'public');
 var redisPassword = ((config.redis && config.redis.password) || null);
 
-
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(rootFolder));

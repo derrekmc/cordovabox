@@ -53,29 +53,35 @@ module.exports = {
                  });*/
 
 
-                if(handshakeData._query){
-                    User.find(handshakeData._query.id, function(err, user){
-                        if(!err){
-                            handshakeData.user = user;
-                        }else{
-                            handshakeData.user = {};
-                        }
-                        handshakeData.user.token = handshakeData._query.token;
-                        handshakeData.user.room = handshakeData._query.room;
-                        handshakeData.user.username = handshakeData._query.username;
-                        handshakeData.sessionId = handshakeData._query.id;
-                        callback(null, true);
-                    })
-                }
 
 
+                callback(null, true);
 
             }
         });
 
         io.on('connection', function (socket) {
 
-            var handshakeData = socket.handshake;
+            var query = socket.handshake.query;
+            if(socket.handshake.query){
+                /*User.find(handshakeData._query.id, function(err, user){
+                 if(!err){
+                 handshakeData.user = user;
+                 }else{
+                 handshakeData.user = {};
+                 }*/
+                socket.user = {
+                    room: query.room,
+                    token: query.token,
+                    username: query.username,
+                    name: query.name,
+                    id: query.id
+                };
+
+                //})
+            }
+
+            socket.user = socket.handshake.user;
 
             this.connections++;
             console.error('connection ' + this.connections);
