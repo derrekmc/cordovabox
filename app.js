@@ -1,3 +1,4 @@
+require('./config/globals');
 var port = 3000,
     url = require('url'),
     config = require("./config/config");

@@ -18,17 +18,20 @@ jQuery(document).ready(function () {
      *  this fire-and-forget method
      */
     function requestGetOnlineModels() {
-        socket.emit('data', {cmd: 'getOnlineModels'});
+        //socket.request('getOnlineModels', function(response){
+
+       // });
     }
 
     function sendMessage(msg) {
         if(msg == '') return;
-        socket.emit('data', {cmd: 'sendMessage', username: username, message: msg, type: clientType, id: clientId});
+        socket.emit('message', {cmd: 'message', username: username, message: msg, type: clientType, id: clientId});
         $('#chat_box').val('');
     }
 
     function send(data) {
         if(data == '') return;
+        console.error(data);
         socket.emit('data', data);
         $('#chat_box').val('');
     }
@@ -41,47 +44,6 @@ jQuery(document).ready(function () {
         $('#chat_log').prepend(li);
     };
 
-    socket.on('connect', function (data) {
-        log_chat_message('Welcome to Bang Bros Live', 'system');
-    });
-
-    socket.on('disconnect', function (data) {
-       // log_chat_message(data.message, 'leave');
-    });
-
-    socket.on('data', function (data) {
-        //log_chat_message(data.cmd, data.type);
-        switch(data.cmd){
-            case 'addUser':
-                //log_chat_message('Welcome to BangBros Live', data.type);
-                if (clientId == 0) {
-                    clientId = data.id;
-                    send({cmd: 'addUser', username: username, type: clientType, id: clientId});
-                }
-
-                break;
-
-            case 'removeUser':
-                break;
-
-            case 'getOnlineModelsResponse':
-                if(console && console.log) {
-                    console.log('getOnlineModelsResponse event received.');
-                }
-                alert(data);
-                break;
-
-            case 'sendMessage':
-                log_chat_message(data.username + ": " +  data.message, data.type);
-                break;
-        }
-
-    });
-
-    socket.on('error', function (data) {
-        log_chat_message(data.message, 'error');
-    });
-
     $('#chat_box').keypress(function (event) {
         if (event.which == 13) {
             var msg = $('#chat_box').val();
@@ -92,5 +54,25 @@ jQuery(document).ready(function () {
     $('#sendMessageButton').click(function () {
         var msg = $('#chat_box').val();
         sendMessage(msg);
+    });
+
+    /**
+     *************** Socket Events *****************
+     */
+    socket.on('connect', function (data) {
+        log_chat_message('Welcome to Bang Bros Live', 'system');
+    });
+
+    socket.on('disconnect', function (data) {
+        log_chat_message(data.message, 'leave');
+    });
+
+    socket.on('message', function (data) {
+        console.log(data);
+        log_chat_message(data.username + ": " +  data.message, data.type);
+    });
+
+    socket.on('error', function (data) {
+        log_chat_message(data.message, 'error');
     });
 });

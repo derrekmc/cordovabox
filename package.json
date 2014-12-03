@@ -17,11 +17,13 @@
     "express": "^3.18.4",
     "express-session": "^1.9.2",
     "hiredis": "^0.1.17",
+    "lodash": "^2.4.1",
     "node-redis": "^0.1.7",
     "redis": "^0.12.1",
     "socket.io": "^1.2.1",
     "socket.io-redis": "^0.1.4",
-    "supervisor": "^0.5.7"
+    "supervisor": "^0.5.7",
+    "uuid": "^2.0.1"
   },
   "author": "Derrek Cordova <derrek.cordova@juntacorp.com>",
   "license": "BSD",

@@ -1,5 +1,4 @@
-var io = require('../service/socket-room');
-
+var connections= 0;
 module.exports = {
 
     exec: function(req, res){
@@ -16,7 +15,7 @@ module.exports = {
         //app : new require('express'),
         //config: 'config/config'
     },
-    connections: 0,
+
 
     create: function(name){
         this.name = config.site.namespace + name;
@@ -69,9 +68,9 @@ module.exports = {
             }
         }).on('connection', function (socket) {
 
-            console.dir(socket.handshake.foo);
-                console.log(socket.id + ' connected. There are now ' + this.connections + ' active socket connections to the room');
-                this.connections++;
+                console.dir(socket.handshake.query);
+                console.log(socket.id + ' connected. There are now ' + connections + ' active socket connections to the room');
+                connections++;
                 /**
                  * join room
                   */
@@ -100,8 +99,8 @@ module.exports = {
             })
 
             .on('disconnect', function(socket){
-                this.connections--;
-                console.log(socket.id + ' disconnected. There are still ' + this.connections + ' active socket connections to the room');
+                connections--;
+                console.log(socket.id + ' disconnected. There are still ' + connections + ' active socket connections to the room');
 
                 io.emit('roster.remove', {
                     name: socket.user.name,

@@ -1,3 +1,4 @@
+require('./config/globals');
 var cluster = require('cluster'),
     net = require('net'),
     port = process.env.PORT || 3000,

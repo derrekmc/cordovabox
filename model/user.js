@@ -1,4 +1,5 @@
-module.exports = require('waterline').Collection.extend({
+var Waterline = require('waterline');
+var User = Waterline.Collection.extend({
 
     // Define a custom table name
     tableName: 'user',
@@ -7,13 +8,14 @@ module.exports = require('waterline').Collection.extend({
     schema: true,
 
     // Define an adapter to use
-    adapter: 'sails-redis',
+    adapter: 'postgresql',
 
     // Define attributes for this collection
     attributes: {
 
         firstName: {
             type: 'string',
+
             // also accepts any validations
             required: true
         },
@@ -76,3 +78,5 @@ module.exports = require('waterline').Collection.extend({
     }
 
 });
+
+module.exports = User;

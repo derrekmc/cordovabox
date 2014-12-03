@@ -12,8 +12,8 @@
     <script src="js/typeDef.js"></script>
     <script src="js/mobileVideo.js?ca=sdhg"></script>
     <script>
-        var socket = io.connect(serverAddress);
         var clientType = CLIENT_TYPE.BROADCASTER;
+        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=testroom&username=' + _GET('displayName') + '&name=derrek&id=41&type=' + clientType});
     </script>
 
     <script src="js/chat.js"></script>
