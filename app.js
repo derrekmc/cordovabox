@@ -2,9 +2,6 @@ require('./config/globals');
 var _server = null;
 
 function listen(port){
-    if(port != 0){
-        port = port || 3000;
-    }
     var url = require('url');
     var express = require('express');
     var app = new express();
@@ -74,5 +71,4 @@ function listen(port){
     return server;
 };
 
-if(!_server) listen(process.env.PORT || 3000);
 module.exports = listen;

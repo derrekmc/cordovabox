@@ -2,7 +2,7 @@ require('./config/globals');
 var cluster = require('cluster'),
     net = require('net'),
     cluster_port = process.env.PORT || 3000,
-    num_processes = Math.floor(require('os').cpus().length * (parseFloat(_Config.server.process.threshold) / 100.0));
+    num_processes = Math.floor(require('os').cpus().length * (parseFloat(_Config.server.process.max_spawn) / 100.0));
 
 if (cluster.isMaster) {
 
@@ -66,6 +66,7 @@ if (cluster.isMaster) {
      * We call the application to spawn up some nodes
      */
     var server = require('./app')(0);
+
     // Listen to messages sent from the master. Ignore everything else.
     process.on('message', function(message, connection) {
         if (message !== 'sticky-session:connection') {
