@@ -7,7 +7,7 @@ module.exports = function DataTransmissionObject(user, options){
             type        : user.type
         });
     }else{
-        console.error('Failed to create Data Transmission Object. No socket and or user present on the socket.');
+        log.error('Failed to create Data Transmission Object. No socket and or user present on the socket.');
         return false;
     }
 }

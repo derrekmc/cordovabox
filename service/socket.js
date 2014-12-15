@@ -113,7 +113,7 @@ module.exports = new function Sockets(){
             Room.messages = Room.messages || [];
 
             Room.messages.forEach(function(element){
-                io.to(Room.name).emit('message', DataTransmissionObject(element, {
+                socket.broadcast.to(socket.id).emit('message', DataTransmissionObject(element, {
                     value     : element.value
                 }));
             });
