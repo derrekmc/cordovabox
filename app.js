@@ -14,7 +14,7 @@ function listen(port){
     var RedisStore = require('connect-redis')(session);
     var rootFolder = __dirname + '/' + ((_Config.site.rootFolder) || 'public');
     var redisPassword = ((_Config.redis.password) || null);
-
+    var policy = require("./policy/isAuthenticated");
     /*********************
      * Routes/Views Start
      */
@@ -42,6 +42,7 @@ function listen(port){
         }),
         secret: '1234567890QWERTY'
     }));
+    app.use(policy);
     var routes = require('./config/routes');
     routes.register(app);
     /**

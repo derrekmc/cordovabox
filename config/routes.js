@@ -9,8 +9,12 @@ module.exports = {
      */
     routes: function routes(){
         /**
-         * Route to healthCheckController
-         */
+        * Routes
+        */
+        this.route('get', '/*', require('../policy/isAuthenticated').get);
+        this.route('post', '/*', require('../policy/isAuthenticated').post);
+         
+         
         this.route('post', '/api/stats', require('../controller/stats'));
 
         this.route('get', '/room/:name', require('../controller/rooms').public);
