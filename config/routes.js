@@ -1,5 +1,3 @@
-var config = require('config');
-
 /**
  *
  * @type {{register: register, route: route}}

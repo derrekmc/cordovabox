@@ -1,8 +1,8 @@
     var redis = require('redis');
 
-    var redisHostname = (config && config.redis && config.redis.hostname) || 'localhost';
-    var redisPassword = (config.redis && config.redis.password) || null;
-    var redisPortNumber = (config && config.redis && config.redis.portNumber) || 6379;
+    var redisHostname = (__Config && _Config.redis && _Config.redis.hostname) || 'localhost';
+    var redisPassword = (_Config.redis && _Config.redis.password) || null;
+    var redisPortNumber = (_Config && _Config.redis && _Config.redis.portNumber) || 6379;
 
     var client = redis.createClient(redisPortNumber, redisHostname, {auth_pass: redisPassword});
     var pub = redis.createClient(redisPortNumber, redisHostname, {auth_pass: redisPassword});
