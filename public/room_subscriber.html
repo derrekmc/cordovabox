@@ -4,22 +4,24 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery.mobile-git.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery.mobile-git.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
-    <link href="css/chat.css" rel="stylesheet" type="text/css">
-    <link href="css/gui.css" rel="stylesheet" type="text/css">
-    <link href="css/bblclient.css" rel="stylesheet" type="text/css">
-    <script src="js/typeDef.js"></script>
+    <link href="/css/chat.css" rel="stylesheet" type="text/css">
+    <link href="/css/gui.css" rel="stylesheet" type="text/css">
+    <link href="/css/bblclient.css" rel="stylesheet" type="text/css">
+    <script src="/js/typeDef.js"></script>
 
     <script>
+
         var clientType = CLIENT_TYPE.SUBSCRIBER;
-        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=testroom&username=derrekmc&name=derrek&id=41&type=' + clientType});
+        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id=41&type=' + clientType});
+        console.log('Room name: <%= room %>');
     </script>
-    <script src="js/swfobject.js" type="text/javascript"></script>
-    <script src="js/common.js"></script>
-    <script src="js/chat.js"></script>
+    <script src="/js/swfobject.js" type="text/javascript"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/chat.js"></script>
 
 </head>
 
@@ -47,7 +49,7 @@
         var videoWidth  = 680;
         var videoHeight = 382;
 
-        var so = new SWFObject("flash/client.swf", "videoSWObject", videoWidth, videoHeight, "11");
+        var so = new SWFObject("/flash/client.swf", "videoSWObject", videoWidth, videoHeight, "11");
         so.addParam("wmode",            "direct");
         so.addParam("scale",            "noscale");
         so.addVariable("stagewidth",    "426");

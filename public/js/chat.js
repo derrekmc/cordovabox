@@ -1,78 +1,82 @@
-jQuery(document).ready(function () {
-    var username = _GET('displayName');
+
+    var name = _GET('displayName');
     var clientId = 0;
+
+    var uiContainers = {
+        name     : '#room_name',
+        input    : '#chat_box',
+        messages : '#chat_log',
+        users    : '#roster'
+    };
 
     /***
      * Request a user to be blocked
-     * @param username
+     * @param name
      * @param id
      */
-    function sendBlock(username, id) {
-        socket.emit('data', {cmd: 'blockUser', username: username, id: id});
+    function sendBlock(name, id) {
+        socket.emit('user.block', {name: name, id: id});
         // example:
-        // socket.emit('data', {cmd: 'blockUser', username: "Igor", id: 8855});
-    }
-
-    /***
-     * Request online models to be send back
-     *  this fire-and-forget method
-     */
-    function requestGetOnlineModels() {
-        //socket.request('getOnlineModels', function(response){
-
-       // });
+        // socket.emit('data', {cmd: 'blockUser', name: "Igor", id: 8855});
     }
 
     function sendMessage(msg) {
         if(msg == '') return;
-        socket.emit('message', {cmd: 'message', username: username, message: msg, type: clientType, id: clientId});
-        $('#chat_box').val('');
+        socket.emit('message', {
+            name: name,
+            value: msg,
+            type: clientType,
+            id: clientId
+        });
+        $(uiContainers.input).val('');
     }
 
     function send(data) {
         if(data == '') return;
         console.error(data);
         socket.emit('data', data);
-        $('#chat_box').val('');
+        $(uiContainers.input).val('');
     }
 
-    var log_chat_message = function  (message, type) {
+    var logChat = function  (message, type) {
+
         var li = $('<li />').text(message);
-        //alert('clientTypeFont_'+type);
-        //li.css('clientTypeFont_' + type);
         li.addClass('clientTypeFont_' + type);
-        $('#chat_log').prepend(li);
+        $(uiContainers.messages).prepend(li);
+        console.log(message, type);
     };
-
-    $('#chat_box').keypress(function (event) {
-        if (event.which == 13) {
-            var msg = $('#chat_box').val();
-            sendMessage(msg);
-        }
-    });
-
-    $('#sendMessageButton').click(function () {
-        var msg = $('#chat_box').val();
-        sendMessage(msg);
-    });
 
     /**
      *************** Socket Events *****************
      */
     socket.on('connect', function (data) {
-        log_chat_message('Welcome to Bang Bros Live', 'system');
+        logChat('Welcome to Bang Bros Live', 'system');
     });
 
     socket.on('disconnect', function (data) {
-        log_chat_message(data.message, 'leave');
+        logChat(data.value, 'leave');
     });
 
     socket.on('message', function (data) {
-        console.log(data);
-        log_chat_message(data.username + ": " +  data.message, data.type);
+        logChat(data.name + ": " +  data.value, data.type);
     });
 
     socket.on('error', function (data) {
-        log_chat_message(data.message, 'error');
+        logChat(data.value, 'error');
     });
+
+jQuery(document).ready(function () {
+
+    $(uiContainers.input).keypress(function (event) {
+        if (event.which == 13) {
+            var msg = $(uiContainers.input).val();
+            sendMessage(msg);
+        }
+    });
+
+    $('#sendMessageButton').click(function () {
+        var msg = $(uiContainers.input).val();
+        sendMessage(msg);
+    });
+
 });

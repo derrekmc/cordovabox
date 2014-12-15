@@ -14,7 +14,7 @@
     <script src="js/typeDef.js"></script>
 
     <script>
-        var socket = io.connect(serverAddress);
+        var socket = io.connect(serverAddress, {query: '?room=<%= room %>&name=<%= user.name %>'});
         var clientType = CLIENT_TYPE.SUBSCRIBER;
     </script>
 

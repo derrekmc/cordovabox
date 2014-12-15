@@ -1,4 +1,3 @@
-var debug = require('../lib/debug');
 var config = require('config');
 
 /**
@@ -10,13 +9,15 @@ module.exports = {
     /**
      * Register each route and corresponding controller
      */
-    routes: function(){
-
+    routes: function routes(){
         /**
          * Route to healthCheckController
          */
         this.route('post', '/api/stats', require('../controller/stats'));
-        this.route('get', '/room/:name', require('../controller/room'));
+        this.route('get', '/room/:name', require('../controller/rooms').public);
+        this.route('get', '/room/:name/:user', require('../controller/rooms').public);
+        this.route('get', '/private/:name', require('../controller/rooms').private);
+        this.route('get', '/broadcast/:name', require('../controller/rooms').broadcast);
 
     },
 
@@ -60,7 +61,7 @@ module.exports = {
 
     app: null,
 
-    register: function(app, io) {
+    register: function register(app) {
         this.app = app;
         this.routes();
     },
@@ -72,21 +73,45 @@ module.exports = {
      * @param route
      * @param controller
      */
-    route: function(type, route, controller) {
-        this.app[type](route, function (req, res) {
-            debug.silly('Accessing route: ' + route);
-            var apiKey = config.api && config.api.key;
-            if (!apiKey) {
-                debug.error(route + ' API key not defined in config. Displaying 404 to client. ');
-                res.status(401).send({success: 0, message:"No API key found in config."});
-            } else {
-                if (req.body && req.body.api === apiKey) {
-                    controller.exec(req, res);
-                } else {
-                    debug.warn(route + ' An attempt was made on route ' + route + ' invalid api key.');
-                    res.status(401).send({success: 0});
-                }
-            }
-        });
+
+    /**
+     * Check policy file here and only react on a callback
+     * Check api key on policy file
+     * @param type
+     * @param route
+     * @param controller
+     */
+    route: function route(type, route, controller) {
+
+        log.info('Accessing route: ' + route);
+
+        if(controller && isFunction(controller.exec)){
+            this.app[type](route, function(req, res){
+                controller.exec(req, res);
+            });
+        }else if(controller) {
+            this.app[type](route, controller);
+        }else{
+            log.error('No corresponding route controller or controller function found for route: ' + route);
+        }
+
+        /**
+         * API keys for routes
+         * @type {exports.api|*|exports.api.key}
+         */
+        /*var apiKey = _Config.api && _Config.api.key;
+
+        if (!apiKey) {
+            log.warn(route + ' API key not defined in config. Displaying 404 to client. ');
+            res.status(401).send({success: 0, message:"No API key found in config."});
+        }
+
+        if (req.body && req.body.api === apiKey) {
+
+        } else {
+            log.warn(route + ' An attempt was made on route ' + route + ' invalid api key.');
+            res.status(401).send({success: 0});
+        }*/
+
     }
 };

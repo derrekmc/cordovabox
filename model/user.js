@@ -1,5 +1,5 @@
 var Waterline = require('waterline');
-var User = Waterline.Collection.extend({
+module.exports = Waterline.Collection.extend({
 
     // Define a custom table name
     tableName: 'user',
@@ -79,4 +79,3 @@ var User = Waterline.Collection.extend({
 
 });
 
-module.exports = User;

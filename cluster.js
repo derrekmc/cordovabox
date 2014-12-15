@@ -1,8 +1,8 @@
 require('./config/globals');
 var cluster = require('cluster'),
     net = require('net'),
-    port = process.env.PORT || 3000,
-    num_processes = 1;//Math.floor(require('os').cpus().length*.75);
+    cluster_port = process.env.PORT || 3000,
+    num_processes = Math.floor(require('os').cpus().length * (parseFloat(_Config.server.process.threshold) / 100.0));
 
 if (cluster.isMaster) {
 
@@ -44,7 +44,7 @@ if (cluster.isMaster) {
                 s += ip[i];
             }
         }
-        console.log('worker #' + Number(s) % len);
+
         return Number(s) % len;
     };
 
@@ -58,71 +58,14 @@ if (cluster.isMaster) {
 
         worker.send('sticky-session:connection', connection);
 
-    }).listen(port);
+    }).listen(cluster_port);
 } else {
     // Note we don't use a port here because the master listens on it for us.
     // Here you might use Socket.IO middleware for authorization etc.
-
-    var
-        url = require('url'),
-        config = require("./config/config");
-
-    var express = require('express');
-    var app = new express();
-    var bodyParser  = require('body-parser');
-    var cookieParser  = require('cookie-parser');
-    var session = require('express-session');
-    var RedisStore = require('connect-redis')(session);
-    var rootFolder = __dirname + '/' + ((config.site && config.site.rootFolder) || 'public');
-    var redisPassword = ((config.redis && config.redis.password) || null);
-
-
-    app.use(bodyParser.urlencoded({ extended: false }))
-    app.use(bodyParser.json());
-    app.use(cookieParser());
-    app.use(express.static(rootFolder));
-    app.use(session({
-        store: new RedisStore({
-            host: 'localhost',
-            port: ((config.redis && config.redis.portNumber) || 6379),
-            db: 2,
-            pass: redisPassword
-        }),
-        secret: '1234567890QWERTY'
-    }));
-
-    app.engine('html', require('ejs').renderFile);
-
-    app.get('/', function(req, res) {
-        res.render('index.html', {config: config});
-    });
-    app.get('/*', function(req, res, next){
-        res.setHeader('Last-Modified', (new Date()).toUTCString());
-        next();
-    });
-
-    app.set('views', rootFolder);
-
-// Here you might use middleware, attach routes, etc.
-    var http = require('http').Server(app);
-// Don't expose our internal server to the outside.
-    var server = app.listen(0, 'localhost'),
-        sio = require('socket.io'),
-        sio_redis = require('socket.io-redis'),
-        io = sio(server),
-        sockets = require('./service/socket-room');
-
-    // Tell Socket.IO to use the redis adapter. By default, the redis
-    // server is assumed to be on localhost:6379. You don't have to
-    // specify them explicitly unless you want to change them.
-    io.adapter(sio_redis({ host: 'localhost', port: ((config.redis && config.redis.portNumber) || 6379) }));
-
-    http.listen(0, function(){
-        console.log('listening on *:' + port);
-    });
-
-    sockets.listen(io, {app: app});
-
+    /**
+     * We call the application to spawn up some nodes
+     */
+    var server = require('./app')(0);
     // Listen to messages sent from the master. Ignore everything else.
     process.on('message', function(message, connection) {
         if (message !== 'sticky-session:connection') {
