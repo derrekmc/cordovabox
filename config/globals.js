@@ -20,7 +20,21 @@ if(!global.registeredClass){
         var getType = {};
         if(functionToCheck) return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
     };
-    
-    
-    
+
+    if(_Config.globals.lodash){
+        global._ = require('lodash');
+    }
+
+    if(_Config.globals.async){
+        global.async = require('async');
+    }
+
+/*
+    for(var i in _Cofig.globals){
+        var prop = _Cofig.globals[i];
+        if(prop){
+            global._ = require('lodash');
+        }
+    }
+*/
 }

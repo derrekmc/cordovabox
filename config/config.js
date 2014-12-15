@@ -35,6 +35,11 @@ module.exports = {
 
     api: {
         key: 'yourDirtyLittleSecret'
+    },
+
+    globals: {
+        lodash: true,
+        async: false
     }
 
 };
