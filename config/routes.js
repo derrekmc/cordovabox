@@ -14,10 +14,14 @@ module.exports = {
          * Route to healthCheckController
          */
         this.route('post', '/api/stats', require('../controller/stats'));
+
         this.route('get', '/room/:name', require('../controller/rooms').public);
         this.route('get', '/room/:name/:user', require('../controller/rooms').public);
+
         this.route('get', '/private/:name', require('../controller/rooms').private);
+
         this.route('get', '/broadcast/:name', require('../controller/rooms').broadcast);
+        this.route('get', '/broadcast/:name/:user', require('../controller/rooms').broadcast);
 
     },
 

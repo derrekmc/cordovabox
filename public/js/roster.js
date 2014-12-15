@@ -12,23 +12,16 @@ jQuery.events = function (expr) {
 }
 
 function blockUser() {
-    var username = $('#blockMenu').attr('name');
+    var name = $('#blockMenu').attr('name');
     $.each(usersList, function(index, result) {
-        if(result.username && result.username == username) {
-            socket.emit('data', {cmd: 'blockUser', username: username, id: result.id});
+        if(result.name && result.name == name) {
+            socket.emit('data', {cmd: 'blockUser', name: name, id: result.id});
         }
     });
 }
 
 function findAndRemove(array, property, value) {
 
-    for (var i=0; i < array.length; i++) {
-        //alert(array[i][property] + ' ' + value);
-        if (array[i][property] == value) {
-            //alert(i);
-        }
-    }
-    return false;
 }
 
 function doesExist(array, property, value) {
@@ -40,10 +33,10 @@ function doesExist(array, property, value) {
     return false;
 }
 
-function showBlockMenu(username) {
-    $('#blockMenu').attr('name', username.id);
-    // position blockMenu next to username
-    var distanceFromTop = document.getElementById(username.id).offsetTop;
+function showBlockMenu(name) {
+    $('#blockMenu').attr('name', name.id);
+    // position blockMenu next to name
+    var distanceFromTop = document.getElementById(name.id).offsetTop;
     $('.hoverMenu').css("display", 'block');
     $('.blockUserItem').mousedown(function(event){
         $('.hoverMenu').css('left', event.pageX);
@@ -57,7 +50,7 @@ function showBlockMenu(username) {
     });
 
     $('<div></div>').appendTo('#blockMenu')
-        .html('<div><h6>Block User ' + username.id + '?</h6></div>')
+        .html('<div><h6>Block User ' + name.id + '?</h6></div>')
         .dialog({
             modal: true, title: 'Chat Block', zIndex: 10000, autoOpen: true,
             width: 'auto', resizable: false,
@@ -79,28 +72,28 @@ function showBlockMenu(username) {
 
 $(document).ready(function () {
 
-    socket.on('roster.add', function (data) {
-        console.log("Adding user " + data.username + " to roster");
-        var user = data.username;
-        if (user && !doesExist(usersList, 'username', user) && data.type != clientType.MODEL) {
+    socket.on('user.create', function (data) {
+        console.log("Adding user " + data.name + " to roster");
+        var user = data.name;
+        if (user && !doesExist(usersList, 'name', user) && data.type != clientType.MODEL) {
             var blockLink = '<li><a id='+user+' name='+user+' href="javascript:void(0)" class="blockUserItem" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
             $('#chatUsers').append(blockLink);
-            usersList.push({username: user, id: data.id, blocked: false});
+            usersList.push({name: user, id: data.id, blocked: false});
+
         }
     });
 
-    socket.on('roster.remove', function (data) {
-        var user = data.username;
-        console.log("Removing user " + data.username + " from roster");
-        findAndRemove(usersList, 'username', user);
+    socket.on('user.destroy', function (data) {
+        console.log("Removing user " + data.name + " from roster");
+        usersList.splice(0, indexOf(data.id));
     });
 
     socket.on('blockUser', function (data) {
-        var user = data.username;
+        var user = data.name;
         var i = usersList.length;
         while (i--) {
-            if (usersList[i].username) {
-                if (usersList[i].username == user) {
+            if (usersList[i].name) {
+                if (usersList[i].name == user) {
                     var clientId = usersList[i].id;
                     alert("Blocking user " + user + " with clientId " + data.id);
                     usersList[i].blocked = true;
@@ -112,8 +105,6 @@ $(document).ready(function () {
             }
         }
     });
-
-
 
     $('.chatUsersContainer').mousedown(function(event) {
         if(!mouseOverBlockMenu) $('.hoverMenu').css("display", 'none');

@@ -16,8 +16,6 @@
      */
     function sendBlock(name, id) {
         socket.emit('user.block', {name: name, id: id});
-        // example:
-        // socket.emit('data', {cmd: 'blockUser', name: "Igor", id: 8855});
     }
 
     function sendMessage(msg) {
@@ -31,15 +29,7 @@
         $(uiContainers.input).val('');
     }
 
-    function send(data) {
-        if(data == '') return;
-        console.error(data);
-        socket.emit('data', data);
-        $(uiContainers.input).val('');
-    }
-
     var logChat = function  (message, type) {
-
         var li = $('<li />').text(message);
         li.addClass('clientTypeFont_' + type);
         $(uiContainers.messages).prepend(li);

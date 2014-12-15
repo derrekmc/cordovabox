@@ -4,7 +4,7 @@ module.exports = {
         //if(req.session){
             res.render('room.html', {
                 //socket: req.socket,
-                user: req.socket.user,
+                user: req.param('user') || 'guest',
                 room: req.param('room'), //req.socket.user,
                 error: 'Error finding user.'
             });
@@ -35,7 +35,7 @@ module.exports = {
         //if(req.session){
         res.render('room_subscriber.html', {
             socket: req.socket,
-            user: req.session.user,
+            user: req.param('user'),
             room: req.param('name') //req.socket.user,
         });
         /*}else{
@@ -46,12 +46,12 @@ module.exports = {
 
     },
 
-    broadcast: function Broadcaster(req, res) {
+    broadcast: function broadcast(req, res) {
 
         //if(req.session){
             res.render('room_broadcaster.html', {
                 socket: req.socket,
-                user: req.socket.user,
+                user: req.param('user'),
                 room: req.param('name') //req.socket.user,
             });
         /*}else{
