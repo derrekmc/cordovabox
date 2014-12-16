@@ -16,7 +16,7 @@ function listen(port){
      * Routes/Views Start
      */
     app.engine('html', require('ejs').renderFile);
-//app.set('view engine', 'ejs');
+    app.set('view engine', 'ejs');
     app.set('views', rootFolder);
     app.get('/', function(req, res) {
         res.render('index.html', {config: _Config});
