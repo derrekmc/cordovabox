@@ -113,9 +113,10 @@ module.exports = new function Sockets(){
             Room.messages   = Room.messages || [];
             Room.users      = Room.users || [];
 
-            Room.users.push(DataTransmissionObject(User));
+            Room.users[User.id] = (DataTransmissionObject(User));
 
-            //socket.on('ready', function(data){
+            socket.on('ready', function(data){
+
                 Room.messages.forEach(function(element){
                     socket.emit('message', DataTransmissionObject(element, {
                         value     : element.value
@@ -123,13 +124,17 @@ module.exports = new function Sockets(){
                 });
 
                 Room.users.forEach(function(element){
-                    socket.emit('user.create', DataTransmissionObject(element, {
-                        value     : element.value
-                    }));
+                    log.verbose(element);
+                    if(User.id != element.id){
+                        socket.emit('user.create', DataTransmissionObject(element, {
+                            value     : element.value
+                        }));
+                    }
                 });
-            //});
 
-            //io.to(Room.name).emit('user.create', DataTransmissionObject(User));
+                io.to(Room.name).emit('user.create', DataTransmissionObject(User));
+
+            });
 
             socket.on('message', function (data) {
 
@@ -149,9 +154,9 @@ module.exports = new function Sockets(){
 
                 _Stats.active_connections--;
                 log.info(socket.id + ' disconnected. There are still ' + _Stats.active_connections + ' active socket connections to the room(' + Room.name + ')');
-
-                Room.users.splice(Room.users.indexOf(User.id), 1);
                 io.to(Room.name).emit('user.destroy', DataTransmissionObject(User));
+                delete(Room.users[User.id]);// = null;
+
 
             });
 

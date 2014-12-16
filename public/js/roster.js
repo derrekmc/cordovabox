@@ -75,17 +75,18 @@ $(document).ready(function () {
     socket.on('user.create', function (data) {
         console.log("Adding user " + data.name + " to roster");
         var user = data.name;
-        if (user && !doesExist(usersList, 'name', user) && data.type != clientType.MODEL) {
-            var blockLink = '<li><a id='+user+' name='+user+' href="javascript:void(0)" class="blockUserItem" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
+        //if (user && !doesExist(usersList, 'name', user) && data.type != clientType.MODEL) {
+            var blockLink = '<li><a id='+ data.id +' name='+user+' href="javascript:void(0)" class="blockUserItem" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
             $('#chatUsers').append(blockLink);
-            usersList.push({name: user, id: data.id, blocked: false});
+            usersList[data.id] = {name: data.name, id: data.id, blocked: false};
 
-        }
+        //}
     });
 
     socket.on('user.destroy', function (data) {
-        console.log("Removing user " + data.name + " from roster");
-        usersList.splice(0, usersList.indexOf(data.id));
+        console.log("Removing user " + data.name + " from roster " + data.id);
+        $('#' + data.id).remove();
+        delete(usersList[data.id]);
     });
 
     socket.on('blockUser', function (data) {
@@ -97,7 +98,6 @@ $(document).ready(function () {
                     var clientId = usersList[i].id;
                     alert("Blocking user " + user + " with clientId " + data.id);
                     usersList[i].blocked = true;
-
                     // remove user list element from roster listing
                     $('#'+user).remove();
                     $('.hoverMenu').css("display", 'none');
