@@ -106,6 +106,15 @@ module.exports = new function Sockets(){
                 id      : Query.id      || uuid.v4()
             };
 
+            /**
+             * Map rest point
+             * socket.get('/user', function(err, user){
+             *      if(!err){
+             *      }
+             *      User = user;
+             * });
+             */
+
             log.info(socket.id + ' connected. There are now ' + _Stats.active_connections + ' active socket connections to the room(' + Room.name + ')');
 
             _Stats.active_rooms = socket.adapter.rooms;
@@ -144,6 +153,8 @@ module.exports = new function Sockets(){
                     value     : data.value
                 }));
 
+                if(Room.messages.length > 20) Room.messages.pop();
+
                 io.to(Room.name).emit('message', DataTransmissionObject(User, {
                     value     : data.value
                 }));
@@ -155,8 +166,7 @@ module.exports = new function Sockets(){
                 _Stats.active_connections--;
                 log.info(socket.id + ' disconnected. There are still ' + _Stats.active_connections + ' active socket connections to the room(' + Room.name + ')');
                 io.to(Room.name).emit('user.destroy', DataTransmissionObject(User));
-                delete(Room.users[User.id]);// = null;
-
+                delete(Room.users[User.id]);
 
             });
 

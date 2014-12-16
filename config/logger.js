@@ -10,7 +10,7 @@ module.exports = new function logger(adapter){
             try{
                 this.adapter[arguments.callee.caller.name](arguments);
             }catch(err){
-                this.adapter.error('log error: ' + err);
+                //this.adapter.error('log error: ' + err);
                 this.adapter.log(arguments.callee.caller.name, arguments)
             }
 

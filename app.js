@@ -49,7 +49,7 @@ function listen(port){
 // Here you might use middleware, attach routes, etc.
     var http = require('http').Server(app);
 // Don't expose our internal server to the outside.
-    var server = app.listen(0, 'localhost'),
+    var server = app.listen(port, '0.0.0.0'),
         sio = require('socket.io'),
         sio_redis = require('socket.io-redis'),
         io = sio(server),
@@ -60,7 +60,7 @@ function listen(port){
 // specify them explicitly unless you want to change them.
     io.adapter(sio_redis({ host: 'localhost', port: ((_Config.redis && _Config.redis.portNumber) || 6379) }));
 
-    http.listen(port, function(){
+    http.listen(0, function(){
         console.log('listening on *:' + port);
     });
 

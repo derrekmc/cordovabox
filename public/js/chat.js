@@ -1,6 +1,7 @@
 
     var name = _GET('displayName');
 
+
     var uiContainers = {
         name     : '#room_name',
         input    : '#chat_box',
