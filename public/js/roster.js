@@ -85,7 +85,7 @@ $(document).ready(function () {
 
     socket.on('user.destroy', function (data) {
         console.log("Removing user " + data.name + " from roster");
-        usersList.splice(0, indexOf(data.id));
+        usersList.splice(0, usersList.indexOf(data.id));
     });
 
     socket.on('blockUser', function (data) {

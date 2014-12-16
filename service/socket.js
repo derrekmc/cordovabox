@@ -91,7 +91,7 @@ module.exports = new function Sockets(){
             });*/
 
             /**
-             * join room
+             * Join room
              */
             socket.leaveAll();
             socket.join(Query.room);
@@ -110,19 +110,30 @@ module.exports = new function Sockets(){
 
             _Stats.active_rooms = socket.adapter.rooms;
 
-            Room.messages = Room.messages || [];
+            Room.messages   = Room.messages || [];
+            Room.users      = Room.users || [];
 
-            Room.messages.forEach(function(element){
-                socket.emit('message', DataTransmissionObject(element, {
-                    value     : element.value
-                }));
-            });
+            Room.users.push(DataTransmissionObject(User));
 
-            io.to(Room.name).emit('user.create', DataTransmissionObject(User));
+            //socket.on('ready', function(data){
+                Room.messages.forEach(function(element){
+                    socket.emit('message', DataTransmissionObject(element, {
+                        value     : element.value
+                    }));
+                });
+
+                Room.users.forEach(function(element){
+                    socket.emit('user.create', DataTransmissionObject(element, {
+                        value     : element.value
+                    }));
+                });
+            //});
+
+            //io.to(Room.name).emit('user.create', DataTransmissionObject(User));
 
             socket.on('message', function (data) {
 
-                console.log(User.name + ': ', data.value);
+                log.info(User.name + ': ', data.value);
 
                 Room.messages.push(DataTransmissionObject(User, {
                     value     : data.value
@@ -137,8 +148,9 @@ module.exports = new function Sockets(){
             socket.on('disconnect', function () {
 
                 _Stats.active_connections--;
-                log.info(socket.id + ' disconnected. There are still ' + _Stats.active_connections + ' active socket connections to the room');
+                log.info(socket.id + ' disconnected. There are still ' + _Stats.active_connections + ' active socket connections to the room(' + Room.name + ')');
 
+                Room.users.splice(Room.users.indexOf(User.id), 1);
                 io.to(Room.name).emit('user.destroy', DataTransmissionObject(User));
 
             });
