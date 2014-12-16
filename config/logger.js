@@ -20,6 +20,10 @@ module.exports = new function logger(adapter){
             this.logIt(arguments);
         },
 
+        verbose: function verbose(){
+            this.logIt(arguments);
+        },
+
         debug: function debug(){
             this.logIt(arguments);
         },

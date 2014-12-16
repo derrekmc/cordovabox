@@ -14,7 +14,8 @@
     <script src="/js/swfobject.js" type="text/javascript"></script>
     <script>
         var clientType = CLIENT_TYPE.BROADCASTER;
-        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id=41&type=' + clientType});
+        var clientId = Math.round(Math.random()*100);
+        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id='+clientId+'&type=' + clientType});
         console.log('Room name: <%= room %>');
     </script>
 

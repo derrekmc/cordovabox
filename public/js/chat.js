@@ -1,6 +1,5 @@
 
     var name = _GET('displayName');
-    var clientId = 0;
 
     var uiContainers = {
         name     : '#room_name',
@@ -68,5 +67,7 @@ jQuery(document).ready(function () {
         var msg = $(uiContainers.input).val();
         sendMessage(msg);
     });
+
+    socket.emit('ready');
 
 });

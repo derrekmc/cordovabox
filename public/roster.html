@@ -8,8 +8,9 @@
     <script src="js/common.js"></script>
 
     <script>
-        var clientType = CLIENT_TYPE.BROADCASTER;
-        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id=41&type=' + clientType});
+        var clientType = CLIENT_TYPE.USER_LIST;
+        var clientId = Math.round(Math.random()*20);
+        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id='+clientId+'&type=' + clientType});
     </script>
     <script src="/js/roster.js"></script>
     <link href="/css/roster.css" rel="stylesheet" type="text/css">
