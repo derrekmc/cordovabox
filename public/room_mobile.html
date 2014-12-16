@@ -5,24 +5,25 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery.mobile-git.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <link href="css/chat.css" rel="stylesheet" type="text/css">
-    <link href="css/gui.css" rel="stylesheet" type="text/css">
-    <link href="css/bblclient.css" rel="stylesheet" type="text/css">
-    <script src="js/typeDef.js"></script>
+    <link href="/css/chat.css" rel="stylesheet" type="text/css">
+    <link href="/css/gui.css" rel="stylesheet" type="text/css">
+    <link href="/css/bblclient.css" rel="stylesheet" type="text/css">
 
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery.mobile-git.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/typeDef.js"></script>
+    <script src="/js/common.js"></script>
     <script>
         var clientType = CLIENT_TYPE.SUBSCRIBER;
         var clientId = Math.round(Math.random()*100);
         var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id='+clientId+'&type=' + clientType});
     </script>
-
-    <script src="js/common.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="js/mobileVideo.js"></script>
-    <script src="js/mobileChat.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/mobileVideo.js"></script>
+    <script src="/js/mobileChat.js"></script>
 
 </head>
 
