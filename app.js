@@ -49,7 +49,7 @@ function listen(port){
 // Here you might use middleware, attach routes, etc.
     var http = require('http').Server(app);
 // Don't expose our internal server to the outside.
-    var server = app.listen(port, 'localhost'),
+    var server = app.listen(0, 'localhost'),
         sio = require('socket.io'),
         sio_redis = require('socket.io-redis'),
         io = sio(server),
