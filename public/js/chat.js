@@ -40,7 +40,7 @@
      *************** Socket Events *****************
      */
     socket.on('connect', function (data) {
-        logChat('Welcome to Bang Bros Live', 'system');
+        logChat('Connected to chat room ', 'system');
     });
 
     socket.on('disconnect', function (data) {
