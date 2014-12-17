@@ -11,7 +11,7 @@ function listen(port){
     var RedisStore = require('connect-redis')(session);
     var rootFolder = __dirname + '/' + ((_Config.site.rootFolder) || 'public');
     var redisPassword = ((_Config.redis.password) || null);
-    var policy = require("./policy/isAuthenticated");
+    var restPolicy = require("./policy/rest");
     /*********************
      * Routes/Views Start
      */
@@ -39,7 +39,8 @@ function listen(port){
         }),
         secret: '1234567890QWERTY'
     }));
-    app.use(policy);
+    app.use(restPolicy);
+
     var routes = require('./config/routes');
     routes.register(app);
     /**
@@ -54,6 +55,7 @@ function listen(port){
         sio_redis = require('socket.io-redis'),
         io = sio(server),
         sockets = require('./service/socket');
+        //io.use(socketPolicy);
 
 // Tell Socket.IO to use the redis adapter. By default, the redis
 // server is assumed to be on localhost:6379. You don't have to
