@@ -1,5 +1,4 @@
 var uuid = require('uuid');
-var _ = require('lodash');
 
 module.exports = new function Sockets(){
     return {

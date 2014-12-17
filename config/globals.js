@@ -21,6 +21,22 @@ if(!global.registeredClass){
         if(functionToCheck) return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
     };
 
+    global.requiredFields = function(object, requiredFieldsArray, callback){
+        var foundFields = new Array();
+        for(var i in object){
+            for(var j in requiredFieldsArray){
+                if(object[i] == requiredFieldsArray[i]){
+                    foundFields.push(requiredFieldsArray[i]);
+                }
+            }
+        }
+        if(foundFields.length == requiredFieldsArray.length){
+            callback(null, true);
+        }else{
+            callback("Missing one of the required fields(" + requiredFieldsArray.toString() + ")");
+        }
+    };
+
     if(_Config.globals.lodash){
         global._ = require('lodash');
     }

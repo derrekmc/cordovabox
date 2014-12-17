@@ -2,6 +2,7 @@ require('./config/globals');
 var _server = null;
 
 function listen(port){
+
     var url = require('url');
     var express = require('express');
     var app = new express();
@@ -12,9 +13,11 @@ function listen(port){
     var rootFolder = __dirname + '/' + ((_Config.site.rootFolder) || 'public');
     var redisPassword = ((_Config.redis.password) || null);
     var restPolicy = require("./policy/rest");
+
     /*********************
      * Routes/Views Start
-     */
+     *********************/
+
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'ejs');
     app.set('views', rootFolder);
@@ -39,27 +42,30 @@ function listen(port){
         }),
         secret: '1234567890QWERTY'
     }));
+
     app.use(restPolicy);
 
     var routes = require('./config/routes');
     routes.register(app);
-    /**
+
+    /*********************
      * Routes/Views End
      *********************/
 
-// Here you might use middleware, attach routes, etc.
+    // Here you might use middleware, attach routes, etc.
     var http = require('http').Server(app);
-// Don't expose our internal server to the outside.
+    // Don't expose our internal server to the outside.
     var server = app.listen(port, '0.0.0.0'),
         sio = require('socket.io'),
         sio_redis = require('socket.io-redis'),
         io = sio(server),
-        sockets = require('./service/socket');
-        //io.use(socketPolicy);
+        sockets = require('./service/socket'),
+        socketPolicy = require('./policy/socket');
+        io.use(socketPolicy);
 
-// Tell Socket.IO to use the redis adapter. By default, the redis
-// server is assumed to be on localhost:6379. You don't have to
-// specify them explicitly unless you want to change them.
+    // Tell Socket.IO to use the redis adapter. By default, the redis
+    // server is assumed to be on localhost:6379. You don't have to
+    // specify them explicitly unless you want to change them.
     io.adapter(sio_redis({ host: 'localhost', port: ((_Config.redis && _Config.redis.portNumber) || 6379) }));
 
     http.listen(0, function(){
@@ -71,6 +77,7 @@ function listen(port){
     });
     _server = server;
     return server;
+
 };
 
 module.exports = listen;

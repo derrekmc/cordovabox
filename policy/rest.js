@@ -4,4 +4,8 @@ module.exports = function isRestAuthenticated(req, res, next){
      * Check session data for access here
      */
     next();
+    /**
+     * next(new Error('Api Authentication error'));
+     */
+
 };
