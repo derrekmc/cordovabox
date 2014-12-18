@@ -16,7 +16,8 @@ module.exports = {
         this.route('get', '/room/:name', require('../controller/rooms').public);
         this.route('get', '/room/:name/:user', require('../controller/rooms').public);
 
-        this.route('get', '/private/:name', require('../controller/rooms').private);
+        this.route('get', '/private/:name', require('../controller/rooms').private); // might want to add restrictions here
+        this.route('get', '/private/:name/:user', require('../controller/rooms').private); // might want to add restrictions here
 
         this.route('get', '/broadcast/:name', require('../controller/rooms').broadcast);
         this.route('get', '/broadcast/:name/:user', require('../controller/rooms').broadcast);

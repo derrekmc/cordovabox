@@ -1,21 +1,12 @@
 module.exports = {
     exec: function exec(req, res) {
 
-        //if(req.session){
-            res.render('room.html', {
-                //socket: req.socket,
-                user: req.param('user') || 'guest',
-                room: req.param('room'), //req.socket.user,
-                error: 'Error finding user.'
-            });
-        /*}else{
-            res.send({
-                //socket: req.socket,
-                //user: req.param('name'), //req.socket.user,
-                room: req.param('name'), //req.socket.user,
-                error: 'Error finding user.'
-            });
-        }*/
+        res.render('room.html', {
+            //socket: req.socket,
+            user: req.param('user') || 'guest',
+            room: req.param('room'), //req.socket.user,
+            error: 'Error finding user.'
+        });
 
     },
 
@@ -48,18 +39,11 @@ module.exports = {
 
     broadcast: function broadcast(req, res) {
 
-        //if(req.session){
-            res.render('room_broadcaster.html', {
-                socket: req.socket,
-                user: req.param('user'),
-                room: req.param('name') //req.socket.user,
-            });
-        /*}else{
-             res.send({
-                 room: req.param('name'), //req.socket.user,
-                 error: 'Error finding user.'
-             });
-         }*/
+        res.render('room_broadcaster.html', {
+            socket: req.socket,
+            user: req.param('user'),
+            room: req.param('name') //req.socket.user,
+        });
 
     }
 };
