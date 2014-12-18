@@ -45,6 +45,8 @@ if(!global.registeredClass){
         global.async = require('async');
     }
 
+    //Array.prototype.forEach = require('../lib/async/forEachNext')
+
 /*
     for(var i in _Cofig.globals){
         var prop = _Cofig.globals[i];
