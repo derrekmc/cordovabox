@@ -116,10 +116,11 @@ module.exports = {
      */
     route: function route(type, route, controller) {
 
-        log.info('Accessing route: ' + route);
+        log.verbose('Setting up route: ' + route);
 
         if(controller && isFunction(controller.exec)){
             this.app[type](route, function(req, res){
+                log.silly('Accessing route: ' + route);
                 controller.exec(req, res);
             });
         }else if(controller) {

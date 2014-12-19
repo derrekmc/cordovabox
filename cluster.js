@@ -4,8 +4,9 @@ var cluster = require('cluster'),
     cluster_port = process.env.PORT || 3000,
     num_processes = Math.floor(require('os').cpus().length * (parseFloat(_Config.server.process.max_spawn) / 100.0));
 
-if (cluster.isMaster) {
 
+if (cluster.isMaster) {
+    log.info("Starting " + num_processes + " processes on port:" + cluster_port);
     // This stores our workers. We need to keep them to be able to reference
     // them based on source IP address. It's also useful for auto-restart,
     // for example.
@@ -17,7 +18,7 @@ if (cluster.isMaster) {
 
         // Optional: Restart worker on exit
         workers[i].on('exit', function(worker, code, signal) {
-            console.log('respawning worker', i);
+            console.warn('respawning worker', i);
             spawn(i);
         });
 
@@ -65,7 +66,9 @@ if (cluster.isMaster) {
     /**
      * We call the application to spawn up some nodes
      */
-    var server = require('./app')(0);
+    var server = require('./app')(0, function(port){
+        log.info("Box is now listening on port:" + cluster_port);
+    });
 
     // Listen to messages sent from the master. Ignore everything else.
     process.on('message', function(message, connection) {

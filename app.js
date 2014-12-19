@@ -1,7 +1,8 @@
 require('./config/globals');
 var _server = null;
 
-function listen(port){
+function listen(port, callback){
+    callback = callback || function(){};
 
     var url = require('url');
     var express = require('express');
@@ -54,7 +55,8 @@ function listen(port){
 
     // Here you might use middleware, attach routes, etc.
     var http = require('http').Server(app);
-    // Don't expose our internal server to the outside.
+
+    // Don't expose our internal server to the outside. '0.0.0.0' is for nitrous io servers
     var server = app.listen(port, '0.0.0.0'),
         sio = require('socket.io'),
         sio_redis = require('socket.io-redis'),
@@ -69,15 +71,29 @@ function listen(port){
     io.adapter(sio_redis({ host: 'localhost', port: ((_Config.redis && _Config.redis.portNumber) || 6379) }));
 
     http.listen(0, function(){
-        console.log('listening on *:' + port);
+        if(_server) {
+            log.info("                          ");
+            log.info("         --------------   ");
+            log.info("        |              |  ");
+            log.info("        |              |  ");
+            log.info("        |  CordovaBox  |  ");
+            log.info("        |     .io      |  ");
+            log.info("        |              |  ");
+            log.info("        |              |  ");
+            log.info("         --------------   ");
+            log.info("                          ");
+            log.info("                          ");
+        }
+        callback(port);
     });
 
     sockets.listen(io, {
         app: app
     });
+
     _server = server;
     return server;
 
-};
+}
 
 module.exports = listen;

@@ -2,16 +2,22 @@
  * Logging levels pulled from
  * http://en.wikipedia.org/wiki/Syslog#Severity_levels
  */
+var winston = require('winston');
+var adapter = new (winston.Logger)({
+    transports: [
+        new (winston.transports.Console)(_Config.logger )
+    ]
+});
 module.exports = new function logger(adapter){
     return {
         adapter: adapter || console,
 
         logIt: function logIt(level, args){
             try{
-                this.adapter[arguments.callee.caller.name](arguments);
+                this.adapter[arguments.callee.caller.name].apply(this, arguments[0]);
             }catch(err){
                 //this.adapter.error('log error: ' + err);
-                this.adapter.log(arguments.callee.caller.name, arguments)
+                this.adapter.log(arguments.callee.caller.name, arguments[0])
             }
 
         },
@@ -62,7 +68,7 @@ module.exports = new function logger(adapter){
 
     }
 
-};
+}(adapter);
 
 
 

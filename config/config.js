@@ -1,5 +1,11 @@
 module.exports = {
 
+    logger:{
+        level: 'silly',
+        colorize : true,
+        timestamp: false
+    },
+
     server: {
         process:{
             auto_spawn: true,
