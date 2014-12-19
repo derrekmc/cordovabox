@@ -13,14 +13,14 @@ module.exports = {
         */
         this.route('post', '/api/stats', require('../controller/stats'));
 
-        this.route('get', '/room/:name', require('../controller/rooms').public);
-        this.route('get', '/room/:name/:user', require('../controller/rooms').public);
+        this.route('get', '/room/:name', require('../controller/room').public);
+        this.route('get', '/room/:name/:user', require('../controller/room').public);
 
-        this.route('get', '/private/:name', require('../controller/rooms').private); // might want to add restrictions here
-        this.route('get', '/private/:name/:user', require('../controller/rooms').private); // might want to add restrictions here
+        this.route('get', '/private/:name', require('../controller/room').private); // might want to add restrictions here
+        this.route('get', '/private/:name/:user', require('../controller/room').private); // might want to add restrictions here
 
-        this.route('get', '/broadcast/:name', require('../controller/rooms').broadcast);
-        this.route('get', '/broadcast/:name/:user', require('../controller/rooms').broadcast);
+        this.route('get', '/broadcast/:name', require('../controller/room').broadcast);
+        this.route('get', '/broadcast/:name/:user', require('../controller/room').broadcast);
 
     },
 
