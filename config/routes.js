@@ -22,6 +22,8 @@ module.exports = {
         this.route('get', '/broadcast/:name', require('../controller/room').broadcast);
         this.route('get', '/broadcast/:name/:user', require('../controller/room').broadcast);
 
+        this.route('get', '/chat/:name/:user', require('../controller/room').chat);
+
     },
 
 

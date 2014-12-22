@@ -49,6 +49,46 @@ function resize() {
     //stretch("model_overlay");
 }
 
+
+function stretchHOnDiv(childDivId, parentDivId, offSetY) {
+
+    if(!childDivId){
+        jnt.log("No Child Div Id " + childDivId);
+        return;
+    }
+
+    if(!parentDivId){
+        jnt.log("No Parent Div Id " + parentDivId);
+        return;
+    }
+
+    offSetY = offSetY || 0;
+
+    var parentDivObj = document.getElementById(parentDivId);
+    var childDivObj = document.getElementById(childDivId);
+
+    if(!childDivObj){
+        jnt.log("No Child Div Obj " + childDivId);
+        return;
+    }
+
+    if(!parentDivObj){
+        jnt.log("No Parent Div Obj " + parentDivId);
+        return;
+    }
+
+    var newHeight = parentDivObj.offsetHeight; //(divObj.offsetWidth * (9/16));
+    newHeight += offSetY;
+
+    if (childDivObj) {
+        //obj.style.marginLeft = (divObj.offsetWidth / 2 - obj.offsetWidth / 2 ) + offSetX + 'px';
+        //childDivObj.style.marginTop = ((newHeight / 2) - (childDivObj.offsetHeight / 2) ) + offSetY + 'px';
+        childDivObj.style.height =  newHeight+'px';
+        //childDivObj.offsetHeight =  newHeight + 'px';
+        //jnt.log("Resizing Child Height: " + childDivObj.offsetHeight);
+    }
+}
+
 function centerOnScreen(objId, offSetX, offSetY) {
     var playerHeight = (document.body.offsetWidth * (9/16));
     var obj = document.getElementById(objId);

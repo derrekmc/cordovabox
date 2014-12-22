@@ -23,7 +23,7 @@ function listen(port, callback){
     app.set('view engine', 'ejs');
     app.set('views', rootFolder);
     app.get('/', function(req, res) {
-        res.render('index.html', {config: _Config});
+        res.render('index.html', {title: _Config.Application.name});
     });
     app.get('/*', function(req, res, next){
         res.setHeader('Last-Modified', (new Date()).toUTCString());

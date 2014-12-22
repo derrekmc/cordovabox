@@ -1,5 +1,9 @@
 module.exports = {
 
+    Application: {
+        name: 'CordovaBox.io - Cloud Chat'
+    },
+
     logger:{
         level: 'silly',
         colorize : true,
