@@ -1,12 +1,13 @@
 .chatUsersContainer {
+    font-family: arial, sans-serif;
     float: left;
     width: 150px;
     height: 264px;
     overflow: auto;
     color: #00a2ff;
-    background: #000;
+    background: #fff;
     display: block;
-    border: #505050 2px solid;
+    border: #dcdcdc 2px solid;
     margin: 5px;
     padding: 5px;
 }
@@ -24,7 +25,7 @@
 }
 
 a {
-    color: ivory;
+    color: #4160ff;
     text-decoration: none;
 }
 

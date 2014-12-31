@@ -128,4 +128,4 @@ module.exports = {
         this.io = io;
     }
 
-}
+};

@@ -65,6 +65,7 @@
             font-weight: normal;
             padding: 20px;
             position:absolute;
+            top:20px;
             right: 10px;
             z-index: 1;
             display:block;
@@ -73,14 +74,26 @@
             border: 2px #ffffff solid;
 
         }
+        .container{
+            font-weight: normal;
+            padding: 0px;
+            display:block;
+            color: #FFFFFF;
+            background-color: #ccc;
+            border: 2px #ffffff solid;
+            width: 1345px;
+            height: 480px;
+            margin: auto;
+        }
     </style>
 
-    <div id=“notification” class="notification"> Notification Badge</div>
-    <div id=“videoOut” class="videoOut"></div>
-    <div id=“messageLog” class="messageLog"></div>
-    <div id=“messageRoster” class="messageRoster"></div>
-    <div id=“messageInput” class="messageInput"></div>
-
+    <div id="container" class="container">
+        <div id=“notification” class="notification"> Notification Badge</div>
+        <div id=“videoOut” class="videoOut"></div>
+        <div id=“messageLog” class="messageLog"></div>
+        <div id=“messageRoster” class="messageRoster"></div>
+        <div id=“messageInput” class="messageInput"></div>
+    </div>
 
 </body>
 

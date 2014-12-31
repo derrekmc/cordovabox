@@ -1,13 +1,30 @@
 module.exports = {
 
     Application: {
-        name: 'CordovaBox.io - Cloud Chat'
+        name: 'Cloud Chat',
+        showLogo: true
     },
 
+    Security:{
+        jwt: {
+            public: {
+                key: 'i271az2Z0PMjhd6w0rX019g0iS7c2q4R'
+            },
+
+            secure: {
+                key: 'jbfsdkfbsdfbsdfbfsbdffsdbf9ds8hfdsf8ydsfdsfdsy9fdsf9ds7f9dsf79(D&(F*&(*F&SDF&SD(FSD&F(S&F(fdsfds98fdsfydshfhsdfodsjfndslfdsnfpodsf9ufy98dsfysdyf(&FTYDS^*FSD*FTSD*FTS'
+            }
+        }
+    },
+
+    /**
+     * Winston Console logger
+     */
     logger:{
         level: 'silly',
         colorize : true,
-        timestamp: false
+        timestamp: false,
+        transports: []
     },
 
     server: {
@@ -18,6 +35,7 @@ module.exports = {
         }
     },
 
+    //Store
     redis: {
         portNumber: 6379,
         host: 'localhost',

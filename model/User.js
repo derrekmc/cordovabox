@@ -8,7 +8,7 @@ module.exports = Waterline.Collection.extend({
     schema: true,
 
     // Define an adapter to use
-    adapter: 'postgresql',
+    adapter: 'redis',
 
     // Define attributes for this collection
     attributes: {

@@ -1,6 +1,6 @@
 if(!global.registeredClass){
     global.registeredClass = true;
-    global.Redis = require('node-redis');
+
     global.User = require('../model/User'); // todo walk the models directory and add any .js files found. For now its just user.
     global.DataTransmissionObject = require('../model/UserDTO'); 
     global._Config = require('./config');
@@ -38,6 +38,40 @@ if(!global.registeredClass){
         }
     };
 
+    global.Dictionary = function Dictionary(name){
+
+        this.length = 0;
+        this.name = name;
+        this.dict = new Array();
+
+        Dictionary.prototype.add = function(key, value){
+            this.dict[key] = value;
+            this.length++;
+        };
+
+        Dictionary.prototype.remove = function(key){
+            this.dict[key] = value;
+            this.length--;
+        };
+
+        Dictionary.prototype.findOne = function(key, value, callback){
+            var dictionary = this.dict[key] = value;
+            for(var i in dictionary){
+                var element = dictionary[i];
+                log.silly(element);
+                if(element.hasOwnProperty(element.id) && dictionary[i] == element.id){
+                    callback(value);
+                }
+            }
+        };
+
+        //Additional supported short cuts
+        Dictionary.prototype.del = Dictionary.prototype.remove;
+
+    };
+
+
+
     if(_Config.globals.lodash){
         global._ = require('lodash');
     }
@@ -45,6 +79,8 @@ if(!global.registeredClass){
     if(_Config.globals.async){
         global.async = require('async');
     }
+
+    global.Redis = require('../service/redis');
 
     //Array.prototype.forEach = require('../lib/async/forEachNext')
 

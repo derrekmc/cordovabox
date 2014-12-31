@@ -1,9 +1,13 @@
-require('./config/globals');
 var _server = null;
 
 function listen(port, callback){
     callback = callback || function(){};
 
+    /**
+     * Express/Session/Store Section
+     * Add express related requires here
+     * @type {*|http.Server}
+     */
     var url = require('url');
     var express = require('express');
     var app = new express();
@@ -56,6 +60,11 @@ function listen(port, callback){
     // Here you might use middleware, attach routes, etc.
     var http = require('http').Server(app);
 
+    /**
+     * Socket IO Section
+     * Add socket io related requires here
+     * @type {*|http.Server}
+     */
     // Don't expose our internal server to the outside. '0.0.0.0' is for nitrous io servers
     var server = app.listen(port, '0.0.0.0'),
         sio = require('socket.io'),
@@ -71,7 +80,7 @@ function listen(port, callback){
     io.adapter(sio_redis({ host: 'localhost', port: ((_Config.redis && _Config.redis.portNumber) || 6379) }));
 
     http.listen(0, function(){
-        if(_server) {
+        if(_server && _Config.Application.showLogo) {
             log.info("                          ");
             log.info("         --------------   ");
             log.info("        |              |  ");

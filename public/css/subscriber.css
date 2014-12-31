@@ -4,8 +4,6 @@ body{
     background:#fff;
 }
 
-
-
 .componentContainer{
     width:1000px;
     margin:0 auto;
@@ -13,19 +11,17 @@ body{
 }
 
 #chatroom, #chat_box{
-    font:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border:#505050 2px solid;
-    color:#00a2ff;
-    background:#000;
+    font-family: arial, sans-serif;
+    border: #e2e2e2 2px solid;
+    color:#3c3c3c;
     position: relative;
     padding:5px;
     font-size:18px;
     margin:5px;
+    display:block;
 }
 
 #chatroom {
-    display:block;
-    padding:0px;
     height: 100px;
     overflow: auto;
     float: left;
@@ -36,12 +32,12 @@ body{
     list-style: none;
     bottom: 0px;
     left:0;
-
+    color:#3c3c3c;
 }
 
 #chat_box {
     margin:5px;
-    color:#fff;
+    color:#3c3c3c;
     font-size: 16px;
     width:705px;
     float: left;
@@ -51,16 +47,13 @@ body{
 width:100%;
 }
 
-#chat_box_container{
-
-}
-
 #sendMessageButton {
-    background: #00a2ff;
+
+    background: #fffdf8;
     font-weight: bold;
     font-size: 14px;
-    color: white;
-    border:#505050 2px solid;
+    color: #3c3c3c;
+    border:#e2e2e2 2px solid;
     display: inline;
     float: left;
     padding:5px 20px 5px 20px;
@@ -68,6 +61,8 @@ width:100%;
 }
 
 #sendMessageButton:hover {
+    background: #ededed;
+
     cursor:hand;
 }
 

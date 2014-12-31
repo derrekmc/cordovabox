@@ -24,6 +24,11 @@ module.exports = {
 
         this.route('get', '/chat/:name/:user', require('../controller/room').chat);
 
+        this.route('get', '/user/tip/:id/:value', require('../controller/user').tip);
+
+        this.route('post', '/auth/jwt/:id/:value', require('../controller/jwt'));
+        this.route('post', '/auth/jwt/secure/:id/:value', require('../controller/jwt').secure);
+
     },
 
 
@@ -122,13 +127,15 @@ module.exports = {
 
         if(controller && isFunction(controller.exec)){
             this.app[type](route, function(req, res){
-                log.silly('Accessing route: ' + route);
+                var routeOut = route.replace(':id', req.param('id'));
+                routeOut = routeOut.replace(':value', req.param('value'));
+                log.silly('Accessing route: ' + route, routeOut);
                 controller.exec(req, res);
             });
         }else if(controller) {
             this.app[type](route, controller);
         }else{
-            log.error('No corresponding route controller or controller function found for route: ' + route);
+            log.error('Controller: ' + controller + ' not found: route "' + route + '"', 'type: ' + type);
         }
 
         /**

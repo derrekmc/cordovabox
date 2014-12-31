@@ -1,4 +1,5 @@
 module.exports = {
+
     exec: function exec(req, res) {
 
         res.render('room_subscriber.html', {
