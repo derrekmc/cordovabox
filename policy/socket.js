@@ -33,7 +33,7 @@ module.exports = function isSocketAuthenticated(socket, next){
             log.silly('Secure socket security policy accessed: ' + decoded, token, secureKey);
         }
 
-        if (!_Config.sockets.prefered_connections_enabled && _Stats.active_connections < _Config.sockets.max_connections) {
+        if (!_Config.sockets.preferred_connections_enabled && _Stats.active_connections < _Config.sockets.max_connections) {
             callback("Max connections reached. Your connection to the server has been denied. The server has reached its perfered operating limits. Try spawning another node to correct this issue or turn on auth spawn to prevent this issuing from continuing further.");
             //todo spawn another node if autospawn is enabled.
         }

@@ -5,7 +5,7 @@
 var winston = require('winston');
 var adapter = new (winston.Logger)({
     transports: [
-        new (winston.transports.Console)(_Config.logger )
+        new (winston.transports.Console)(_Config.logger)
     ]
 });
 module.exports = new function logger(adapter){

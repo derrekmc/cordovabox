@@ -1,7 +1,7 @@
 if(!global.registeredClass){
     global.registeredClass = true;
 
-    global.User = require('../model/User'); // todo walk the models directory and add any .js files found. For now its just user.
+    global.User = new require('../model/User'); // todo walk the models directory and add any .js files found. For now its just user.
     global.DataTransmissionObject = require('../model/UserDTO'); 
     global._Config = require('./config');
 

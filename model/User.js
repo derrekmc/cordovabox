@@ -1,81 +1,33 @@
-var Waterline = require('waterline');
-module.exports = Waterline.Collection.extend({
 
-    // Define a custom table name
-    tableName: 'user',
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
 
-    // Set schema true/false for adapters that support schemaless
-    schema: true,
+var db = mongoose.connection;
 
-    // Define an adapter to use
-    adapter: 'redis',
+db.on('error', console.error.bind(console, 'connection error:'));
 
-    // Define attributes for this collection
-    attributes: {
-
-        firstName: {
-            type: 'string',
-
-            // also accepts any validations
-            required: true
-        },
-
-        lastName: {
-            type: 'string',
-            required: true,
-            maxLength: 20
-        },
-
-        email: {
-
-            // Special types are allowed, they are used in validations and
-            // set as a string when passed to an adapter
-            type: 'email',
-
-            required: true
-        },
-
-        age: {
-            type: 'integer',
-            min: 18
-        },
-
-        // You can also define instance methods here
-        fullName: function() {
-            return this.firstName + ' ' + this.lastName
-        }
-    },
-
-    /**
-     * Lifecycle Callbacks
-     *
-     * Run before and after various stages:
-     *
-     * beforeValidate
-     * afterValidate
-     * beforeUpdate
-     * afterUpdate
-     * beforeCreate
-     * afterCreate
-     * beforeDestroy
-     * afterDestroy
-     */
-
-    beforeCreate: function(values, cb) {
-
-        // An example encrypt function defined somewhere
-        encrypt(values.password, function(err, password) {
-            if(err) return cb(err);
-
-            values.password = password;
-            cb();
-        });
-    },
-
-    // Class Method
-    doSomething: function() {
-        // Do something here
-    }
-
+db.once('open', function (callback) {
+    // yay!
 });
 
+var kittySchema = mongoose.Schema({
+    name: String,
+    email: String
+})
+
+var Kitten = mongoose.model('Kitten', kittySchema)
+
+var silence = new Kitten({ name: 'Silence' , email: 'derrekmc@gmail.com'})
+
+// NOTE: methods must be added to the schema before compiling it with mongoose.model()
+kittySchema.methods.speak = function () {
+    var greeting = this.name
+        ? "Meow name is " + this.name
+        : "I don't have a name"
+    log.log(greeting);
+}
+
+var Kitten = mongoose.model('Kitten', kittySchema)
+
+
+module.exports = Kitten;

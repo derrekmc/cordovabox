@@ -1,9 +1,8 @@
 require('./config/globals');
 var cluster = require('cluster'),
     net = require('net'),
-    cluster_port = process.env.PORT || 3000,
+    cluster_port = process.env.PORT || _Config.server.port || 3000,
     num_processes = Math.floor(require('os').cpus().length * (parseFloat(_Config.server.process.max_spawn) / 100.0));
-
 
 if (cluster.isMaster) {
     log.info("Starting " + num_processes + " processes on port:" + cluster_port);
@@ -67,7 +66,7 @@ if (cluster.isMaster) {
      * We call the application to spawn up some nodes
      */
     var server = require('./app')(0, function(port){
-        log.info("Box is now listening on port:" + cluster_port);
+        log.info("A worker is now listening on port:" + cluster_port);
     });
 
     // Listen to messages sent from the master. Ignore everything else.

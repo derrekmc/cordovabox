@@ -12,6 +12,7 @@ module.exports = {
         * Routes
         */
         this.route('post', '/api/stats', require('../controller/stats'));
+        this.route('post', '/user/tip/:id/:value', require('../controller/user').tip);
 
         this.route('get', '/room/:name', require('../controller/room').public);
         this.route('get', '/room/:name/:user', require('../controller/room').public);
@@ -23,8 +24,6 @@ module.exports = {
         this.route('get', '/broadcast/:name/:user', require('../controller/room').broadcast);
 
         this.route('get', '/chat/:name/:user', require('../controller/room').chat);
-
-        this.route('get', '/user/tip/:id/:value', require('../controller/user').tip);
 
         this.route('post', '/auth/jwt/:id/:value', require('../controller/jwt'));
         this.route('post', '/auth/jwt/secure/:id/:value', require('../controller/jwt').secure);

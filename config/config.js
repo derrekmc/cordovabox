@@ -17,17 +17,8 @@ module.exports = {
         }
     },
 
-    /**
-     * Winston Console logger
-     */
-    logger:{
-        level: 'silly',
-        colorize : true,
-        timestamp: false,
-        transports: []
-    },
-
     server: {
+        port: 3000,
         process:{
             auto_spawn: true,
             threshold: '50%', // 50% Auto spawn new processes until the server reaches the max_spawn
@@ -36,6 +27,10 @@ module.exports = {
     },
 
     //Store
+    dataStore: {
+
+    },
+
     redis: {
         portNumber: 6379,
         host: 'localhost',
@@ -45,7 +40,7 @@ module.exports = {
 
     sockets: {
         max_connections: 4000,
-        prefered_connections_enabled: true // Perfered connections allow for your max connections to give priority to a premium client distiguished by his given token during authorization.
+        preferred_connections_enabled: true // Preferred connections allow for your max connections to give priority to a premium client distiguished by his given token during authorization.
     },
 
     site: {
@@ -63,6 +58,16 @@ module.exports = {
 
     api: {
         key: 'yourDirtyLittleSecret'
+    },
+
+    /**
+     * Winston Console logger
+     */
+    logger:{
+        level: 'silly',
+        colorize : true,
+        timestamp: false,
+        transports: []
     },
 
     globals: {

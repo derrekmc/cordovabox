@@ -4,6 +4,8 @@ module.exports = {
     },
 
     tip: function exec(req, res){
-        res.send('tip');
+        User.findOne({id: req.param('username')}, function(err, user){
+            res.send('tip');
+        });
     }
 };
