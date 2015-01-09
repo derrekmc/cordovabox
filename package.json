@@ -1,12 +1,11 @@
 {
-  "name": "get",
+  "name": "CordovaBox",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "cluster.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha",
-    "start": "../redis-2.8.17/src/redis-server | NODE_CONFIG_DIR=../config node_modules/.bin/supervisor server.js",
+    "start": "../redis-2.8.17/src/redis-server | NODE_CONFIG_DIR=../config node_modules/.bin/supervisor cluster.js",
     "dev": "node_modules/.bin/supervisor server.js",
-    "build": "chmod a+x ./buildAll.sh && ./buildAll.sh",
     "single": "node_modules/.bin/supervisor server.js",
     "cluster": "node_modules/.bin/supervisor cluster.js"
   },
@@ -28,7 +27,8 @@
     "supervisor": "^0.5.7",
     "uuid": "^2.0.1",
     "waterline": "^0.10.14",
-    "winston": "^0.8.3"
+    "winston": "^0.8.3",
+    "mongoose": "^3.8.21"
   },
   "author": "Derrek Cordova <derrek.cordova@juntacorp.com>",
   "license": "BSD",

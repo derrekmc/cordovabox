@@ -10,24 +10,24 @@ db.once('open', function (callback) {
     // yay!
 });
 
-var kittySchema = mongoose.Schema({
+var userSchema = mongoose.Schema({
     name: String,
     email: String
-})
+});
 
-var Kitten = mongoose.model('Kitten', kittySchema)
+var User = mongoose.model('User', userSchema);
 
-var silence = new Kitten({ name: 'Silence' , email: 'derrekmc@gmail.com'})
+var silence = new User({ name: 'Silence' , email: 'derrekmc@gmail.com'});
 
 // NOTE: methods must be added to the schema before compiling it with mongoose.model()
-kittySchema.methods.speak = function () {
+userSchema.methods.speak = function () {
     var greeting = this.name
         ? "Meow name is " + this.name
-        : "I don't have a name"
+        : "I don't have a name";
     log.log(greeting);
-}
+};
 
-var Kitten = mongoose.model('Kitten', kittySchema)
+var User = mongoose.model('User', userSchema);
 
 
-module.exports = Kitten;
+//module.exports = User;
