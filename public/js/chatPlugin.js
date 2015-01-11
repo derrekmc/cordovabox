@@ -1,14 +1,12 @@
-function CordovaBox(host, token, options){
+function ChatPlugin(socket, options){
 
-    if(!io) return 'Socket.io not loaded. Cannot initialize.';
-    if(!host) return 'Host not provided. Unable to connect.';
-    if(!token) return 'No token passed for authentication. Unable to authenticate.';
+    var usersList = new Array();
+
+    if(!socket) return 'Compatible Socket not passed in. Unable to initialize.';
+    //if(!host) return 'Host not provided. Unable to connect.';
+    //if(!token) return 'No token passed for authentication. Unable to authenticate.';
 
     this.options = options || {};
-    this.options._host = host;
-    this.options._token = token;
-
-    var socket = io.connect(host, {query: options});
 
     _Config = {
 
@@ -23,7 +21,7 @@ function CordovaBox(host, token, options){
             UI: {
                 name                : '#room_name',
                 input               : '#chat_box',
-                message_log         : '#chat_log',
+                log                 : '#chat_log',
                 sendInputButton     : '#sendMessageButton',
                 userList            : '#roster'
             }
@@ -54,20 +52,23 @@ function CordovaBox(host, token, options){
 
     function sendMessage(msg) {
         if(msg == '') return;
-        socket.emit(_config.chat.event.message, {
+        socket.emit(_Config.Chat.Event.message, {
             name: name,
-            value: msg,
-            type: clientType,
-            id: clientId
+            value: msg
+            //type: clientType,
+            //id: clientId
         });
-        $(_config.chat.ui.input).val('');
+        $(options.ui.input).val('');
+
     }
 
     var logChat = function  (message, type) {
         var li = $('<li />').text(message);
-        li.addClass('clientTypeFont_' + type);
-        $(_config.chat.ui.message_log).prepend(li);
-        console.log(message, type);
+        //li.addClass('clientTypeFont_' + type);
+        $(options.ui.log).prepend(li);
+        //$(options.ui.log).append(message);
+
+        console.log(options.ui.log,  message, type);
     };
 
     /**
@@ -89,17 +90,51 @@ function CordovaBox(host, token, options){
         logChat(data.value, 'error');
     });
 
+    socket.on('user.create', function (data) {
+        console.log("Adding user " + data.name + " to roster " + data.id);
+        var user = data.name;
+        //if (user && !doesExist(usersList, 'name', user) && data.type != clientType.MODEL) {
+        var blockLink = '<li id='+ data.id +'><a name='+user+' href="javascript:void(0)" class="blockUserItem" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
+        $(options.ui.roster).append(blockLink);
+        usersList[data.id] = {name: data.name, id: data.id, blocked: false};
+
+        //}
+    });
+
+    socket.on('user.destroy', function (data) {
+        console.log("Removing user " + data.name + " from roster " + data.id);
+        $('#' + data.id).remove();
+        delete(usersList[data.id]);
+    });
+
+    socket.on('blockUser', function (data) {
+        var user = data.name;
+        var i = usersList.length;
+        while (i--) {
+            if (usersList[i].name) {
+                if (usersList[i].name == user) {
+                    var clientId = usersList[i].id;
+                    alert("Blocking user " + user + " with clientId " + data.id);
+                    usersList[i].blocked = true;
+                    // remove user list element from roster listing
+                    $('#'+user).remove();
+                    $('.hoverMenu').css("display", 'none');
+                }
+            }
+        }
+    });
+
     jQuery(document).ready(function () {
 
-        $(_config.chat.ui.input).keypress(function (event) {
+        $(options.ui.input).keypress(function (event) {
             if (event.which == 13) {
-                var msg = $(_config.chat.ui.input).val();
+                var msg = $(options.ui.input).val();
                 sendMessage(msg);
             }
         });
 
-        $(_config.chat.ui.sendInputButton).click(function () {
-            var msg = $(_config.chat.ui.input).val();
+        $(options.ui.sendInputButton).click(function () {
+            var msg = $(options.ui.input).val();
             sendMessage(msg);
         });
 

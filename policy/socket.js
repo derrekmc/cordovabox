@@ -16,7 +16,7 @@ module.exports = function isSocketAuthenticated(socket, next){
     if (Query && (token === undefined || token.length === 0 )) {
 
         console.error('Token authorization failed');
-        callback("connection failed because it is missing a required parameter: token.");
+        next(new Error("connection failed because it is missing a required parameter: token."));
 
     } else {
 
