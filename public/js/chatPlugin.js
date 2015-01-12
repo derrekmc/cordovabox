@@ -63,7 +63,7 @@ function ChatPlugin(socket, options){
     }
 
     var logChat = function  (message, type) {
-        var li = $('<li />').text(message);
+        var li = $('<li style="list-style-type: none; padding:2px 10px 0px 10px;" >').text(message);
         //li.addClass('clientTypeFont_' + type);
         $(options.ui.log).prepend(li);
         //$(options.ui.log).append(message);
@@ -94,9 +94,9 @@ function ChatPlugin(socket, options){
         console.log("Adding user " + data.name + " to roster " + data.id);
         var user = data.name;
         //if (user && !doesExist(usersList, 'name', user) && data.type != clientType.MODEL) {
-        var blockLink = '<li id='+ data.id +'><a name='+user+' href="javascript:void(0)" class="blockUserItem" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
-        $(options.ui.roster).append(blockLink);
-        usersList[data.id] = {name: data.name, id: data.id, blocked: false};
+            var blockLink = '<li style="list-style-type: none; padding:8px;" id='+ data.id +'><a name='+user+' href="javascript:void(0)" class="blockUserItem" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
+            $(options.ui.roster).append(blockLink);
+            usersList[data.id] = {name: data.name, id: data.id, blocked: false};
 
         //}
     });
