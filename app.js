@@ -68,11 +68,21 @@ function listen(port, callback){
      */
     // Don't expose our internal server to the outside. '0.0.0.0' is for nitrous io servers
     var server = app.listen(port, '0.0.0.0'),
-        sio = require('socket.io'),
+        sio = require('socket.io', {
+            'transports': [
+                  'websocket'
+                , 'flashsocket'
+                , 'htmlfile'
+                , 'xhr-polling'
+                , 'jsonp-polling'
+            ],
+            'log level': 1
+        }),
         sio_redis = require('socket.io-redis'),
         io = sio(server),
         sockets = require('./service/socket'),
         socketPolicy = require('./policy/socket');
+
         io.use(socketPolicy);
 
     // Tell Socket.IO to use the redis adapter. By default, the redis
