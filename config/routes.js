@@ -25,6 +25,10 @@ module.exports = {
 
         this.route('get', '/chat/:name/:user', require('../controller/room').chat);
 
+        this.route('get', '/bootstrap/', require('../controller/room').bootstrap);
+        this.route('get', '/bootstrap/:title', require('../controller/room').bootstrap);
+
+
         this.route('post', '/auth/jwt/:id/:value', require('../controller/jwt'));
         this.route('post', '/auth/jwt/secure/:id/:value', require('../controller/jwt').secure);
 

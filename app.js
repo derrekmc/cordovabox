@@ -30,7 +30,7 @@ function listen(port, callback){
         res.render('index.html', {title: _Config.Application.name});
     });
     app.get('/*', function(req, res, next){
-        log.silly('An attempt was made on route: ', req.path);
+        log.silly('Accessing route: ', req.path);
         res.setHeader('Last-Modified', (new Date()).toUTCString());
         next();
     });

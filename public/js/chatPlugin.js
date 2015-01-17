@@ -75,7 +75,17 @@ function ChatPlugin(socket, options){
      *************** Socket Events *****************
      */
     socket.on('connect', function (data) {
-        logChat('Connected to chat room ', 'system');
+
+        console.log('  --------------   ');
+        console.log(" |              |  ");
+        console.log(" |  CordovaBox  |  ");
+        console.log(" |     .io      |  ");
+        console.log(" |              |  ");
+        console.log("  --------------   ");
+
+        console.log(" --|= Web socket connect connection established.");
+
+        logChat('Connected to chat room ', 'system', data);
     });
 
     socket.on('disconnect', function (data) {
