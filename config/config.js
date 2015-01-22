@@ -18,7 +18,7 @@ module.exports = {
     },
 
     server: {
-        port: 3000,
+        port: 3001,
         process:{
             auto_spawn: true,
             threshold: '50%', // 50% Auto spawn new processes until the server reaches the max_spawn

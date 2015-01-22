@@ -59,19 +59,6 @@ module.exports = {
             author: "Derrek Cordova"
         });
 
-    },
-
-    bootstrap: function bootstrap(req, res) {
-
-        res.render('bootstrap.html', {
-            socket: req.socket,
-            user: req.param('user') || 'guest',
-            room: req.param('name'),
-            title: req.param('title') || "Welcome to Cordova Box",
-            projectName: _Config.Application.name,
-            description: "Chat & Video plugin demo page.",
-            author: "Derrek Cordova"
-        });
-
     }
+
 };

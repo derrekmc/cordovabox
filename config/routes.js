@@ -11,6 +11,8 @@ module.exports = {
         /**
         * Routes
         */
+        this.route('get', '/', require('../controller/main')); // index.html
+
         this.route('post', '/api/stats', require('../controller/stats'));
         this.route('post', '/user/tip/:id/:value', require('../controller/user').tip);
 
@@ -24,10 +26,6 @@ module.exports = {
         this.route('get', '/broadcast/:name/:user', require('../controller/room').broadcast);
 
         this.route('get', '/chat/:name/:user', require('../controller/room').chat);
-
-        this.route('get', '/bootstrap/', require('../controller/room').bootstrap);
-        this.route('get', '/bootstrap/:title', require('../controller/room').bootstrap);
-
 
         this.route('post', '/auth/jwt/:id/:value', require('../controller/jwt'));
         this.route('post', '/auth/jwt/secure/:id/:value', require('../controller/jwt').secure);
@@ -130,9 +128,10 @@ module.exports = {
 
         if(controller && isFunction(controller.exec)){
             this.app[type](route, function(req, res){
-                var routeOut = route.replace(':id', req.param('id'));
-                routeOut = routeOut.replace(':value', req.param('value'));
-                log.silly('Accessing route: ' + route, routeOut);
+                /*var routeOut = route.replace(':id', req.param('id'));
+                routeOut = routeOut.replace(':value', req.param('value'));*/
+                //log.silly('Accessing route: ' + route, routeOut);
+                log.verbose('Route: ' + route);
                 controller.exec(req, res);
             });
         }else if(controller) {

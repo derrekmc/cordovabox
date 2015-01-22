@@ -26,11 +26,9 @@ function listen(port, callback){
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'ejs');
     app.set('views', rootFolder);
-    app.get('/', function(req, res) {
-        res.render('index.html', {title: _Config.Application.name});
-    });
+
     app.get('/*', function(req, res, next){
-        log.silly('Accessing route: ', req.path);
+        log.silly('Request:', req.path);
         res.setHeader('Last-Modified', (new Date()).toUTCString());
         next();
     });
@@ -53,6 +51,10 @@ function listen(port, callback){
 
     var routes = require('./config/routes');
     routes.register(app);
+
+    /*app.get('/', function(req, res) {
+        res.render('index.html', {title: _Config.Application.name});
+    });*/
 
     /*********************
      * Routes/Views End

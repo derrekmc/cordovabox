@@ -10,4 +10,4 @@ module.exports = function DataTransmissionObject(user, options){
         log.error('Failed to create Data Transmission Object. No socket and or user present on the socket.');
         return false;
     }
-}
+};
