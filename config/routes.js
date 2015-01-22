@@ -12,6 +12,7 @@ module.exports = {
         * Routes
         */
         this.route('get', '/', require('../controller/main')); // index.html
+        this.route('get', '/sitemap', require('../controller/main')); // index.html
 
         this.route('post', '/api/stats', require('../controller/stats'));
         this.route('post', '/user/tip/:id/:value', require('../controller/user').tip);

@@ -8,8 +8,8 @@ module.exports = function isSocketAuthenticated(socket, next){
 
     var Query = socket.handshake.query;
 
-    var publicKey = _Config.Security.jwt.public.key;
-    var secureKey = _Config.Security.jwt.secure.key;
+    var publicKey = _Config.security.jwt.public.key;
+    var secureKey = _Config.security.jwt.secure.key;
     var token = Query.token;
 
     // Some basic validation to make sure a token was passed

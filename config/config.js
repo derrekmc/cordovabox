@@ -1,11 +1,12 @@
 module.exports = {
 
-    Application: {
+    application: {
         name: 'Cloud Chat',
-        showLogo: true
+        showLogo: true,
+        author: "Derrek Cordova"
     },
 
-    Security:{
+    security:{
         jwt: {
             public: {
                 key: 'i271az2Z0PMjhd6w0rX019g0iS7c2q4R'

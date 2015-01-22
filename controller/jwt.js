@@ -4,7 +4,7 @@ module.exports = {
 
     exec: function exec(req, res) {
 
-        var secret = _Config.Security.jwt.public.key;
+        var secret = _Config.security.jwt.public.key;
 
         // {id: , displayName: }
         var id = req.param('id');
@@ -29,7 +29,7 @@ module.exports = {
 
     secure: function exec(req, res) {
 
-        var secret = _Config.Security.jwt.secure.key;
+        var secret = _Config.security.jwt.secure.key;
 
         // {id: , displayName: }
         var id = req.param('id');

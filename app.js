@@ -53,7 +53,7 @@ function listen(port, callback){
     routes.register(app);
 
     /*app.get('/', function(req, res) {
-        res.render('index.html', {title: _Config.Application.name});
+        res.render('index.html', {title: _Config.application.name});
     });*/
 
     /*********************
@@ -93,7 +93,7 @@ function listen(port, callback){
     io.adapter(sio_redis({ host: 'localhost', port: ((_Config.redis && _Config.redis.portNumber) || 6379) }));
 
     http.listen(0, function(){
-        if(_server && _Config.Application.showLogo) {
+        if(_server && _Config.application.showLogo) {
             log.info("                          ");
             log.info("         --------------   ");
             log.info("        |              |  ");
