@@ -7,7 +7,8 @@ module.exports = {
     tip: function tip(req, res){
         log.silly(User);
         User.find({ id: req.param('id') }).exec(function(err, model) {
-            return model.toJSON(); // Will return only the name
+            model.save({ id: req.param('id') }, req.param('value'));
+            res.send(model.toJSON()); // Will return only the name
         });
 
     }

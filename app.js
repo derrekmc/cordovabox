@@ -52,10 +52,6 @@ function listen(port, callback){
     var routes = require('./config/routes');
     routes.register(app);
 
-    /*app.get('/', function(req, res) {
-        res.render('index.html', {title: _Config.application.name});
-    });*/
-
     /*********************
      * Routes/Views End
      *********************/

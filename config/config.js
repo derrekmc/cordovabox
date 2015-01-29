@@ -1,7 +1,7 @@
 module.exports = {
 
     application: {
-        name: 'Cloud Chat',
+        name: 'CordovaBox',
         showLogo: true,
         author: "Derrek Cordova"
     },

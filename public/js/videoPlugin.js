@@ -23,6 +23,7 @@ function VideoPlugin(socket, options){
         so.addVariable("username",      username);
         so.addVariable("userType",      security);
         so.addVariable("showType",      showType);
+        so.addVariable("bgcolor",       "#ffffff");
         so.addVariable("debug",         options.application.debug);
 
         so.write(options.ui.videoOut);

@@ -70,7 +70,7 @@ if(!global.registeredClass){
 
     };
 
-
+    //global.forEach = require('../lib/async/forEachNext');
 
     if(_Config.globals.lodash){
         global._ = require('lodash');

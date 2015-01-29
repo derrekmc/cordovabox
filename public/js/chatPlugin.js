@@ -2,7 +2,7 @@ function ChatPlugin(socket, options){
 
     var usersList = new Array();
 
-    if(!socket) return 'Compatible Socket not passed in. Unable to initialize.';
+    if(!socket) return 'Compatible WebSocket io not passed in. Unable to initialize. Please include socket.io';
     //if(!host) return 'Host not provided. Unable to connect.';
     //if(!token) return 'No token passed for authentication. Unable to authenticate.';
 
@@ -75,16 +75,6 @@ function ChatPlugin(socket, options){
      *************** Socket Events *****************
      */
     socket.on('connect', function (data) {
-
-        console.log('  --------------   ');
-        console.log(" |              |  ");
-        console.log(" |  CordovaBox  |  ");
-        console.log(" |     .io      |  ");
-        console.log(" |              |  ");
-        console.log("  --------------   ");
-
-        console.log(" --|= Web socket connect connection established.");
-
         logChat('Connected to chat room ', 'system', data);
     });
 
@@ -117,7 +107,7 @@ function ChatPlugin(socket, options){
         delete(usersList[data.id]);
     });
 
-    socket.on('blockUser', function (data) {
+    socket.on('user.block', function (data) {
         var user = data.name;
         var i = usersList.length;
         while (i--) {

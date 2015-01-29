@@ -1,5 +1,14 @@
 module.exports = {
 
+    /**
+     * Required parameters in each controller.
+     */
+    type: 'get',
+    route: '/',
+    policy: 'isAuthenticated',
+
+    // Views
+
     exec:  function bootstrap(req, res) {
 
         res.render('index.html', {
@@ -12,6 +21,18 @@ module.exports = {
             author: "Derrek Cordova"
         });
 
+    },
+
+    login: function(req, res, error){
+        res.render('login.html', {
+            title: _Config.application.name + " user login",
+            projectName: _Config.application.name,
+            description: "Chat & Video plugin demo page.",
+            author: _Config.application.author,
+            error: function(){
+                return (!error ? null: error);
+            }
+        });
     },
 
     sitemap: function(req, res){

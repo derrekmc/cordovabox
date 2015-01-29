@@ -24,17 +24,15 @@ module.exports = {
 
     private: function private(req, res) {
 
-        //if(req.session){
-        res.render('room_subscriber.html', {
-            socket: req.socket,
-            user: req.param('user'),
-            room: req.param('name')
-        });
-        /*}else{
-         res.send({
-         error: 'Error finding user.'
-         });
-         }*/
+        if(req.session) {
+            res.render('room_subscriber.html', {
+                socket: req.socket,
+                user: req.param('user'),
+                room: req.param('name')
+            });
+        }else{
+            require('../controller/main').login(req, res, "User not logged in.");
+        }
 
     },
 
