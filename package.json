@@ -28,7 +28,8 @@
     "uuid": "^2.0.1",
     "waterline": "^0.10.14",
     "winston": "^0.8.3",
-    "mongoose": "^3.8.21"
+    "mongoose": "^3.8.21",
+    "bluebird": "^2.9.3"
   },
   "author": "Derrek Cordova <derrek.cordova@juntacorp.com>",
   "license": "BSD",

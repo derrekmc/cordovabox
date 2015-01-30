@@ -3,7 +3,8 @@ module.exports = {
     application: {
         name: 'CordovaBox',
         showLogo: true,
-        author: "Derrek Cordova"
+        author: "Derrek Cordova",
+        favicon: 'favicon.ico'
     },
 
     security:{
@@ -41,7 +42,7 @@ module.exports = {
 
     sockets: {
         max_connections: 4000,
-        preferred_connections_enabled: true // Preferred connections allow for your max connections to give priority to a premium client distiguished by his given token during authorization.
+        preferred_connections_enabled: true // Preferred connections allow for your max connections to give priority to a premium client distinguished by his given token during authorization.
     },
 
     site: {

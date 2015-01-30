@@ -82,6 +82,8 @@ if(!global.registeredClass){
 
     global.Redis = require('../service/redis');
 
+    global.Promise = require("bluebird");
+
     //Array.prototype.forEach = require('../lib/async/forEachNext')
 
 /*
