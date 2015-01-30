@@ -24,7 +24,7 @@ module.exports = {
 
     private: function private(req, res) {
 
-        if(req.session) {
+        if(req.session && req.session.loggedIn) {
             res.render('room_subscriber.html', {
                 socket: req.socket,
                 user: req.param('user'),

@@ -78,14 +78,15 @@
     <hr class="featurette-divider">
         <div style="margin:0 auto; width:400px;">
             <div class="row featurette">
-                <div class="col-md-7">
-                    <h2>Login</h2>
-                    <h2 class="lead">Proceed below to login</h2>
-                    <h3><label for="userName" >Username:</label> <input type="text" id="userName" class="text-muted"></h3>
-                    <h3><label for="userPassword" >Password:</label> <input type="text" id="userPassword" class="text-muted"></h3>
-                    <input type="submit" class="btn btn-lg btn-primary" style=";"  value="Login">
-                </div>
-
+                <form action="/user/" method="post">
+                    <div class="col-md-7">
+                        <h2>Login</h2>
+                        <h2 class="lead">Proceed below to login</h2>
+                        <h3><label for="username" >Username:</label> <input type="text" id="username" class="text-muted"></h3>
+                        <h3><label for="password" >Password:</label> <input type="text" id="password" class="text-muted"></h3>
+                        <input type="submit" class="btn btn-lg btn-primary" style=";"  value="Login">
+                    </div>
+                </form>
             </div>
         </div>
 

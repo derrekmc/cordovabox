@@ -24,11 +24,20 @@ module.exports = {
     },
 
     login: function(req, res, error){
+        var username = req.param('username');
+        var password = req.param('password');
+
+        if(username && password){
+            log.log(username, password);
+        }
+
         res.render('login.html', {
             title: _Config.application.name + " user login",
             projectName: _Config.application.name,
             description: "Chat & Video plugin demo page.",
             author: _Config.application.author,
+            username: username,
+            password: password,
             error: function(){
                 return (!error ? null: error);
             }
