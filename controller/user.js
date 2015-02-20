@@ -5,11 +5,19 @@ module.exports = {
     },
 
     tip: function tip(req, res){
+
         log.silly(User);
-        User.find({ id: req.param('id') }).exec(function(err, model) {
-            model.save({ id: req.param('id') }, req.param('value'));
-            res.send(model.toJSON()); // Will return only the name
+
+        var user = new User({ name: 'derrek cordova' , email: 'derrekmc@gmail.com'});
+
+        user.update(function(err) {
+            res.send(err); // Will return only the name
+        });
+
+        User.findById(user, function (err, doc) {
+            log.silly(doc);
         });
 
     }
+
 };

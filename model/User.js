@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 
@@ -15,10 +14,6 @@ var userSchema = mongoose.Schema({
     email: String
 });
 
-var User = mongoose.model('User', userSchema);
-
-var silence = new User({ name: 'Silence' , email: 'derrekmc@gmail.com'});
-
 // NOTE: methods must be added to the schema before compiling it with mongoose.model()
 userSchema.methods.speak = function () {
     var greeting = this.name
@@ -29,5 +24,4 @@ userSchema.methods.speak = function () {
 
 var User = mongoose.model('User', userSchema);
 
-
-//module.exports = User;
+module.exports = User;

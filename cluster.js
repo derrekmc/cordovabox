@@ -21,7 +21,6 @@ if (cluster.isMaster) {
             spawn(i);
         });
 
-
     };
 
     // Spawn workers.
@@ -59,6 +58,7 @@ if (cluster.isMaster) {
         worker.send('sticky-session:connection', connection);
 
     }).listen(cluster_port);
+
 } else {
     // Note we don't use a port here because the master listens on it for us.
     // Here you might use Socket.IO middleware for authorization etc.
@@ -66,7 +66,7 @@ if (cluster.isMaster) {
      * We call the application to spawn up some nodes
      */
     var server = require('./app')(0, function(port){
-        log.info("A worker is now listening on port:" + cluster_port);
+        log.info("A worker is now listening on port: " + cluster_port);
     });
 
     // Listen to messages sent from the master. Ignore everything else.
@@ -74,7 +74,7 @@ if (cluster.isMaster) {
         if (message !== 'sticky-session:connection') {
             return;
         }
-
+        console.log("A connection to a worker has been sent. ");
         // Emulate a connection event on the server by emitting the
         // event with the connection the master sent us.
         server.emit('connection', connection);

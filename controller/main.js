@@ -24,11 +24,12 @@ module.exports = {
     },
 
     login: function(req, res, error){
+
         var username = req.param('username');
         var password = req.param('password');
 
         if(username && password){
-            log.log(username, password);
+            log.verbose(username, password);
         }
 
         res.render('login.html', {

@@ -1,7 +1,7 @@
 module.exports = {
 
     application: {
-        name: 'Chat Application',
+        name: 'CordovaBox',
         showLogo: true,
         author: "Derrek Cordova",
         favicon: 'favicon.ico'

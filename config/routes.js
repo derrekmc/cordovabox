@@ -9,8 +9,8 @@ module.exports = {
      */
     routes: function routes(){
         /**
-        * Routes
-        */
+         * Routes -
+         **/
         this.route('get', '/', require('../controller/main')); // index.html
         this.route('get', '/sitemap', require('../controller/main')); // index.html
 
@@ -30,6 +30,8 @@ module.exports = {
 
         this.route('post', '/auth/jwt/:id/:value', require('../controller/jwt'));
         this.route('post', '/auth/jwt/secure/:id/:value', require('../controller/jwt').secure);
+
+        this.route('get', '/govsimplified', require('../controller/gov'));
 
     },
 
