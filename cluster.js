@@ -1,4 +1,13 @@
+/**
+ * New relic stats
+ */
+global.newrelic = require('newrelic');
+
+/**
+ * Register Globals
+ */
 require('./config/globals');
+
 var cluster = require('cluster'),
     net = require('net'),
     cluster_port = process.env.PORT || _Config.server.port || 3000,
@@ -20,6 +29,7 @@ if (cluster.isMaster) {
             console.warn('respawning worker', i);
             spawn(i);
         });
+
 
     };
 
@@ -62,11 +72,12 @@ if (cluster.isMaster) {
 } else {
     // Note we don't use a port here because the master listens on it for us.
     // Here you might use Socket.IO middleware for authorization etc.
+
     /**
-     * We call the application to spawn up some nodes
+     * Register Application Nodes
      */
     var server = require('./app')(0, function(port){
-        log.info("A worker is now listening on port: " + cluster_port);
+        log.info("A worker is now listening on port:" + cluster_port);
     });
 
     // Listen to messages sent from the master. Ignore everything else.
@@ -74,7 +85,7 @@ if (cluster.isMaster) {
         if (message !== 'sticky-session:connection') {
             return;
         }
-        console.log("A connection to a worker has been sent. ");
+
         // Emulate a connection event on the server by emitting the
         // event with the connection the master sent us.
         server.emit('connection', connection);

@@ -1,8 +1,8 @@
 if(!global.registeredClass){
     global.registeredClass = true;
 
-    global.User = new require('../model/User'); // todo walk the models directory and add any .js files found. For now its just user.
-    global.DataTransmissionObject = require('../model/UserDTO'); 
+    global.User = new require('../models/User'); // todo walk the models directory and add any .js files found. For now its just user.
+    global.DataTransmissionObject = require('../models/UserDTO');
     global._Config = require('./config');
 
     global.log = require('../config/logger');
@@ -80,7 +80,7 @@ if(!global.registeredClass){
         global.async = require('async');
     }
 
-    global.Redis = require('../service/redis');
+    global.Redis = require('../services/redis');
 
     global.Promise = require("bluebird");
 

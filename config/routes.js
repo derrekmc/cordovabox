@@ -11,27 +11,25 @@ module.exports = {
         /**
          * Routes -
          **/
-        this.route('get', '/', require('../controller/main')); // index.html
-        this.route('get', '/sitemap', require('../controller/main')); // index.html
+        this.route('get', '/', require('../controllers/main')); // index.html
+        this.route('get', '/sitemap', require('../controllers/main')); // index.html
 
-        this.route('post', '/api/stats', require('../controller/stats'));
-        this.route('post', '/user/tip/:id/:value', require('../controller/user').tip);
+        this.route('post', '/api/stats', require('../controllers/stats'));
+        this.route('post', '/user/tip/:id/:value', require('../controllers/user').tip);
 
-        this.route('get', '/room/:name', require('../controller/room').public);
-        this.route('get', '/room/:name/:user', require('../controller/room').public);
+        this.route('get', '/room/:name', require('../controllers/room').public);
+        this.route('get', '/room/:name/:user', require('../controllers/room').public);
 
-        this.route('get', '/private/:name', require('../controller/room').private); // might want to add restrictions here
-        this.route('get', '/private/:name/:user', require('../controller/room').private); // might want to add restrictions here
+        this.route('get', '/private/:name', require('../controllers/room').private); // might want to add restrictions here
+        this.route('get', '/private/:name/:user', require('../controllers/room').private); // might want to add restrictions here
 
-        this.route('get', '/broadcast/:name', require('../controller/room').broadcast);
-        this.route('get', '/broadcast/:name/:user', require('../controller/room').broadcast);
+        this.route('get', '/broadcast/:name', require('../controllers/room').broadcast);
+        this.route('get', '/broadcast/:name/:user', require('../controllers/room').broadcast);
 
-        this.route('get', '/chat/:name/:user', require('../controller/room').chat);
+        this.route('get', '/chat/:name/:user', require('../controllers/room').chat);
 
-        this.route('post', '/auth/jwt/:id/:value', require('../controller/jwt'));
-        this.route('post', '/auth/jwt/secure/:id/:value', require('../controller/jwt').secure);
-
-        this.route('get', '/govsimplified', require('../controller/gov'));
+        this.route('post', '/auth/jwt/:id/:value', require('../controllers/jwt'));
+        this.route('post', '/auth/jwt/secure/:id/:value', require('../controllers/jwt').secure);
 
     },
 
