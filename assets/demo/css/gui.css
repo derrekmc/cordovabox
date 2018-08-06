@@ -1,0 +1,81 @@
+/* CSS Document */
+
+#video_player{
+	width:100%; 
+	display:block;
+}
+
+#hls{
+	width:100%;
+}
+
+.window{
+	border-radius:15px;
+	opacity:0.5;
+}
+
+.play_button{
+	margin:150px 0px 0px 300px;
+	z-index:1000;
+	position:absolute;
+	background:none;
+	border:none;
+	display:none;	
+}
+
+.load_overlay{
+    position:absolute;
+	margin:170px 0px 0px 320px;
+	background-color:#000000;
+	opacity:0.5;
+	border-radius:15px;
+	padding:30px;
+}
+
+.model_overlay{
+	position:absolute;
+	width:100%;
+}
+
+.goOnlineButton, .goOnlineButton:link{
+	Display:block;
+	padding:8px;
+	font-size:18px;
+	color:#EAEAEA;
+	background-color:#3B6500;
+	border:5px #3B6500 solid;
+	border-radius:5px;
+	float:left;
+}
+
+.goOnlineButton:hover{
+	
+	background-color:#3B6500;
+	border:5px #2B4A00 solid;
+}
+
+.goOfflineButton, .goOfflineButton:link{
+	Display:block;
+	padding:8px;
+	font-size:18px;
+	color:#fff;
+	background-color:#A0000E;
+	border:5px #A0000E solid;
+	border-radius:5px;
+	float:left;
+}
+
+
+
+.goOfflineButton:hover{
+	
+	background-color:#E30009;
+	border:5px #A0000E solid;
+}
+
+/*
+admin
+accounts.camster.com
+cadmin
+pass54321
+*/

@@ -1,27 +1,23 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
-
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function (callback) {
-    // yay!
-});
-
-var userSchema = mongoose.Schema({
+var ModelSchema = new mongoose.Schema({
+    id: Number,
+    username: String,
     name: String,
-    email: String
+    email: String,
+
+    tips: Number,
+    tipGoal: Number,
+    tipTopic: String,
+
+    credits: Number,
+    inPrivate: Boolean,
+
+    updated: { type: Date, default: Date.now }
 });
 
 // NOTE: methods must be added to the schema before compiling it with mongoose.model()
-userSchema.methods.speak = function () {
-    var greeting = this.name
-        ? "Meow name is " + this.name
-        : "I don't have a name";
-    log.log(greeting);
+ModelSchema.methods.canTip = function canTip(amount) {
+    return (this.credits >= amount);
 };
 
-var User = mongoose.model('User', userSchema);
-
-module.exports = User;
+var Model = mongoose.model('User', ModelSchema);
+module.exports = Model;

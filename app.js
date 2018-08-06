@@ -20,13 +20,14 @@ function listen(port, callback){
     var cookieParser  = require('cookie-parser');
     var session = require('express-session');
     if (_Config.server.redisSessions) var RedisStore = require('connect-redis')(session);
-    var MongoStore = require('connect-mongo')(session);
     var rootFolder = __dirname + '/' + ((_Config.site.rootFolder) || 'public');
     var redisPassword = ((_Config.dataStore.redis.password) || null);
-    var restPolicy = require("./policy/rest");
-    var blockedIps = require("./policy/blockedIps");
-    var isProtected = require("./policy/isProtected");
-    var trackUTM = require("./policy/trackUTM");
+
+    var restPolicy = require("./policies/rest");
+    var blockedIps = require("./policies/blockedIps");
+    var isProtected = require("./policies/isProtected");
+    var trackUTM = require("./policies/trackUTM");
+
 
     /****************
      * Routes/Views *
@@ -39,8 +40,14 @@ function listen(port, callback){
     app.use(cookieParser());
 
     app.use(session({
-        store: new MongoStore({url: _Config.dataStore.mongodb.connectURI}),
-        secret: '283472iwfs8ysdf9sdfy'
+        store: (_Config.server.redisSessions ? new RedisStore({
+            host: (_Config.dataStore.redis && _Config.dataStore.redis.host),
+            port: ((_Config.dataStore.redis && _Config.dataStore.redis.portNumber) || 6379),
+            db: 0,//_Config.dataStore.redis.database,
+            pass: redisPassword,
+            ttl: (1000 * 60 * 30)
+        }) : null),
+        secret: '1234567890QWERTY'
     }));
 
     app.use(restPolicy);
@@ -48,10 +55,15 @@ function listen(port, callback){
     app.use(isProtected);
     app.use(trackUTM);
 
+    /**
+     * Load hooks todo incomplete
+     */
+    //require('./lib/hooks/index').register(app);
+
     app.get('*', function(req, res, next){
         log.debug('Request:', req.path, req.method);
 
-        if(_Config.server.noCache) res.setHeader('Last-Modified', (new Date()).toUTCString());
+        if(!_Config.server.caching) res.setHeader('Last-Modified', (new Date()).toUTCString());
 
         if(_Config.server.https && req.headers['x-forwarded-proto']!='https'){
             res.redirect('https://' + req.headers.host.split(":", 1) + req.url)
@@ -64,8 +76,9 @@ function listen(port, callback){
     app.use(express.static(rootFolder));
     app.use(app.router);
 
-    var routes = require('./config/routes');
-    routes.register(app);
+    require('./config/routes').register(app);
+
+
 
     var server = app.listen(port, '0.0.0.0');
     /****************************
@@ -86,8 +99,8 @@ function listen(port, callback){
 
         var sio = require('socket.io', transportsAndLogLevel),
             io = sio(server),
-            sockets = require('./service/socket'),
-            socketPolicy = require('./policy/socket');
+            sockets = require('./services/socket'),
+            socketPolicy = require('./policies/socket');
         io.use(socketPolicy);
 
         if (_Config.server.cluster) sio_redis = require('socket.io-redis');
@@ -101,7 +114,6 @@ function listen(port, callback){
             app: app
         });
 
-
     }
 
     /**************************************************
@@ -112,7 +124,7 @@ function listen(port, callback){
     /****************************
      * Start the HTTP Server
      ****************************/
-    // Here you might use middleware, attach routes, etc.
+        // Here you might use middleware, attach routes, etc.
     var http = require('http').Server(app);
 
     http.listen(0, function(){

@@ -28,7 +28,7 @@ module.exports = {
                 console.error('Token authorization failed');
                 callback("connection failed because it is missing a required parameter: token.");
             }else{
-                if(!config.sockets.prefered_connections_enabled && this.connections < config.sockets.max_connections) {
+                if(!config.sockets.preferred_connections_enabled && this.connections < config.sockets.max_connections) {
                     callback("Max connections reached. Connection to the server has been denied. The server has reached its normal operating limits. Try spawning another node to correct this issue.");
                     //todo spawn another node once this happens.
                 }

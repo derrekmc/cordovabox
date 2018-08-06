@@ -1,0 +1,696 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>User Chat</title>
+
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0">
+
+    <link href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-2/css/tooltipster.css" rel="stylesheet" type="text/css" >
+    <link href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-2/css/userchat-2.css" rel="stylesheet" type="text/css">
+
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-2/js/jquery.js" type="text/javascript" ></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-2/js/userchat-2.js" type="text/javascript" ></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-2/js/jquery.tooltipster.min.js" type="text/javascript" ></script>
+
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/chat.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <script src="/lib/swfobject.js" type="text/javascript"></script>
+    <script src="/js/typeDef.js"></script>
+    <script src="/js/logger.js"></script>
+
+    <script src="/js/appPlugin.js"></script>
+    <script src="/js/chatPlugin.js"></script>
+    <script src="/js/videoPlugin.js"></script>
+
+</head>
+<body>
+
+<script>
+
+var clientType = CLIENT_TYPE.SUBSCRIBER;
+var clientId = Math.round(Math.random()*100);
+
+$(document).ready(function(){
+
+    var socket = io.connect('http://localhost:3002', {
+        query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= username %>&id='+clientId+'&type=' + clientType
+    });
+    console.log('ROOM: <%= room %>');
+
+    var chatPlugin = new ChatPlugin(socket, {
+
+        user: {
+            id: '<%= userId %>',
+            name: '<%= username %>'
+        },
+
+        room:{
+            name: '<%= room %>',
+            slug: '<%= room %>'
+        },
+
+        ui:{
+            log: '.ucChatHolder',
+            input: '.messageInput',
+            roomTitle: '#roomTitle',
+            roster: '.ucUserHolder',
+            rosterCount: '#rosterUserCount',
+            sendInputButton: '#messageSend'
+        }
+    });
+
+    var application = new AppPlugin(socket, {
+
+        user: {
+            id: '<%= userId %>',
+            name: '<%= username %>'
+        },
+
+        room:{
+          name: '<%= room %>',
+          slug: '<%= room %>'
+        },
+
+        ui:{
+
+            chat:{
+                log: '.ucChatHolder'
+            },
+
+            privateChatHeading: {
+                flag: false,
+                view: '.tpits-lft'
+            },
+
+            addCredits:{
+
+            },
+
+            lowBalance: {
+                flag: false,
+                view: '.tpits-lft',
+                videoLowBalMsg: '.lowBalOL'
+            },
+
+            tipping: {
+                tipLeft: '.tpl-pt',
+                tipTopic: '.tpRgt-in',
+                tipError: '.cTip-error'
+            },
+
+            tipMePrivate: {
+                id: '#tipButton',
+                value: '#tipValue',
+                tipAmount: '#tipAmount'
+            },
+
+            invokeShow: {
+                id: '#startPrivateShow',
+                view: '.aBtn-private'
+            },
+
+            privateEndShow: {
+                id: '#privateEndShow',
+                view: '.aBtn-freeChat'
+            },
+
+            views:{
+                freechat: '.aBtn-freeChat',
+                private: '.aBtn-private',
+                tipShow: '.aBtn-state1',
+                spy: '.aBtn-spymode',
+                lowBalance: '.aBtn-lowBalance'
+            }
+
+        }
+    });
+
+});
+
+</script>
+
+<div class="user-node-chat body-freeChat">
+<!-- --------------------------------------------- paste image overlay start --------------------------------------------- -->
+<div class="ucOvrlyMn ucOverlay-pasteImg">
+    <div class="uc-table"><div class="uc-tr"><div class="uc-td">
+        <div class="ucOvrly-container">
+            <div class="ovrly-container-in">
+                <div class="ucOl-hddr clearfix">
+                    <div class="ucolh-lft">Paste image into chat</div>
+                    <div class="ucolh-rgt ucolh-close">X</div>
+                </div>
+                <div class="ucOl-content">
+                    <div class="ucolc-pasteImg">
+                        <p>You can now paste an image right into the chat! Simply paste the URL to the image in the box below and hit Send.</p>
+                        <p>You can also do this directly from the chat page pasting the image URL into the chat box there.</p>
+                        <div class="ucolc-action clearfix">
+                            <div class="cmnTxtField ucolcAct-lft"><div class="cmnTxtFld-in"><input value="" type="text"></div></div>
+                            <div class="ucolc-btn"><a class="absnBtn" href="javascript:void(0);">Send</a></div>
+                        </div>
+                        <div class="ucolca-exmp">Example: http://www.imgr.com/image.jpg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- paste image overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- paste image overlay start --------------------------------------------- -->
+<div class="ucOvrlyMn ucOverlay-emoticon">
+    <div class="uc-table"><div class="uc-tr"><div class="uc-td">
+        <div class="ucOvrly-container">
+            <div class="ovrly-container-in">
+                <div class="ucOl-hddr clearfix">
+                    <div class="ucolh-lft">Paste emoticon into chat</div>
+                    <div class="ucolh-rgt ucolh-close">X</div>
+                </div>
+                <div class="ucOl-content">
+                    <div class="ucolc-emoticon">
+                        emoticon goes here
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- paste image overlay end --------------------------------------------- -->
+
+
+
+
+
+<div class="userChatMain">
+<div class="userChatMain-in clearfix">
+<div class="uc-lftPanel">
+    <div class="panelHeader panelHdr-lft">
+        <div class="pnlHdr-in clearfix">
+            <div class="pnlHdri-lft">
+                <div class="pnlHdril-hdd" id="roomTitle">Abella Anderson</div>
+                <div class="pnlHdril-txt">1,243253 followers</div>
+            </div>
+            <div class="pnlHdri-rgt">
+                <div class="ech-pnlhr"><a href="#" class="grBtnS tooltip" title="Model Profile">Profile</a></div>
+                <div class="ech-pnlhr"><a href="#" class="grBtnS tooltip" title="Model Photos">Photos</a></div>
+                <div class="ech-pnlhr"><a href="#" class="grBtnS tooltip" title="Model Videos">Videos</a></div>
+                <div class="ech-pnlhr"><a href="#" class="grBtnS tooltip" title="Follow her">Follow</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uc-streaming">
+
+        <div class="state1">
+            <div class="goalOvrly goalOvrly-rgt">Goal meter: <b><span>40</span> / 100</b></div>
+        </div>
+
+        <div class="state2">
+            <div class="goalOvrly goalOvrly-rgt">Goal meter: <b><span>40</span> / 100</b></div>
+        </div>
+
+        <div class="state3">
+            <div class="chatOerlayMN chatOerlayMN-tip">
+                <div class="chatOerlay-in">
+                    <div class="chtOvly-hdd">"Enter my tip show"</div>
+                    <div class="chtOvly-pnt">
+                        <div class="chtOvly-pic"><img src="images/rPic.jpg"></div>
+                        <div class="chtOvly-txt"><span class="arow"></span><i class="fa fa-caret-left cotArr"></i><!--<b class="cotArr">&#9664;</b>--><div class="chtOvly-txtOF">I am in a tip show. Come and join. Time left:</div>
+                            <div class="minSec"><span class="min">9</span> <span class="sec">mins</span> <span class="min">30</span> <span class="sec">sec</span></div>
+                            <div class="chtOvly-tBtn"><a href="#" class="absnBtn absnBtn-sky tooltip" title="Enter tip show">Enter tip show</a></div></div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="vControler">
+                <div class="vol"><div class="plVol"><span class="volTooltip"></span><div id="slider"></div><span class="volume"></span></div></div>
+                <div class="pSize">
+                    <a class="ps-cmn psc-s" href="javascript:void(0);">S</a>
+                    <a class="ps-cmn psc-m" href="javascript:void(0);">M</a>
+                    <a class="ps-cmn psc-f" href="javascript:void(0);"><i class="fa fa-external-link"></i></a>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="state4">
+            <div class="goalOvrly goalOvrly-left"><b><span>33.33</span></b></div>
+        </div>
+
+
+
+        <div class="lowBalOL" style="display:none;">YOUR CREDIT BALANCE IS LOW. SHOW WILL END IN 60 SECONDS.</div>
+
+    </div>
+
+
+
+
+
+
+    <div class="pnlBtm pnlBtm-left">
+
+        <!-- --------------------------------------------- tip overlay start --------------------------------------------- -->
+        <div class="ucOvrlyMn ucOverlay-tip">
+            <div class="ucOvrly-container">
+                <div class="ovrly-container-in">
+                    <div class="ucOl-hddr clearfix">
+                        <div class="ucolh-lft">Tip</div>
+                        <div class="ucolh-rgt ucolh-close">X</div>
+                    </div>
+                    <div class="ucOl-content">
+                        <div class="ucolc-tip">
+                            <div class="tpSndAs clearfix">
+                                <div class="tsa-lft">Send this tip as:</div>
+                                <div class="tsa-rgt"><select><option>drfancypantsboy</option></select></div>
+                            </div>
+                            <div class="ucolct-tips">
+                                <div class="ucolctt-tHldr clearfix">
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_2" href="#">$2</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_5" href="#">$5</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_10" href="#">$10</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_20" href="#">$20</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_25" href="#">$25</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_30" href="#">$30</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_40" href="#">$40</a></div>
+                                    <div class="ech-tip"><a class="absnBtn .tipAmount" id="tipAmount_50" href="#">$50</a></div>
+                                </div>
+                            </div>
+                            <div class="tip-action">
+                                <div class="cTip">Custom tip:</div>
+                                <div class="cTipCustom clearfix">
+                                    <div class="cmnTxtField tAct-lft tAct-lftMod"><div class="cmnTxtFld-in"><input type="text" value="5" id="tipValue"></div></div>
+                                    <div class="tip-btn"><a class="absnBtn" id="tipButton" href="javascript:void(0);">Tip</a></div>
+                                </div>
+                                <div class="cTip-error"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- --------------------------------------------- tip overlay end --------------------------------------------- -->
+
+        <div class="pnlBtm-in">
+            <!-- --------------freeChat buttons start-------------- -->
+            <div class="pbi-freeChat">
+                <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model" id="tipMePrivate">Tip Me &#9650;</a></div>
+                <div class="pbi-1on1"><a href="#" class="absnBtn absnBtn-sky tooltip" title="Start 1 on 1 show" id="startPrivateShow">1 on 1 show - Click here to start</a></div>
+            </div>
+            <!--  --------------freeChat buttons end--------------  -->
+
+            <!-- --------------in_tipshow buttons start-------------- -->
+            <div class="pbi-inTipshow">
+                <div class="clearfix">
+
+                    <div class="pbiits-1">Your credit balance: 143</div>
+                    <div class="pbiits-2">
+                        <div class="pbi-addCrdit"><a class="absnBtn absnBtn-green tooltip" title="Add credits to your account" href="#">Add Credits</a></div>
+                        <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model">Tip Me &#9650;</a></div>
+                        <div class="pbi-endShw"><a class="absnBtn tooltip" title="End Show" href="#" id="endShow">End Show</a></div>
+                    </div>
+                </div>
+            </div>
+            <!--  --------------in_tipshow buttons end--------------  -->
+
+            <!-- --------------pre_tipshow buttons start-------------- -->
+            <div class="pbi-preTipshow">
+                <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model">Tip Me &#9650;</a></div>
+                <div class="pbi-resTip"><a href="#" class="absnBtn absnBtn-pink tooltip" title="Reserve your spot">Reserve your spot in my tip show - $10</a></div>
+            </div>
+            <!--  --------------pre_tipshow buttons end--------------  -->
+
+            <!-- --------------private, lowBalance and buttons start-------------- -->
+            <div class="pbi-private pbi-lowBalance">
+                <div class="clearfix">
+                    <div class="pbiits-1">Your credit balance: 143</div>
+                    <div class="pbiits-2">
+                        <div class="pbi-addCrdit"><a class="absnBtn absnBtn-darkGreen tooltip" title="Add credits to your account" href="#">Add Credits</a></div>
+                        <div class="pbi-endShw"><a class="absnBtn tooltip" href="#" title="End Show" id="privateEndShow">End Show</a></div>
+                    </div>
+                </div>
+            </div>
+            <!--  --------------private, lowBalance and buttons end--------------  -->
+
+            <!-- --------------spymode buttons start-------------- -->
+            <div class="pbi-spymode">
+                <div class="pbi-tipMe"><a class="absnBtn absnBtn-red tooltip tooltipstered" href="javascript:void(0);">End Show</a></div>
+                <div class="pbi-resTip"><a class="absnBtn absnBtn-green tooltip tooltipstered" href="#"><b>+</b> &nbsp; Add additional credits</a></div>
+            </div>
+            <!--  -------------- spymode buttons end--------------  -->
+
+            <!--  -------------- State1 buttons start--------------  -->
+            <div class="pbi-state1">
+                <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model">Tip Me &#9650;</a></div>
+                <div class="pbi-1on1"><a href="#" class="absnBtn absnBtn-yellow tooltip" title="Reserve a spot for my show">Reserve a spot for my show</a></div>
+            </div>
+
+            <!--  -------------- State1 buttons end--------------  -->
+            <!--  -------------- State2 buttons start--------------  -->
+            <div class="pbi-state2">
+                <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model">Tip Me &#9650;</a></div>
+                <div class="pbi-1on1"><span class="tipsTxt">show spot reserved. please wait for goal to be met</span></div>
+            </div>
+
+            <!--  -------------- State2 buttons end--------------  -->
+
+            <!--  -------------- State3 buttons start--------------  -->
+            <div class="pbi-state3">
+                <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model">Tip Me &#9650;</a></div>
+                <div class="pbi-1on1"><a href="#" class="absnBtn absnBtn-yellow tooltip" title="Start 1 on 1 show">1 on 1 show - Click here to start</a></div>
+            </div>
+
+            <!--  -------------- State3 buttons end--------------  -->
+
+            <!--  -------------- State4 buttons start--------------  -->
+            <div class="pbi-state4">
+                <div class="clearfix">
+
+                    <div class="pbiits-1">Your credit balance: 143</div>
+                    <div class="pbiits-2">
+                        <div class="pbi-addCrdit"><a class="absnBtn absnBtn-green tooltip" title="Add credits to your account" href="#">Add Credits</a></div>
+                        <div class="pbi-tipMe"><a href="javascript:void(0);" class="absnBtn absnBtn-blue tooltip" title="Tip to model">Tip Me &#9650;</a></div>
+
+                    </div>
+                </div>
+            </div>
+            <!--  -------------- State4 buttons end--------------  -->
+
+        </div>
+    </div>
+</div>
+
+<div class="uc-rgtPanel">
+<div class="panelHeader panelHdr-rgt">
+    <div class="pnlHdr-in clearfix">
+        <div class="pnlHdri-lft">
+            <div class="pnlHdril-hdd" id="rosterUserCount">&hellip; in room</div>
+            <div class="pnlHdril-txt"><a href="#">Advanced settings</a></div>
+        </div>
+
+    </div>
+</div>
+<div class="tipPanel">
+    <!-- --------------freeChat tip Panel start-------------- -->
+    <div class="tipPanl-freeChat">
+        <div class="tp-lft">
+            <div class="tpl-tl">Tip Left</div>
+            <div class="tpl-pt">35 / <b>50</b></div>
+        </div>
+        <div class="tp-rgt">
+            <div class="tpRgt-in">10/ass/tits/c2c 2ss/tits/c2c 25special request 50AF pvt only @spicyjenterianicyjenterian and visit my wishlist and love!</div>
+        </div>
+    </div>
+    <!------------------------State 1 chat header start-------------------------------->
+    <div class="tipPanl-state1 tipPanl-state2 tipPanl-state3 tipPanl-state4">
+        <div class="tp-right">
+            <div class="tpl-state">Duration</div>
+            <div class="tpl-stin"><b>5 </b>/ mins</div>
+        </div>
+        <div class="tp-right">
+            <div class="tpl-state">Show Goal</div>
+            <div class="tpl-stin"><b>100 </b>/ credits</div>
+        </div>
+        <div class="tp-state-strip">
+            <div class="tpRgt-in"><span class="tpl-state-hed">What 1 will do in my show:</span>
+                <span class="tpiCTxt">I am gonna put a candlestick in my butt then jump around on it like a goddamn pogo stick ehile my friend tickles my camel toe gently</span></div>
+        </div>
+    </div>
+    <!------------------------State 1 chat header end-------------------------------->
+
+
+
+    <!-- --------------freeChat tip Panel start-------------- -->
+
+
+    <!-- --------------inTipshow tip Panel start-------------- -->
+    <div class="tipPanl-inTipshow">
+        <div class="table">
+            <div class="tr">
+                <div class="td tpits-lft">You are in a <b>Tip show</b> with <b>Licky Vicky Xoxo</b></div>
+                <div class="td tpits-rgt"><a class="absnBtn absnBtn-pink tooltip" title="Rate this model" href="#">Rate Model</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------inTipshow tip Panel start-------------- -->
+
+
+    <!-- --------------preTipshow tip Panel start-------------- -->
+    <div class="tipPanl-preTipshow">
+        <div class="table">
+            <div class="tr">
+                <div class="td tpnlTish-1"><b>Show starts at:</b> <span>$300</span></div>
+                <div class="td tpnlTish-2">
+                    <div class="ptsm-mdot">&bull;</div>
+                    <div class="ptsmHldr">
+                        <div class="ech-ptsm">$</div><div class="ech-ptsm">0</div><div class="ech-ptsm">0</div><div class="ech-ptsm">0</div><div class="ech-ptsm">6</div>
+                    </div>
+                    <div class="ptsm-mdot">&bull;</div>
+                </div>
+                <div class="td tpnlTish-3"><b>Duration:</b> <span>10 min</span></div>
+            </div>
+        </div>
+        <div class="tppts-tr">
+            <div class="tpptsTr-in">
+                <b>Tip required:</b> $10 &nbsp; <b>What I'll do in this show:</b> I will eat a wide assortment of cheese and nuts and if you are lucky maybe a fruit too!
+            </div>
+        </div>
+    </div>
+    <!-- --------------preTipshow tip Panel start-------------- -->
+
+
+    <!-- --------------private tip Panel start-------------- -->
+    <div class="tipPanl-private">
+        <div class="table">
+            <div class="tr">
+                <div class="td tpits-lft">You are in a <b>Private Chat</b> with <b>Licky Vicky Xoxo</b></div>
+                <div class="td tpits-rgt"><a class="absnBtn absnBtn-pink tooltip" title="Rate this model" href="#">Rate Model</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------private tip Panel start-------------- -->
+
+
+    <!-- --------------lowBalance tip Panel start-------------- -->
+    <div class="tipPanl-lowBalance">
+        <div class="table">
+            <div class="tr">
+                <div class="td tpits-lft">BALANCE LOW. You have <b>60</b> secs left.</div>
+                <div class="td tpits-rgt"><a class="absnBtn absnBtn-black tooltip" title="Add credits to your account" href="#">Add Credits</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------lowBalance tip Panel start-------------- -->
+
+
+    <!-- --------------spymode tip Panel start-------------- -->
+    <div class="tipPanl-spymode">
+        <div class="table">
+            <div class="tr">
+                <div class="td tpits-lft">YOU ARE IN SPY MODE.</div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------spymode tip Panel start-------------- -->
+</div>
+
+<div class="spymodeTbCntnt">
+    <!--<div class="smtbc-hdd">Click on a model below to view her spymode</div>-->
+    <div class="spyGirlsTC">
+        <div class="spyMdlHolder-in clearfix">
+            <div class="ech-spyMdl">
+                <a href="#" class="espmd-lnk">
+                                <span class="espmdl-pic">
+                                    <span class="espmdl-hdi">HD</span>
+                                    <img src="images/blnkPic.png">
+                                </span>
+                    <span class="espmdl-hdd">Veronika Stone</span>
+                    <span class="espmdl-txt">Every 10 tips gets BOOBS!!!!</span>
+                </a>
+            </div><div class="ech-spyMdl">
+            <a href="#" class="espmd-lnk">
+                                <span class="espmdl-pic">
+                                    <span class="espmdl-hdi">HD</span>
+                                    <img src="images/blnkPic.png">
+                                </span>
+                <span class="espmdl-hdd">Veronika Stone</span>
+                <span class="espmdl-txt">Every 10 tips gets BOOBS!!!!</span>
+            </a>
+        </div><div class="ech-spyMdl">
+            <a href="#" class="espmd-lnk">
+                                <span class="espmdl-pic">
+                                    <span class="espmdl-hdi">HD</span>
+                                    <img src="images/blnkPic.png">
+                                </span>
+                <span class="espmdl-hdd">Veronika Stone</span>
+                <span class="espmdl-txt">Every 10 tips gets BOOBS!!!!</span>
+            </a>
+        </div><div class="ech-spyMdl">
+            <a href="#" class="espmd-lnk">
+                                <span class="espmdl-pic">
+                                    <span class="espmdl-hdi">HD</span>
+                                    <img src="images/blnkPic.png">
+                                </span>
+                <span class="espmdl-hdd">Veronika Stone</span>
+                <span class="espmdl-txt">Every 10 tips gets BOOBS!!!!</span>
+            </a>
+        </div><div class="ech-spyMdl">
+            <a href="#" class="espmd-lnk">
+                                <span class="espmdl-pic">
+                                    <span class="espmdl-hdi">HD</span>
+                                    <img src="images/blnkPic.png">
+                                </span>
+                <span class="espmdl-hdd">Veronika Stone</span>
+                <span class="espmdl-txt">Every 10 tips gets BOOBS!!!!</span>
+            </a>
+        </div><div class="ech-spyMdl">
+            <a href="#" class="espmd-lnk">
+                                <span class="espmdl-pic">
+                                    <span class="espmdl-hdi">HD</span>
+                                    <img src="images/blnkPic.png">
+                                </span>
+                <span class="espmdl-hdd">Veronika Stone</span>
+                <span class="espmdl-txt">Every 10 tips gets BOOBS!!!!</span>
+            </a>
+        </div>
+        </div>
+    </div>
+    <div class="pnlBtm pnlBtm-rigt">
+        <div class="pnlBtm-in">Sound muted and conversation hidden for privacy</div>
+    </div>
+</div>
+
+
+<div class="userChatPanel">
+    <div class="ucp-rgt">
+        <div class="ucUserHolder">
+
+        </div>
+    </div>
+
+
+    <div class="ucp-lft">
+        <div class="eum-miniDtl">
+            <div class="closeMND">x</div>
+            <div class="eumMDtl-in clearfix">
+                <div class="eummdi-pic"><a href="#"><img src="images/ovrPic.jpg"></a></div>
+                <div class="eummdi-dtl">
+                    <a href="#" class="eummdid-nd">
+                        <span class="eummdidnd-n">Jeffinmiami</span>
+                        <span class="eummdidnd-d">Basic member</span>
+                    </a>
+                    <div class="eummdid-ico clearfix">
+                        <span class="eummdidi-cIco eummdidi-icoTrphy"><img src="images/t.gif" class="uolPic"></span>
+                        <span class="eummdidi-cIco eummdidi-icoMoney"><img src="images/t.gif" class="uolPic"></span>
+                    </div>
+                    <div class="eummdid-btn clearfix">
+                        <a href="#" class="uol-cmnBtn uol-gryBtn">Profile</a>
+                        <a href="#" class="uol-cmnBtn uol-redBtn">Block</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- pvt chat header start -->
+        <div class="privateTbCntnt">
+            <div class="pvtChat-hddr">
+                <div class="pvchh-1">You are in private chat.</div>
+                <div class="pvchh-2"><a href="#"><b>Click here to go CAM 2 CAM</b></a> if you want the model to see or hear you too!</div>
+            </div>
+        </div>
+        <!--  pvt chat header end  -->
+
+        <div class="ucChatHolder">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="pnlBtm pnlBtm-rigt">
+    <div class="pnlBtm-in">
+        <div class="sndMsgOthrBtns">
+            <a href="#" class="absnBtn smob-send tooltip" title="Send Message" id="messageSend">Send</a>
+            <a href="#" class="absnBtn smob-pm tooltip" title="PM">PM</a>
+            <a href="javascript:void(0);" class="absnBtn smob-ico tooltip" title="Emoticons"><img src="images/t.gif" class="ucSprite"> </a>
+        </div>
+        <div class="sndMsgTxtBx">
+            <div class="sndMsgTxtBx-in">
+                <div class="smtb-pic tooltip" title="Select Pic"><a href="javascript:void(0);"><img src="images/t.gif" class="ucSprite"></a></div><input class="messageInput" type="text">
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="ucStateMn">
+    <div class="uc-states">
+        <a href="javascript:void(0);" class="absnBtn aBtn-switch tooltip" title="Change View Mode">Change View Mode</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-freeChat userSel" title="Freechat">Freechat</a>
+        <!--<a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-inTipshow" title="In Tipshow">In Tipshow</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-preTipshow" title="Pre Tipshow">Pre Tipshow</a>-->
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-private" title="Private">Private</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-lowBalance" title="Low Balance">Low Balance</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-spymode" title="Spymode">Spymode</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-state1" title="Tipshow State1">Tipshow State1</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-state2" title="Tipshow State2">Tipshow State2</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-state3" title="Tipshow State3">Tipshow State3</a>
+        <a href="javascript:void(0);" class="absnBtn absnBtnCmn tooltip aBtn-state4" title="Tipshow State4">Tipshow State4</a>
+    </div>
+</div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.tooltip').tooltipster();
+
+
+    });
+</script>
+<script type="text/javascript">
+    $(function() {
+        var slider  = $('#slider'),
+                volTooltip = $('.volTooltip');
+        volTooltip.hide();
+        slider.slider({
+            range: "min",
+            min: 1,
+            value: 35,
+            start: function(event,ui) {
+                volTooltip.fadeIn('fast');
+            },
+            slide: function(event, ui) {
+                var value  = slider.slider('value'),
+                        volume = $('.volume');
+                volTooltip.css('left', value).text(ui.value);
+                if(value <= 5){volume.css('background-position', '0 0');}
+                else if (value <= 25){volume.css('background-position', '0 -25px');}
+                else if (value <= 75){volume.css('background-position', '0 -50px');}
+                else {volume.css('background-position', '0 -75px');};
+            },
+            stop: function(event,ui) {
+                volTooltip.fadeOut('fast');
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

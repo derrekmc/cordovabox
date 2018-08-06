@@ -100,18 +100,18 @@ module.exports = {
     },
 
     site: {
-        www: 'www.GovExpedited.com',
-        name: 'GovExpedited',
+        www: 'www.CordovaBox.io',
+        name: 'CordovaBox',
         namespace: this.name + '_',
         public: '',
         rootFolder: '',
-        author: "GovExpedited LLC",
-        rootDomain: "GovExpedited.com",
+        author: "Derrek Cordova",
+        rootDomain: "CordovaBox.com",
         favicon: '/images/favicon.ico',
         address: "Delaware",
-        copyright: "© GovExpedited LLC. All rights reserved. ",
+        copyright: "© Derrek Cordova. All rights reserved. ",
         navigation: {
-            soleProprietor: '/ApplyForSoleProprietor.html'
+
         },
         blockedIps: ['173.0.36.47', '167.88.84.137', '167.88.84.244', '172.56.12.102', '24.248.60.130', '66.220.236.36']
     },
