@@ -1,7 +1,7 @@
 /**
  * New relic stats
  */
-global.newrelic = require('newrelic');
+//global.newrelic = require('newrelic');
 
 /**
  * Register Globals

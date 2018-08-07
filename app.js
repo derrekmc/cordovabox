@@ -76,8 +76,8 @@ function listen(port, callback){
     app.use(express.static(rootFolder));
     app.use(app.router);
 
-    require('./config/routes').register(app);
 
+    require('./config/routes').register(app);
 
 
     var server = app.listen(port, '0.0.0.0');
@@ -124,25 +124,34 @@ function listen(port, callback){
     /****************************
      * Start the HTTP Server
      ****************************/
-        // Here you might use middleware, attach routes, etc.
-    var http = require('http').Server(app);
+    // Here you might use middleware, attach routes, etc.
 
-    http.listen(0, function(){
-        if(_server && _Config.application.logo.show) {
-            log.info("                          ");
-            log.info("         --------------   ");
-            log.info("        |              |  ");
-            log.info("        |              |  ");
-            log.info("        |  " + _Config.application.logo.title + "  |  ");
-            log.info("        |     " + _Config.application.logo.subTitle + "      |  ");
-            log.info("        |              |  ");
-            log.info("        |              |  ");
-            log.info("         --------------   ");
-            log.info("                          ");
-            log.info("                          ");
-        }
-        callback(port);
-    });
+
+    //function startAppHttpListen(){
+        var http = require('http').Server(app);
+            http.listen(0, function(){
+                if(_server && _Config.application.logo.show) {
+
+                    log.info("                          ");
+                    log.info("         --------------   ");
+                    log.info("        |              |  ");
+                    log.info("        |              |  ");
+                    log.info("        |  " + _Config.application.logo.title + "  |  ");
+                    log.info("        |     " + _Config.application.logo.subTitle + "      |  ");
+                    log.info("        |              |  ");
+                    log.info("        |              |  ");
+                    log.info("         --------------   ");
+                    log.info("                          ");
+                    log.info("                          ");
+                }
+                callback(port);
+            });
+    //}
+
+    //app.on("cordovabox::" + "server_ready", startAppHttpListen);
+    //app.emit("cordovabox::" + "server_ready")
+
+
 
     _server = server;
     return server;
