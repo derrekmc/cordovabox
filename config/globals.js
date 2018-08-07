@@ -128,18 +128,18 @@ if(!global.registeredClass){
 
     global.Promise = require("bluebird");
 
-    global.mongoose = require('mongoose');
 
-    global.mongodb = new require('../services/mongo');
 
-    global.User = new require('../models/User'); // todo walk the models directory and add any .js files found. For now its just user.
+    global.mongodb = new require('../api/services/mongo');
 
-    global.Mail = new require('../models/Mail');
-    global.Transaction = new require('../models/Transaction');
-    global.Event = new require('../models/Event');
-
-    global.UserDTO = require('../models/UserDTO');
-    global.RoomDTO = require('../models/RoomDTO');
+    // global.User = new require('../models/User'); // todo walk the models directory and add any .js files found. For now its just user.
+    //
+    // global.Mail = new require('../models/Mail');
+    // global.Transaction = new require('../models/Transaction');
+    // global.Event = new require('../models/Event');
+    //
+    // global.UserDTO = require('../models/UserDTO');
+    // global.RoomDTO = require('../models/RoomDTO');
 
     global.request = require("request");
 

@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var connection = mongoose.connection;
 var connectionString = _Config.dataStore.mongodb.connectURI;//'mongodb://' + (_Config.dataStore.mongodb.username ? (_Config.dataStore.mongodb.username + ":" + _Config.dataStore.mongodb.password) : '' ) + '@' + _Config.dataStore.mongodb.host + ( _Config.dataStore.port ? (":" + _Config.dataStore.port) : '') + '/' + _Config.dataStore.mongodb.dbName;
 

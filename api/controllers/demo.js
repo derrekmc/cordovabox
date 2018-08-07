@@ -1,4 +1,4 @@
-var sio = require('../service/socket');
+var sio = require('../services/socket');
 var timer = [];
 
 function endShow(req, res) {

@@ -23,10 +23,10 @@ function listen(port, callback){
     var rootFolder = __dirname + '/' + ((_Config.site.rootFolder) || 'public');
     var redisPassword = ((_Config.dataStore.redis.password) || null);
 
-    var restPolicy = require("./policies/rest");
-    var blockedIps = require("./policies/blockedIps");
-    var isProtected = require("./policies/isProtected");
-    var trackUTM = require("./policies/trackUTM");
+    //var restPolicy = require("./policies/rest");
+    //var blockedIps = require("./policies/blockedIps");
+    //var isProtected = require("./policies/isProtected");
+    //var trackUTM = require("./policies/trackUTM");
 
 
     /****************
@@ -50,15 +50,15 @@ function listen(port, callback){
         secret: '1234567890QWERTY'
     }));
 
-    app.use(restPolicy);
-    app.use(blockedIps);
-    app.use(isProtected);
-    app.use(trackUTM);
+    //app.use(restPolicy);
+    //app.use(blockedIps);
+    //app.use(isProtected);
+    //app.use(trackUTM);
 
     /**
      * Load hooks todo incomplete
      */
-    //require('./lib/hooks/index').register(app);
+    require('./lib/hooks/index').register(app);
 
     app.get('*', function(req, res, next){
         log.debug('Request:', req.path, req.method);
