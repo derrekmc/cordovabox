@@ -4,7 +4,7 @@ if(_Config.server.cluster){
     client = require('redis-url').connect(_Config.dataStore.redis.connectURI);
 
     client.on('connect', function(msg){
-        log.info('(+) =|--- Redis Client Conneced');
+        log.info('(+) =|--- Redis Client Connected');
     });
 
     client.on('error', function(msg){

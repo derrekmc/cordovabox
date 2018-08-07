@@ -124,13 +124,13 @@ if(!global.registeredClass){
 
     global.forEachNext = require('../lib/async/forEachNext');
 
-    if(_Config.server.cluster) global.Redis = require('../service/redis');
+    //if(_Config.server.cluster) global.Redis = require('../service/redis');
 
     global.Promise = require("bluebird");
 
 
 
-    global.mongodb = new require('../api/services/mongo');
+    //global.mongodb = new require('../api/services/mongo');
 
     // global.User = new require('../models/User'); // todo walk the models directory and add any .js files found. For now its just user.
     //
