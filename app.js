@@ -55,13 +55,8 @@ function listen(port, callback){
     //app.use(isProtected);
     //app.use(trackUTM);
 
-    /**
-     * Load hooks todo incomplete
-     */
-    require('./lib/hooks/index').register(app);
 
     app.get('*', function(req, res, next){
-        log.debug('Request:', req.path, req.method);
 
         if(!_Config.server.caching) res.setHeader('Last-Modified', (new Date()).toUTCString());
 
@@ -72,61 +67,23 @@ function listen(port, callback){
         }
 
     });
+     
 
     app.use(express.static(rootFolder));
     app.use(app.router);
-
-
     require('./config/routes').register(app);
-
-
-    var server = app.listen(port, '0.0.0.0');
-    /****************************
-     * Socket IO Startup *
-     ****************************/
-
-    if(_Config.server.socketIO){
-        // Don't expose our internal server to the outside. '0.0.0.0' is for nitrous io servers
-        var transportsAndLogLevel = {
-            'transports': [
-                'websocket',
-                'htmlfile',
-                'xhr-polling',
-                'jsonp-polling'
-            ]}
-
-        log.info('Socekt.IO Enable - Socket Transports:' + transportsAndLogLevel['transports']);
-
-        var sio = require('socket.io', transportsAndLogLevel),
-            io = sio(server),
-            sockets = require('./services/socket'),
-            socketPolicy = require('./policies/socket');
-        io.use(socketPolicy);
-
-        if (_Config.server.cluster) sio_redis = require('socket.io-redis');
-
-        // Tell Socket.IO to use the redis adapter. By default, the redis
-        // server is assumed to be on localhost:6379. You don't have to
-        // specify them explicitly unless you want to change them.
-        if (_Config.server.cluster) io.adapter(sio_redis({ host: 'localhost', port: ((_Config.dataStore.redis && _Config.dataStore.redis.portNumber) || 6379) }));
-
-        sockets.listen(io, {
-            app: app
-        });
-
-    }
-
-    /**************************************************
-     * Additional Requires Application Specifics go here
-     ***************************************************/
-
-
+    
     /****************************
      * Start the HTTP Server
      ****************************/
-    // Here you might use middleware, attach routes, etc.
-
-
+        // Here you might use middleware, attach routes, etc.
+    var server = app.listen(port, '0.0.0.0');
+    
+    /**************************************************
+     * Server hooks - middleware
+     ***************************************************/
+    require('./lib/hooks/index').register(app, server);
+    
     //function startAppHttpListen(){
         var http = require('http').Server(app);
             http.listen(0, function(){

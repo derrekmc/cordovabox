@@ -6485,7 +6485,7 @@ $.widget( "ui.button", {
 		}
 
 		this._determineButtonType();
-		this.hasTitle = !!this.buttonElement.attr( "title" );
+		this.hasTitle = !!this.buttonElement.attr( "principalOfficerTitle" );
 
 		var that = this,
 			options = this.options,
@@ -6663,7 +6663,7 @@ $.widget( "ui.button", {
 			.html( this.buttonElement.find(".ui-button-text").html() );
 
 		if ( !this.hasTitle ) {
-			this.buttonElement.removeAttr( "title" );
+			this.buttonElement.removeAttr( "principalOfficerTitle" );
 		}
 	},
 
@@ -6745,7 +6745,7 @@ $.widget( "ui.button", {
 				buttonClasses.push( multipleIcons ? "ui-button-icons-only" : "ui-button-icon-only" );
 
 				if ( !this.hasTitle ) {
-					buttonElement.attr( "title", $.trim( buttonText ) );
+					buttonElement.attr( "principalOfficerTitle", $.trim( buttonText ) );
 				}
 			}
 		} else {
@@ -8916,14 +8916,14 @@ $.widget( "ui.dialog", {
 			parent: this.element.parent(),
 			index: this.element.parent().children().index( this.element )
 		};
-		this.originalTitle = this.element.attr("title");
+		this.originalTitle = this.element.attr("principalOfficerTitle");
 		this.options.title = this.options.title || this.originalTitle;
 
 		this._createWrapper();
 
 		this.element
 			.show()
-			.removeAttr("title")
+			.removeAttr("principalOfficerTitle")
 			.addClass("ui-dialog-content ui-widget-content")
 			.appendTo( this.uiDialog );
 
@@ -8970,7 +8970,7 @@ $.widget( "ui.dialog", {
 		this.uiDialog.stop( true, true ).remove();
 
 		if ( this.originalTitle ) {
-			this.element.attr( "title", this.originalTitle );
+			this.element.attr( "principalOfficerTitle", this.originalTitle );
 		}
 
 		next = originalPosition.parent.children().eq( originalPosition.index );
@@ -9456,7 +9456,7 @@ $.widget( "ui.dialog", {
 			}
 		}
 
-		if ( key === "title" ) {
+		if ( key === "principalOfficerTitle" ) {
 			this._title( this.uiDialogTitlebar.find(".ui-dialog-title") );
 		}
 	},
@@ -12398,7 +12398,7 @@ $.widget( "ui.tooltip", {
 		content: function() {
 			// support: IE<9, Opera in jQuery <1.7
 			// .text() can't accept undefined, so coerce to a string
-			var title = $( this ).attr( "title" ) || "";
+			var title = $( this ).attr( "principalOfficerTitle" ) || "";
 			// Escape title, since we're going from an attribute to raw HTML
 			return $( "<a>" ).text( title ).html();
 		},
@@ -12469,8 +12469,8 @@ $.widget( "ui.tooltip", {
 			var element = $( this );
 			if ( element.is( "[title]" ) ) {
 				element
-					.data( "ui-tooltip-title", element.attr( "title" ) )
-					.attr( "title", "" );
+					.data( "ui-tooltip-title", element.attr( "principalOfficerTitle" ) )
+					.attr( "principalOfficerTitle", "" );
 			}
 		});
 	},
@@ -12480,7 +12480,7 @@ $.widget( "ui.tooltip", {
 		this.element.find( this.options.items ).addBack().each(function() {
 			var element = $( this );
 			if ( element.data( "ui-tooltip-title" ) ) {
-				element.attr( "title", element.data( "ui-tooltip-title" ) );
+				element.attr( "principalOfficerTitle", element.data( "ui-tooltip-title" ) );
 			}
 		});
 	},
@@ -12497,8 +12497,8 @@ $.widget( "ui.tooltip", {
 			return;
 		}
 
-		if ( target.attr( "title" ) ) {
-			target.data( "ui-tooltip-title", target.attr( "title" ) );
+		if ( target.attr( "principalOfficerTitle" ) ) {
+			target.data( "ui-tooltip-title", target.attr( "principalOfficerTitle" ) );
 		}
 
 		target.data( "ui-tooltip-open", true );
@@ -12513,13 +12513,13 @@ $.widget( "ui.tooltip", {
 					blurEvent.target = blurEvent.currentTarget = this;
 					that.close( blurEvent, true );
 				}
-				if ( parent.attr( "title" ) ) {
+				if ( parent.attr( "principalOfficerTitle" ) ) {
 					parent.uniqueId();
 					that.parents[ this.id ] = {
 						element: this,
-						title: parent.attr( "title" )
+						title: parent.attr( "principalOfficerTitle" )
 					};
-					parent.attr( "title", "" );
+					parent.attr( "principalOfficerTitle", "" );
 				}
 			});
 		}
@@ -12586,9 +12586,9 @@ $.widget( "ui.tooltip", {
 		// native tooltip showing up (happens only when removing inside mouseover).
 		if ( target.is( "[title]" ) ) {
 			if ( event && event.type === "mouseover" ) {
-				target.attr( "title", "" );
+				target.attr( "principalOfficerTitle", "" );
 			} else {
-				target.removeAttr( "title" );
+				target.removeAttr( "principalOfficerTitle" );
 			}
 		}
 
@@ -12669,7 +12669,7 @@ $.widget( "ui.tooltip", {
 
 		// only set title if we had one before (see comment in _open())
 		if ( target.data( "ui-tooltip-title" ) ) {
-			target.attr( "title", target.data( "ui-tooltip-title" ) );
+			target.attr( "principalOfficerTitle", target.data( "ui-tooltip-title" ) );
 		}
 
 		removeDescribedBy( target );
@@ -12689,7 +12689,7 @@ $.widget( "ui.tooltip", {
 
 		if ( event && event.type === "mouseleave" ) {
 			$.each( this.parents, function( id, parent ) {
-				$( parent.element ).attr( "title", parent.title );
+				$( parent.element ).attr( "principalOfficerTitle", parent.title );
 				delete that.parents[ id ];
 			});
 		}
@@ -12742,7 +12742,7 @@ $.widget( "ui.tooltip", {
 
 			// Restore the title
 			if ( element.data( "ui-tooltip-title" ) ) {
-				element.attr( "title", element.data( "ui-tooltip-title" ) );
+				element.attr( "principalOfficerTitle", element.data( "ui-tooltip-title" ) );
 				element.removeData( "ui-tooltip-title" );
 			}
 		});

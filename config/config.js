@@ -38,7 +38,7 @@ module.exports = {
             threshold: '50%', // 50% Auto spawn new processes until the server reaches the max_spawn
             max_spawn: '75%' // 75% of the available cores on the server
         },
-        socketIO: false,
+        socketIO: true,
         cluster: false,
         redisSessions: false
     },

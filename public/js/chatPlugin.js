@@ -33,47 +33,48 @@ function ChatPlugin(socket, options){
         socket.emit(application.serverEvents.message, {
             name: name,
             value: msg
-            //type: clientType,
-            //id: clientId
         });
         $(options.ui.input).val('');
 
     }
 
-    var logChat = function  (message, type) {
-        var li = $('<li style="list-style-type: none; padding:2px 10px 0px 10px;" >').text(message);
+    function messageLog(name, message, type) {
+        var li = $('<li style="list-style-type:none; padding:4px 10px 0px 0px;">').html('<span style="font-weight:bold;">' + name + '</span>' + ': ' + message);
         li.addClass('clientTypeFont_' + type);
         $(options.ui.log).prepend(li);
         //$(options.ui.log).append(message);
-        console.log(options.ui.log,  message, type);
-    };
+        log.info(options.ui.log,  message, type);
+    }
 
     /**
      *************** Socket Events *****************
      */
     socket.on('connect', function (data) {
-        log.verbose("\n --|= Web socket connect connection established.\n");
-        logChat('Connected to chat room ', 'system', data);
+        log.verbose(" --|= Web socket connect connection established.");
     });
 
     socket.on('disconnect', function (data) {
-        logChat(data.value, 'leave');
+        messageLog('Disconnect', 'User disconnected from chat', 'leave');
     });
 
     socket.on('message', function (data) {
-        logChat(data.name + ": " +  data.value, data.type);
+        messageLog(data.name, data.value, data.type);
     });
 
     socket.on('error', function (data) {
-        logChat(data.value, 'error');
+        messageLog('Error', data.value, 'error');
     });
 
     socket.on('room.create', function (data) {
-        $(options.ui.roomTitle).html(data.title);
+        log.silly('Room create');
+        application.roster.userCount = 0;
+        $(options.ui.roomTitle).html(data.name);
+        $(options.ui.roster).html('');
+        $(options.ui.log).html('');
+        messageLog('Connected to chat room ', 'system', data);
     });
 
     socket.on('user.create', function (data) {
-        //logChat(data.name + " entered the room", 'error');
         var user = data.name;
         var blockLink = '<li class="roster_item" id='+ data.id +'><a name='+user+' href="javascript:void(0)" onclick="showBlockMenu('+user+');">'+user+'</a></li>';
         $(options.ui.roster).append(blockLink);
@@ -82,7 +83,7 @@ function ChatPlugin(socket, options){
     });
 
     socket.on('user.destroy', function (data) {
-        console.log("Removing user " + data.name + " from roster " + data.id);
+        log.info("Removing user " + data.name + " from roster " + data.id);
         application.roster.userCount--;
         $(options.ui.rosterCount).html(application.roster.userCount);
         $('#' + data.id).remove();
@@ -103,7 +104,7 @@ function ChatPlugin(socket, options){
             sendMessage(msg);
         });
 
-        socket.emit('ready');
+        socket.emit('ready', {name: options.user.name, room: options.room.name, id: clientId, type: clientType, token: 'i271az2Z0PMjhd6w0rX019g0iS7c2q4R'});
 
     });
 }

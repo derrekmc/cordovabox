@@ -4,9 +4,11 @@ module.exports = function isAuthenticated(req, res, next){
      * Check session data for access here
      *
      */
-    if(req.session && req.session.isAuthenticated){
+    if(req.session && req.session.hasOwnProperty('isAuthenticated') && req.session.isAuthenticated){
         next();
     }else {
-        next(new Error('User not logged in'));
+        //next(new Error('Session not authenticated'));
+        log.warn('Session not authenticated');
+        next();
     }
 };
