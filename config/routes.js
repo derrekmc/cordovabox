@@ -15,6 +15,7 @@ module.exports = {
         this.route('get', '/sitemap', require('../api/controllers/main')); // index.html
 
         this.route('post', '/api/stats', require('../api/controllers/stats'));
+        this.route('post', '/user', require('../api/controllers/user'));
         this.route('post', '/user/tip/:id/:value', require('../api/controllers/user').tip);
 
         this.route('get', '/room/:name', require('../api/controllers/room').public);
@@ -128,7 +129,7 @@ module.exports = {
         log.verbose('Setting up route: ' + route);
 
         if(controller && isFunction(controller.exec)){
-            this.app[type](route, function(req, res){
+            this.app[type](route, function(req, res, next){
                 /*var routeOut = route.replace(':id', req.param('id'));
                 routeOut = routeOut.replace(':value', req.param('value'));*/
                 //log.silly('Accessing route: ' + route, routeOut);
@@ -136,6 +137,7 @@ module.exports = {
                 controller.exec(req, res);
             });
         }else if(controller) {
+            log.verbose('Route: ' + route);
             this.app[type](route, controller);
         }else{
             log.error('Controller: ' + controller + ' not found: route "' + route + '"', 'type: ' + type);

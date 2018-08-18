@@ -31,7 +31,7 @@ module.exports = {
                 room: req.param('name')
             });
         }else{
-            require('../controller/main').login(req, res, "User not logged in.");
+            require('./main').login(req, res, "User not logged in.");
         }
 
     },

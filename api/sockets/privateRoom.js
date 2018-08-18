@@ -1,4 +1,7 @@
 var connections= 0;
+var UserDTO = require("../models/UserDTO");
+var RoomDTO = require("../models/RoomDTO");
+
 module.exports = {
 
     exec: function(req, res){

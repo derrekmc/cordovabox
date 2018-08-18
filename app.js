@@ -56,22 +56,24 @@ function listen(port, callback){
     //app.use(trackUTM);
 
 
-    app.get('*', function(req, res, next){
-
-        if(!_Config.server.caching) res.setHeader('Last-Modified', (new Date()).toUTCString());
-
-        if(_Config.server.https && req.headers['x-forwarded-proto']!='https'){
-            res.redirect('https://' + req.headers.host.split(":", 1) + req.url)
-        }else{
-            next(); //Continue to other routes if we're not redirecting
-        }
-
-    });
+    // app.get('*', function(req, res, next){
+    //
+    //     if(!_Config.server.caching) res.setHeader('Last-Modified', (new Date()).toUTCString());
+    //
+    //     if(_Config.server.https && req.headers['x-forwarded-proto']!='https'){
+    //         res.redirect('https://' + req.headers.host.split(":", 1) + req.url)
+    //     }else{
+    //         next(); //Continue to other routes if we're not redirecting
+    //     }
+    //
+    // });
+    
+    
      
 
-    app.use(express.static(rootFolder));
-    app.use(app.router);
-    require('./config/routes').register(app);
+    
+    
+    
     
     /****************************
      * Start the HTTP Server
@@ -83,6 +85,11 @@ function listen(port, callback){
      * Server hooks - middleware
      ***************************************************/
     require('./lib/hooks/index').register(app, server);
+    
+    require('./config/routes').register(app);
+    
+    app.use(express.static(rootFolder));
+    app.use(app.router);
     
     //function startAppHttpListen(){
         var http = require('http').Server(app);

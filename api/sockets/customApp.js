@@ -1,4 +1,8 @@
 var uuid = require('uuid');
+var UserDTO = require("../models/UserDTO");
+var RoomDTO = require("../models/RoomDTO");
+var DataTransmissionObject = require("../models/RoomDTO");
+
 
 module.exports = new function Sockets(){
     return {
@@ -15,6 +19,7 @@ module.exports = new function Sockets(){
         //session
         //req, res
     },
+
 
     listen: function(io, options) {
 
@@ -59,7 +64,7 @@ module.exports = new function Sockets(){
             Room.messages   = Room.messages || [];
 
             Room.users          = Room.users || {};
-            Room.users[User.id] = (DataTransmissionObject(User));
+            Room.users[User.id] = (UserDTO(User));
             Room.users.length   = Room.users.length || 0;
 
             Room.users.length++;

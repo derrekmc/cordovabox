@@ -20,6 +20,10 @@ if(!global.registeredClass){
     if(_Config.globals.async){
         global.async = require('async');
     }
+    
+    if(_Config.globals.lodash){
+        global.helpers = require('../lib/helpers');
+    }
 
     global.queryStringToJSON = function queryStringToJSON(url) {
         if (!url || url == '')

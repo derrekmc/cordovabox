@@ -1,4 +1,6 @@
 var uuid = require('uuid');
+var UserDTO = require("../models/UserDTO");
+var RoomDTO = require("../models/RoomDTO");
 
 module.exports = new function Sockets(){
     return {
