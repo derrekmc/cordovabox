@@ -124,7 +124,7 @@ module.exports = {
      * Winston Console logger
      */
     logger:{
-        level: 'verbose',
+        level: 'silly',
         colorize : true,
         timestamp: false,
         transports: []

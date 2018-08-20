@@ -134,7 +134,9 @@ module.exports = {
                 routeOut = routeOut.replace(':value', req.param('value'));*/
                 //log.silly('Accessing route: ' + route, routeOut);
                 log.verbose('Route: ' + route);
+                
                 controller.exec(req, res);
+                
             });
         }else if(controller) {
             log.verbose('Route: ' + route);
