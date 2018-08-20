@@ -126,7 +126,7 @@ module.exports = {
      */
     route: function route(type, route, controller) {
 
-        log.verbose('Setting up route: ' + route);
+        //log.verbose('Setting up route: ' + route);
 
         if(controller && isFunction(controller.exec)){
             this.app[type](route, function(req, res, next){
@@ -134,7 +134,6 @@ module.exports = {
                 routeOut = routeOut.replace(':value', req.param('value'));*/
                 //log.silly('Accessing route: ' + route, routeOut);
                 log.verbose('Route: ' + route);
-                
                 controller.exec(req, res);
                 
             });
