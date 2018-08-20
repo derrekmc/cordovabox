@@ -16,9 +16,9 @@ function start() {
 	/**
 	 * Register Globals
 	 */
-	require('./config/globals');
+	require('./lib/globals');
 
-	var server = require('./app')(process.env.PORT || 8080, function(port){
+	var server = require('./app')(process.env.PORT || 3000, function(port){
 		log.info("A worker is now listening on port:" + port);
 	});
 }

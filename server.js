@@ -6,7 +6,7 @@
 /**
  * Register Globals
  */
-require('./config/globals');
+require('./lib/globals');
 
 /**
  * Register Application

@@ -1,7 +1,7 @@
 /**
  * Register Globals
  */
-require('./config/globals');
+require('./lib/globals');
 
 var _server = null;
 
@@ -49,31 +49,6 @@ function listen(port, callback){
         }) : null),
         secret: '1234567890QWERTY'
     }));
-
-    //app.use(restPolicy);
-    //app.use(blockedIps);
-    //app.use(isProtected);
-    //app.use(trackUTM);
-
-
-    // app.get('*', function(req, res, next){
-    //
-    //     if(!_Config.server.caching) res.setHeader('Last-Modified', (new Date()).toUTCString());
-    //
-    //     if(_Config.server.https && req.headers['x-forwarded-proto']!='https'){
-    //         res.redirect('https://' + req.headers.host.split(":", 1) + req.url)
-    //     }else{
-    //         next(); //Continue to other routes if we're not redirecting
-    //     }
-    //
-    // });
-    
-    
-     
-
-    
-    
-    
     
     /****************************
      * Start the HTTP Server
