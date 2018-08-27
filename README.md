@@ -1,33 +1,37 @@
-The CordovaBox is an out of the box cloud computing capable server that is prebuilt with:
-   
-   - Jwt web token security
-   - Express ejs html rendering
-   - rest & web sockets
-   - Twitter bootstrap + theme
-   - Public and secure member access.
-   
-   It can be used for the following business models:
-      - Live video & chat server
-      - Web video streaming server
-      - Multiplayer game server
-      - Web server and multiplayer game server
-      - Rest api server.
-      - Socket server
-      - Prebuilt hooks in to redis, mongodb, mysql.
+# CordovaBox
+##### A MVC Framework for nodejs
+#
+#
+---
+#
+### Install & Launch
+```
 
-   A prebuilt site just fill in the blanks and hide the pages you dont need right now.
-      - A cloud computing server design that is compatible with most major cloud hosting services. 
-      - Web sockets on every page.
-      - JWT security (web sockets + restful) security.
-      - Membership Area.
-      - Easy data store setup guide.
-      - Twitter bootstrap web themes.
-      - Live Video & Chat Streaming.
-  
-   To get started using terminal type the following:
-   
-   git clone: https://github.com/derrekmc/CordovaBox.git
-   npm install
+git clone: https://github.com/derrekmc/CordovaBox.git
 
+npm install
+npm start - to run in cluster mode. Vertical scaling
+npm run-script single - Run in single instance mode
+node server.js - Run in single instance mode without gulp
 
+```
+
+### Test
+```
+npm test
+```
+
+### Environmental Variables
+
+`MONGO_URL` - Mongo database host url. Used for the primary data storage.
+`REDIS_URL` - Redis server host url. Used for socket clustering and clustered session support
+`db` - database namespace
+`prefix` - Session prefix
+`maxAge` - Max cookie age
+`secret` - Your applications secret identifier
+```
+MONGO_URL="mongodb://credentials:password@yourmongodbserver.com:port/db" npm start
+```
+### Server Stats
+**http://localhost:3000/stats
 

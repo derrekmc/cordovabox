@@ -1,6 +1,6 @@
 {
   "name": "CordovaBox",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "server.js",
   "scripts": {
     "test": "mocha test/index.js",
