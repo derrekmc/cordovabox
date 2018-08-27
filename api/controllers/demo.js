@@ -197,64 +197,67 @@ module.exports = {
          * todo find room, find room owner, update that user with the tip and the room with that users tip amount or collection data.
          */
         var tipAmount = req.param('amount');
-        User.findOne({username: req.param('username')}).exec(function(err, user){
-            if(!err && user && user.canTip(tipAmount)){
-                User.findOneAndUpdate({username: req.param('username')}, { $inc: {credits: (tipAmount*-1)}}, function(err, model) {
-                    if(!err && model){
-                        /**
-                         * todo This should be the user of the model. No rooms should exist in the store.
-                         */
-                        User.findOneAndUpdate({username: req.param('room')}, { $inc: {tips: tipAmount}}, function (err, model) {
-
-                            var publicRoom = req.param('room');
-                            var Room = sio.io.sockets.adapter.rooms[publicRoom];
-
-                            if (err) {
-                                res.send(err);
-                                log.error(err);
-                            } else if (model && Room) {
-
-                                Room.tips = model.tips;
-                                Room.tipGoal = model.tipGoal;
-                                Room.tipTopic = model.tipTopic;
-
-                                if (Room.tips >= Room.tipGoal) Room.status = 'tipShow';
-
-                                sio.io.to(publicRoom).emit('room.update', RoomDTO(Room, {
-                                    tipperName: req.param('username'),
-                                    tipAmount: req.param('amount')
-                                }));
-
-                                res.send({success: true});
-                                log.verbose(model._doc.tips);
-
-                            } else {
-                                var error = "User " + req.param('room') + " doesn't exist.";
-                                res.send({success: false, error: error});
-                                log.error(error);
-                            }
-                        });
-                    }else{
-                        var error = "Room owner " + req.param('username') + " doesn't exist.";
-                        res.send({success: false, error: error});
-                        log.error(error);
-                    }
-
-                });
-
-            }else{
-                var error = "User " + req.param('username') + " doesn't not have enough credits.";
-                res.send({success: false, error: error});
-                log.error(error);
-            }
-        });
+        User
+            .findOne({username: req.param('username')})
+            .exec(function(err, user){
+                if(!err && user && user.canTip(tipAmount)){
+                    User.findOneAndUpdate({username: req.param('username')}, { $inc: {credits: (tipAmount*-1)}}, function(err, model) {
+                        if(!err && model){
+                            /**
+                             * todo This should be the user of the model. No rooms should exist in the store.
+                             */
+                            User.findOneAndUpdate({username: req.param('room')}, { $inc: {tips: tipAmount}}, function (err, model) {
+    
+                                var publicRoom = req.param('room');
+                                var Room = sio.io.sockets.adapter.rooms[publicRoom];
+    
+                                if (err) {
+                                    res.send(err);
+                                    log.error(err);
+                                } else if (model && Room) {
+    
+                                    Room.tips = model.tips;
+                                    Room.tipGoal = model.tipGoal;
+                                    Room.tipTopic = model.tipTopic;
+    
+                                    if (Room.tips >= Room.tipGoal) Room.status = 'tipShow';
+    
+                                    sio.io.to(publicRoom).emit('room.update', RoomDTO(Room, {
+                                        tipperName: req.param('username'),
+                                        tipAmount: req.param('amount')
+                                    }));
+    
+                                    res.send({success: true});
+                                    log.verbose(model._doc.tips);
+    
+                                } else {
+                                    var error = "User " + req.param('room') + " doesn't exist.";
+                                    res.send({success: false, error: error});
+                                    log.error(error);
+                                }
+                            });
+                        }else{
+                            var error = "Room owner " + req.param('username') + " doesn't exist.";
+                            res.send({success: false, error: error});
+                            log.error(error);
+                        }
+    
+                    });
+    
+                }else{
+                    var error = "User " + req.param('username') + " doesn't not have enough credits.";
+                    res.send({success: false, error: error});
+                    log.error(error);
+                }
+            });
     },
 
     addCredits: function addCredits(req, res){
         /**
          * todo find room, find room owner, update that user with the tip and the room with that users tip amount or collection data.
          */
-        User.findOneAndUpdate({username: req.param('username')}, { $inc: {credits: req.param('amount')}}, function(err, model){
+        User
+            .findOneAndUpdate({username: req.param('username')}, { $inc: {credits: req.param('amount')}}, function(err, model){
             if (err) {
                 res.send({error: err});
                 log.error(err);

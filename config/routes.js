@@ -11,6 +11,7 @@ module.exports = {
         /**
          * Routes -
          **/
+        this.route('get', '/iac', require('../api/controllers/ExpressRouteController')); // index.html
         this.route('get', '/', require('../api/controllers/main')); // index.html
         this.route('get', '/sitemap', require('../api/controllers/main')); // index.html
 

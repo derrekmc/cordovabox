@@ -104,7 +104,7 @@ module.exports = {
         name: 'CordovaBox',
         namespace: this.name + '_',
         public: '',
-        rootFolder: '',
+        rootFolder: 'assets',
         author: "Derrek Cordova",
         rootDomain: "CordovaBox.com",
         favicon: '/images/favicon.ico',
