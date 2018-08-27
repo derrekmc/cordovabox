@@ -1,8 +1,9 @@
 module.exports = {
 
     exec: function exec(req, res){
+        log.info("working");
         User
-            .find({id:req.param('id')})
+            .find({_id:req.param('id')})
             .exec(function (err, model){
                 if(err) {
                     res.send(403, err);
