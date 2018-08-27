@@ -15,13 +15,14 @@ module.exports = {
     tip: function tip(req, res){
 
         User
-            .find({id: req.param('id')})
+            .findByIdAndUpdate(req.param('id'), req.body, {new: true})
             .exec(function (err, user){
+                console.log("user", err, user);
                 if(err) {
                     res.send(403, err);
                 } else{
                     user.tips += req.param('value');
-                    user.update(function(err) {
+                    user.save(function(err) {
                         if(err) {
                             res.send(403, err);
                         } else{
