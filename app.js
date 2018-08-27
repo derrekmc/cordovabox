@@ -60,7 +60,7 @@ function listen(port, callback){
      * Server hooks - middleware
      ***************************************************/
     require('./lib/hooks/index').register(app, server, function(app){
-        require('./config/routes').register(app);
+        //require('./config/routes').register(app);
         app.use(express.static(rootFolder));
         app.use(app.router);
         app.emit("cordovabox::" + "server_ready");

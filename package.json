@@ -17,6 +17,7 @@
     "body-parser": "^1.9.3",
     "browserstack-webdriver": "^2.41.1",
     "bson": "^1.0.4",
+    "captains-log": "^2.0.1",
     "compression": "^1.4.3",
     "connect": "1.9.2",
     "connect-mongo": "^0.8.2",
