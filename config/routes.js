@@ -14,9 +14,9 @@ module.exports = {
         this.route('get', '/', require('../api/controllers/main')); // index.html
         this.route('get', '/sitemap', require('../api/controllers/main')); // index.html
 
-        this.route('post', '/api/stats', require('../api/controllers/stats'));
-        this.route('post', '/user', require('../api/controllers/user'));
-        this.route('post', '/user/tip/:id/:value', require('../api/controllers/user').tip);
+        this.route('get', '/api/stats', require('../api/controllers/stats'));
+        this.route('get', '/user/:id', require('../api/controllers/user'));
+        this.route('post', '/user/:id/tip/:value', require('../api/controllers/user').tip);
 
         this.route('get', '/room/:name', require('../api/controllers/room').public);
         this.route('get', '/room/:name/:user', require('../api/controllers/room').public);

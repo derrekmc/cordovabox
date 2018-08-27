@@ -37,5 +37,10 @@ module.exports = {
         inPrivate: Boolean,
 
         updated: { type: Date, default: Date.now }
+    },
+    methods:{
+        canTip: function canTip(amount) {
+            return (this.credits >= amount);
+        }
     }
 };

@@ -10,8 +10,8 @@ module.exports = {
 
         createDate: { type: Date, default: Date.now},
         updated: { type: Date, default: Date.now}
-    }
-
+    },
+    methods:{}
 
 };
 
