@@ -1,12 +1,11 @@
 module.exports = {
 
     exec: function exec(req, res) {
-
+    
         res.render('room_subscriber.html', {
-            //socket: req.socket,
+            socket: req.socket,
             user: req.param('user') || 'guest',
-            room: req.param('room'),
-            error: 'Error finding user.'
+            room: req.param('name')
         });
 
     },

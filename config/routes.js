@@ -29,32 +29,30 @@ module.exports = {
         method:"get",
         controller: "MainController"
     },
-
     "/user":{
       method:"get",
       controller: "UserController"
     },
-
     "/user/:id":{
         method:"get",
         controller: "UserController"
     },
-
-    "/room/:name":{
-        method:"get",
+    "/user/:id/tip/:value":{
+        method:"post",
         controller: "UserController"
     },
-
+    "/room/:name":{
+        method:"get",
+        controller: "RoomController"
+    },
     "/room/:name/:user":{
         method:"get",
         controller: "RoomController"
     },
-
     "/api/stats":{
         method:"get",
         controller: "StatsController"
     },
-
     "/iac":{
         method:"get",
         controller: "ExpressRouteController"
