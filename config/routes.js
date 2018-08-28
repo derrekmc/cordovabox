@@ -39,15 +39,35 @@ module.exports = {
     },
     "/user/:id/tip/:value":{
         method:"post",
-        controller: "UserController"
+        controller: "UserController.tip"
     },
     "/room/:name":{
         method:"get",
-        controller: "RoomController"
+        controller: "RoomController.public"
     },
     "/room/:name/:user":{
         method:"get",
-        controller: "RoomController"
+        controller: "RoomController.public"
+    },
+    "/private/:user":{
+        method:"get",
+        controller: "RoomController.private"
+    },
+    "/private/:name/:user":{
+        method:"get",
+        controller: "RoomController.private"
+    },
+    "/broadcast/:name":{
+        method:"get",
+        controller: "RoomController.broadcast"
+    },
+    "/broadcast/:name/:user":{
+        method:"get",
+        controller: "RoomController.broadcast"
+    },
+    "/chat/:name/:user":{
+        method:"get",
+        controller: "RoomController.chat"
     },
     "/api/stats":{
         method:"get",
