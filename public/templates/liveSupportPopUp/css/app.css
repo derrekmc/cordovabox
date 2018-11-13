@@ -1,0 +1,283 @@
+/* 
+    App name   : Live Chat
+    Created on : March 04, 2015
+    Author     : Sarwar
+*/
+/************************************************************************
+-) 
+*************************************************************************/
+body {
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+}
+
+.livehat-trigger-wrap {
+  background-image: url("../img/content/live-chat-minimizewd.png");
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: table;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+.livehat-trigger-wrap a {
+  font-size: 14px;
+  color: #fff;
+  display: inline-block;
+}
+.livehat-trigger-wrap a:hover, .livehat-trigger-wrap a:focus {
+  text-decoration: none;
+  outline: 0;
+}
+
+.livechat-trigger {
+  width: 440px;
+  padding: 17.5px 25px;
+  background-image: url("../img/icons/icon-comment.png");
+  background-repeat: no-repeat;
+  background-position: 25px 50%;
+  padding-left: 50px;
+  border-right: 1px solid #77787b;
+}
+
+.livechat-trigger-close {
+  padding: 17px 20px;
+  border-left: 1px solid #393a3d;
+  font-weight: 700;
+}
+
+.alert {
+  border-radius: 0px;
+  border: none;
+}
+
+.alert-success {
+  background-color: #88bf67;
+  background-image: url("../img/content/alert-success.jpg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.modal-backdrop {
+  position: fixed;
+}
+
+.modal-live-chat .modal-dialog {
+  width: 494px;
+  margin-top: 65px;
+}
+.modal-live-chat .modal-content {
+  border-radius: 2px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: none;
+  -webkit-box-shadow: 18.5px 32.043px 54px 0px black;
+  box-shadow: 18.5px 32.043px 54px 0px black;
+}
+.modal-live-chat .modal-header {
+  border: none;
+  padding: 0px;
+  background-color: #333439;
+  background-image: url("../img/content/header-modal.jpg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #fff;
+  cursor: all-scroll;
+}
+.modal-live-chat .modal-header h4 {
+  padding: 20px;
+  font-size: 14px;
+  background-image: url("../img/icons/icon-comment.png");
+  background-repeat: no-repeat;
+  background-position: 20px 50%;
+  padding-left: 45px;
+  margin-right: 53px;
+  border-right: 1px solid #4b4c51;
+}
+.modal-live-chat .modal-header .close {
+  margin-top: 0px;
+  padding: 19px 20px;
+  filter: alpha(opacity=100);
+  opacity: 1;
+  text-shadow: none;
+  color: #fff;
+  border-left: 1px solid #1b1b1e;
+  background-color: #292a2e;
+}
+.modal-live-chat .modal-body {
+  padding: 0px;
+  border-radius: 0px;
+}
+
+.alert-livechat {
+  position: relative;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.alert-livechat > a {
+  position: absolute;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 600;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.alert-livechat > a:hover {
+  text-decoration: none;
+}
+
+.conversation-livechat-wrapper {
+  padding-left: 25px;
+  padding-right: 15px;
+}
+
+.conversation-livechat {
+  height: 270px;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.conversation-message {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d5d6d8;
+  margin-right: 30px;
+}
+
+.conversation-message.self {
+  background-image: url("../img/content/message-highlightt.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.cm-img {
+  border-radius: 50%;
+  position: relative;
+  float: left;
+}
+.cm-img img {
+  width: 32px;
+  height: 32px;
+  opacity: .9;
+  border-radius: 50%;
+}
+.cm-img .shape {
+  position: absolute;
+  bottom: -2px;
+  right: 4px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 17px solid #FFF;
+  -webkit-transform: rotate(-40deg);
+  -ms-transform: rotate(-40deg);
+  transform: rotate(-40deg);
+}
+
+.cm-text {
+  margin-left: 47px;
+}
+.cm-text h2 {
+  margin-top: 0px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #36373c;
+}
+.cm-text p {
+  font-size: 13px;
+  line-height: 21px;
+  color: #74767e;
+}
+.cm-text p:last-child {
+  margin-bottom: 0px;
+}
+
+.typing-message {
+  display: table;
+  font-size: 13px;
+  font-style: italic;
+  color: #acadb0;
+  background-image: url("../img/icons/icon-pencil.png");
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  padding-left: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+.form-input textarea {
+  width: 365px !important;
+  resize: none;
+  height: 36px !important;
+  font-size: 13px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bbbbbb;
+  border-radius: 3px;
+  background-color: white;
+}
+.form-input textarea::-webkit-input-placeholder {
+  color: #acadb0;
+  font-style: italic;
+}
+.form-input textarea:-moz-placeholder {
+  color: #acadb0;
+  font-style: italic;
+}
+.form-input textarea::-moz-placeholder {
+  color: #acadb0;
+  font-style: italic;
+}
+.form-input textarea:-ms-input-placeholder {
+  color: #acadb0;
+  font-style: italic;
+}
+.form-input button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bbbbbb;
+  border-radius: 3px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 8px 12px;
+  margin-left: 8px;
+}
+
+.scrollbar-inner > .scroll-element .scroll-element_track {
+  background-color: #dadada;
+}
+
+.scrollbar-inner > .scroll-element .scroll-bar {
+  background-color: #313237;
+}
+
+.scrollbar-inner > .scroll-element .scroll-element_track, .scrollbar-inner > .scroll-element .scroll-bar {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+/*# sourceMappingURL=app.css.map */
