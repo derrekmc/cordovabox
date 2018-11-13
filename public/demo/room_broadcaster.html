@@ -1,0 +1,83 @@
+<html>
+<head>
+
+    <link href="/css/gui.css" rel="stylesheet" type="text/css">
+    <link href="/css/broadcaster.css" rel="stylesheet">
+    <link href="/css/roster.css" rel="stylesheet" type="text/css">
+    <link href="/css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/chat.css" rel="stylesheet" type="text/css">
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="/lib/jquery-1.11.0.min.js"></script>
+    <script src="/lib/jquery-ui-1.10.4.custom.js"></script>
+    <script src="/lib/swfobject.js" type="text/javascript"></script>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/typeDef.js"></script>
+    <!--<script src="/js/mobileVideo.js?ca=sdhg"></script>-->
+
+    <script>
+        var clientType = CLIENT_TYPE.BROADCASTER;
+        var clientId = Math.round(Math.random()*100);
+        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id='+clientId+'&type=' + clientType});
+    </script>
+
+    <script src="/js/chat.js"></script>
+    <script src="/js/roster.js"></script>
+    <!--<script src="/js/mobileChat.js?ca=sdhg"></script>-->
+
+</head>
+
+<body>
+
+<div id="componentContainter">
+
+    <!---- Video Module Start --->
+    <div id="video" class="component">
+        <strong>You need to upgrade your Flash Player</strong>
+        This is replaced by the Flash content.
+        Place your alternate content here and users without the Flash plugin or with
+        Javascript turned off will see this. Content here allows you to leave out <code>noscript</code>
+        tags.
+    </div>
+    <script src="/js/broadcaster_video_flash.js"></script>
+    <!---- Video Module End --->
+
+    <!---- Chat Module Start --->
+        <div id="chatContainer">
+            <div id="chat_box_container">
+                <input type="text" name="chat_box" value="" id="chat_box" placeholder="type to chat..." /><button id="sendMessageButton" type="submit">Send</button>
+            </div>
+            <div id="chatroom">
+                <div id="chat_log"></div>
+            </div>
+        </div>
+    <!---- Chat Module End--->
+
+    <!-- Chat Roster Start -->
+    <div class="chatUsersContainer">
+        <div>
+            <ul id="chatUsers" class="hover">
+                <li class="hoverli"></li>
+                <ul class="hoverMenu">
+                    <li><a id="blockMenu" href="#" onclick="blockUser();">Block</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <!-- Chat Roster End -->
+
+</div>
+
+<!---- View Specific Script ---->
+<script>
+    /**
+     * Place your view specific javascript script includes here
+     */
+</script>
+<!---- View Specific Script ---->
+
+</body>
+</html>

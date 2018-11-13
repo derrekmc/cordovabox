@@ -7,7 +7,7 @@
 ### Install & Launch
 ```
 
-git clone: https://github.com/derrekmc/CordovaBox.git
+git clone https://github.com/derrekmc/CordovaBox.git
 
 npm install
 npm start - to run in cluster mode. Vertical scaling

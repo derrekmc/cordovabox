@@ -1,0 +1,302 @@
+/* 
+    App name   : Live Chat
+    Created on : March 04, 2015
+    Author     : Sarwar
+*/
+/************************************************************************
+-) 
+*************************************************************************/
+// BODY
+body {
+	font-family: 'Open Sans', sans-serif;
+	position: relative;
+}
+
+// LIVECHAT TRIGGER WRAP
+.livehat-trigger-wrap {
+	background-image: url('../img/content/live-chat-minimizewd.png');
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: table;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	a {
+		font-size: 14px;
+		color: #fff;
+		display: inline-block;
+		&:hover, &:focus {
+			text-decoration: none;
+			outline: 0;
+		}
+	}
+}
+
+// LIVECHAT TRIGGER
+.livechat-trigger {
+	width: 440px;
+	padding: 17.5px 25px;
+	background-image: url("../img/icons/icon-comment.png");
+	background-repeat: no-repeat;
+	background-position: 25px 50%;
+	padding-left: 50px;
+	border-right: 1px solid #77787b;
+}
+
+// LIVECHAT TRIGGER CLOSE
+.livechat-trigger-close {
+	padding: 17px 20px;
+	border-left: 1px solid #393a3d;
+	font-weight: 700;
+}
+
+
+// ALERT 
+.alert {
+	border-radius: 0px;
+	border: none;
+}
+
+.alert-success {
+	background-color: rgb( 136, 191, 103 );
+	background-image: url('../img/content/alert-success.jpg');
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+// MODAL BACKDROP
+.modal-backdrop {
+	position: fixed;
+}
+
+// MODAL LIVE CHAT
+.modal-live-chat {
+	.modal-dialog {
+		width: 494px;
+		margin-top: 65px;
+	}
+	.modal-content {
+		border-radius: 2px;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		border: none;
+		-webkit-box-shadow: 18.5px 32.043px 54px 0px rgb( 0, 0, 0 );
+		box-shadow: 18.5px 32.043px 54px 0px rgb( 0, 0, 0 );
+	}
+	.modal-header {
+		border: none;
+		padding: 0px;
+		background-color: #333439;
+		background-image: url('../img/content/header-modal.jpg');
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		color: #fff;
+		cursor: all-scroll;
+		h4 {
+			padding: 20px;
+			font-size: 14px;
+			background-image: url("../img/icons/icon-comment.png");
+			background-repeat: no-repeat;
+			background-position: 20px 50%;
+			padding-left: 45px;
+			margin-right: 53px;
+			border-right: 1px solid #4b4c51;
+		}
+		.close {
+			margin-top: 0px;
+			padding: 19px 20px;
+			filter: alpha(opacity=100);
+			opacity: 1;
+			text-shadow: none;
+			color: #fff;
+			border-left: 1px solid #1b1b1e;
+			background-color: #292a2e;
+		}
+	}
+	.modal-body {
+		padding: 0px;
+		border-radius: 0px;
+	}
+}
+
+// ALERT LIVECHAT
+.alert-livechat {
+	position: relative;
+	text-align: center;
+	font-size: 13px;
+	color: #fff;
+	margin-bottom: 10px;
+	> a {
+		position: absolute;
+		font-size: 11px;
+		color: #fff;
+		font-weight: 600;
+		right: 20px;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+// CONVERSATION LIVECHAT WRAPPER
+.conversation-livechat-wrapper {
+	padding-left: 25px;
+	padding-right: 15px;
+}
+
+// CONVERSATION LIVECHAT
+.conversation-livechat {
+	height: 270px;
+	overflow-y: scroll;
+	position: relative;
+}
+
+
+// CONVERSATION MESSAGE
+.conversation-message {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d5d6d8;
+	margin-right: 30px;
+}
+
+.conversation-message.self {
+	background-image: url('../img/content/message-highlightt.png');
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+// CM IMG
+.cm-img {
+	border-radius: 50%;
+	position: relative;
+	float: left;
+	img {
+		width: 32px;
+		height: 32px;
+		opacity: .9;
+		border-radius: 50%;
+	}
+	.shape {
+		position: absolute;
+		bottom: -2px;
+		right: 4px;
+		width: 0;
+		height: 0;
+		border-left: 3px solid rgba(0, 0, 0, 0);
+		border-right: 3px solid rgba(0, 0, 0, 0);
+		border-bottom: 17px solid #FFF;
+		-webkit-transform: rotate(-40deg);
+		-ms-transform: rotate(-40deg);
+		transform: rotate(-40deg);
+	}
+}
+
+// CM TEXT
+.cm-text {
+	margin-left: 47px;
+	h2 {
+		margin-top: 0px;
+		font-weight: 700;
+		font-size: 13px;
+		color: #36373c;
+	}
+	p {
+		font-size: 13px;
+		line-height: 21px;
+		color: #74767e;
+	}
+	p:last-child {
+		margin-bottom: 0px;
+	}
+}
+
+// TYPING MESSAGE
+.typing-message {
+	display: table;
+	font-size: 13px;
+	font-style: italic;
+	color: #acadb0;
+	background-image: url('../img/icons/icon-pencil.png');
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+
+// FORM INPUT: 
+.form-input {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	textarea {
+		width: 365px !important;
+		resize: none;
+		height: 36px !important;
+		font-size: 13px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: rgb( 187, 187, 187 );
+		border-radius: 3px;
+		background-color: rgb( 255, 255, 255 );
+	}
+
+	textarea::-webkit-input-placeholder {
+		color: #acadb0;
+	    font-style: italic;
+	}
+	textarea:-moz-placeholder {
+		color: #acadb0;
+	    font-style: italic;
+	}
+	textarea::-moz-placeholder {
+		color: #acadb0;
+	    font-style: italic;
+	}
+	textarea:-ms-input-placeholder {
+		color: #acadb0;
+	    font-style: italic;
+	}
+	button {
+		border-style: solid;
+		border-width: 1px;
+		border-color: rgb( 187, 187, 187 );
+		border-radius: 3px;
+		font-size: 13px;
+		color: rgba( 0, 0, 0, 0.6 );
+		padding: 8px 12px;
+		margin-left: 8px;
+	}
+}
+
+// SCROLLBAR
+.scrollbar-inner > .scroll-element .scroll-element_track {
+	background-color: #dadada;
+}
+
+.scrollbar-inner > .scroll-element .scroll-bar {
+	background-color: #313237;
+}
+
+.scrollbar-inner > .scroll-element .scroll-element_track, .scrollbar-inner > .scroll-element .scroll-bar {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+}

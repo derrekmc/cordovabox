@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="/css/roster.css" rel="stylesheet" type="text/css">
+    <link href="/css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/lib/jquery-1.11.0.min.js"></script>
+    <script src="/lib/jquery-ui-1.10.4.custom.js"></script>
+
+    <script src="/js/typeDef.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/config.js"></script>
+
+    <script>
+        var clientType = CLIENT_TYPE.USER_LIST;
+        var clientId = Math.round(Math.random()*20);
+        var socket = io.connect(serverAddress, {query:'token=i271az2Z0PMjhd6w0rX019g0iS7c2q4R&room=<%= room %>&name=<%= user %>&id='+clientId+'&type=' + clientType});
+    </script>
+
+    <script src="/js/roster.js"></script>
+
+</head>
+<body>
+
+    <div class="chatUsersContainer">
+        <ul class="hoverMenu">
+            <li><a id="blockMenu" class="blockMenuItem" href="#" onclick="blockUser();">Block</a></li>
+        </ul>
+        <ul id="chatUsers" class="hover"></ul>
+    </div>
+
+</body>
+</html>
