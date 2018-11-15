@@ -52,7 +52,7 @@
     "node-authorize-net": "0.0.5",
     "node-hipchat": "^0.4.5",
     "node-redis": "^0.1.7",
-    "pm2": "^0.12.14",
+
     "redis": "^0.12.1",
     "request": "^2.55.0",
     "sails-mongo": "^0.10.5",
