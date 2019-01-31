@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test/index.js",
+    "test": "mocha tests/index.js",
     "start": "gulp build; node tcluster.js",
     "startOne": "gulp build; node server.js",
     "startAll": "redis-2.8.19/src/redis-server | NODE_CONFIG_DIR=../config node_modules/.bin/supervisor cluster.js",
@@ -52,7 +52,7 @@
     "node-authorize-net": "0.0.5",
     "node-hipchat": "^0.4.5",
     "node-redis": "^0.1.7",
-    "pm2": "^0.12.14",
+
     "redis": "^0.12.1",
     "request": "^2.55.0",
     "sails-mongo": "^0.10.5",
