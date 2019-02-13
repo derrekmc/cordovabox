@@ -13,7 +13,7 @@ module.exports = {
             });
     },
     
-    post: function tip(req, res){
+    post: function post(req, res){
         
         User
             .create(req.body)
