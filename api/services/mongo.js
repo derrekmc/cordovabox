@@ -6,7 +6,7 @@ mongoose.connect(connectionString);
 log.info(connectionString);
 
 connection.on('error', function(err){
-    log.critical("Mongo error: " + err.message);
+    log.error("Mongo error: " + err.message);
 });
 
 connection.once('open', function (callback) {
