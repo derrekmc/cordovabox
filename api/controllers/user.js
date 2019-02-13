@@ -12,6 +12,28 @@ module.exports = {
                 }
             });
     },
+    
+    post: function tip(req, res){
+        
+        User
+            .create(req.body)
+            .exec(function (err, user){
+                console.log("user", err, user);
+                if(err) {
+                    res.send(403, err);
+                } else{
+                    
+                    user.save(function(err) {
+                        if(err) {
+                            res.send(403, err);
+                        } else{
+                            res.send(200, user);
+                        }
+                    });
+                }
+            });
+        
+    },
 
     tip: function tip(req, res){
 

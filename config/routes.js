@@ -29,10 +29,17 @@ module.exports = {
         method:"get",
         controller: "MainController"
     },
-    "/user":{
-      method:"get",
+    
+    "get /user":{
       controller: "UserController"
     },
+    
+    "post /user":{
+        controller: "UserController.post"
+    },
+    
+    
+    
     "/user/:id":{
         method:"get",
         controller: "UserController"
