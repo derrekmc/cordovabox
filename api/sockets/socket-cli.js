@@ -42,28 +42,28 @@ module.exports = new function Sockets(){
 
             socket.on('message', function (data) {
 
-                log.silly("("+Room.name+")", User.name, 'said', data.value, User.type);
-
-                Room.messages.push(DataTransmissionObject(User, {
-                    value     : data.value
-                }));
-
-                if(Room.messages.length > 20) Room.messages.pop();
-
-                io.to(Room.name).emit('message', DataTransmissionObject(User, {
-                    value     : data.value
-                }));
+                // log.silly("("+Room.name+")", User.name, 'said', data.value, User.type);
+                //
+                // Room.messages.push(DataTransmissionObject(User, {
+                //     value     : data.value
+                // }));
+                //
+                // if(Room.messages.length > 20) Room.messages.pop();
+                //
+                // io.to(Room.name).emit('message', DataTransmissionObject(User, {
+                //     value     : data.value
+                // }));
 
             });
 
             socket.on('disconnect', function () {
 
                 _Stats.active_connections--;
-                log.info(socket.id + ' disconnected. ' + _Stats.active_connections + ' active socket connections.');
-                io.to(Room.name).emit('user.destroy', DataTransmissionObject(User));
-                Room.users.length--;
-                log.silly(Room.users.length + " users in " + Room.name);
-                delete(Room.users[User.id]);
+                // log.info(socket.id + ' disconnected. ' + _Stats.active_connections + ' active socket connections.');
+                // io.to(Room.name).emit('user.destroy', DataTransmissionObject(User));
+                // Room.users.length--;
+                // log.silly(Room.users.length + " users in " + Room.name);
+                // delete(Room.users[User.id]);
 
             });
 
