@@ -2,7 +2,7 @@ var jwt = require('jwt-simple');
 
 module.exports = {
 
-    exec: function exec(req, res) {
+    get: function exec(req, res) {
 
         var secret = _Config.security.jwt.public.key;
 
@@ -60,6 +60,41 @@ module.exports = {
             res.send(false);
         }
 
+    },
+    
+    verify: function exec(req, res) {
+        
+        var secret = _Config.security.jwt.secure.key;
+        
+        // {id: , displayName: }
+        var id = req.param('id');
+        var value = req.param('value');
+        
+        
+        /**
+         * Check for the user in the data base
+         * @type {{id: String, name: String}}
+         */
+        var payload = req.body.token; //'findOne: Where Id = 1 From tbl.users.name' what you get back from the database such as
+        /**
+         * If user found and has credits check to make sure set his jwt expire time to make credits.
+         * @type {boolean}
+         */
+        
+        
+        // encode using HS512
+        var token = jwt.verify(payload, secret);
+        
+        if(token){
+            log.verbose('Secure access granted with token: ' + token);
+            res.send(token);
+        }else{
+            log.error('');
+            log.error('Secure access denied with token: ' + token);
+            log.error('');
+            res.send(false);
+        }
+        
     }
 
 

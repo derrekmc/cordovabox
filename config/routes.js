@@ -30,15 +30,23 @@ module.exports = {
         controller: "MainController"
     },
     
+    // "/user":{
+    //     method:"get",
+    //     controller: "UserController",
+    // },
+    //
     "get /user":{
       controller: "UserController"
     },
-    
+    //
     "post /user":{
-        controller: "UserController.post"
+        controller: "UserController"
     },
     
-    
+    "/api/stats":{
+        method:"get",
+        controller: "StatsController"
+    },
     
     "/user/:id":{
         method:"get",
@@ -56,10 +64,10 @@ module.exports = {
         method:"get",
         controller: "RoomController"
     },
-    "/api/stats":{
-        method:"get",
-        controller: "StatsController"
-    },
+    // "/api/stats":{
+    //     method:"get",
+    //     controller: "StatsController"
+    // },
     "/iac":{
         method:"get",
         controller: "ExpressRouteController"

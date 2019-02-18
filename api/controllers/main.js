@@ -9,7 +9,7 @@ module.exports = {
 
     // Views
 
-    exec:  function bootstrap(req, res) {
+    get:  function bootstrap(req, res) {
 
         res.render('index.html', {
             socket: req.socket,

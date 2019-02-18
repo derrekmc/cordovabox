@@ -7,6 +7,7 @@ log.info(connectionString);
 
 connection.on('error', function(err){
     log.error("Mongo error: " + err.message);
+    throw Error(err.message);
 });
 
 connection.once('open', function (callback) {

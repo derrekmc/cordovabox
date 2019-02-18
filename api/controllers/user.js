@@ -1,38 +1,38 @@
 module.exports = {
 
-    exec: function exec(req, res){
-        log.info("working");
+    get: function get(req, res){
+        log.info("UserController.get");
         User
-            .find({_id:req.param('id')})
-            .exec(function (err, model){
-                if(err) {
-                    res.send(403, err);
-                } else{
-                    res.send(200, model);
-                }
+            .find({})
+            .exec()
+            .then(function (doc){
+                res.send(200, doc);
+            })
+            .catch(function (err) {
+                res.send(403, err)
             });
     },
     
     post: function post(req, res){
-        
         User
             .create(req.body)
-            .exec(function (err, user){
-                console.log("user", err, user);
-                if(err) {
-                    res.send(403, err);
-                } else{
-                    
-                    user.save(function(err) {
-                        if(err) {
-                            res.send(403, err);
-                        } else{
-                            res.send(200, user);
-                        }
-                    });
-                }
+            .then(function (doc){
+                res.send(201, doc._doc);
+            })
+            .catch(function (err) {
+                res.send(403, err)
             });
-        
+    },
+    
+    put: function post(req, res){
+        User
+            .findAndModify(req.body)
+            .then(function (doc){
+                res.send(203, doc._doc);
+            })
+            .catch(function (err) {
+                res.send(403, err)
+            });
     },
 
     tip: function tip(req, res){

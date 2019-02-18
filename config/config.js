@@ -46,7 +46,7 @@ module.exports = {
     //Store
     dataStore: {
         mongodb:{
-            connectURI: process.env.MONGO_URL || process.env.MONGODB_URI || 'mongodb://govexpedited:bTWVJDgKJaCVDSjnxCzJVvcrmkNRWuM2mgLccdWvJUp8@ds023624.mlab.com:23624/heroku_lht2jnjk'
+            connectURI: process.env.MONGO_URL || process.env.MONGODB_URI || 'mongodb://heroku_1zzwlv1c:l5n9rt2p1q1k5s266dadfp51tv@ds139775.mlab.com:39775/heroku_1zzwlv1c'
         },
 
         redis: {
