@@ -5,12 +5,32 @@ module.exports = {
     get: function exec(req, res) {
 
         var secret = _Config.security.jwt.public.key;
-
+        
         // {id: , displayName: }
         var id = req.param('id');
         var value = req.param('value');
         var verified = false;
-
+    
+        /**
+         * Check login credentials and then put them in a token
+         * @type {String}
+         */
+        // User
+        //     .find({_id:id})
+        //     .exec()
+        //     .then(function (doc){
+        //      // check username
+                // check password
+                // token code goes here
+        //     })
+        //     .catch(function (err) {
+        //         res.send(403, err)
+        //     });
+    
+        /**
+         * Token code
+         * @type {{id: String, name: String}}
+         */
         var payload = {id: id, name: value}; //'findOne: Where Id = 1 From tbl.users.name' what you get back from the database such as
         verified = true;
 
