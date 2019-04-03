@@ -71,5 +71,35 @@ module.exports = {
     "/iac":{
         method:"get",
         controller: "ExpressRouteController"
-    }
+    },
+    
+    "get /broadcast/:name":{
+        controller: "RoomController",
+        action: "broadcast"
+    },
+    
+    "get /broadcast/:name/:user":{
+        controller: "RoomController",
+        action: "broadcast"
+    },
+    
+    "get /private/:name":{
+        controller: "RoomController",
+        action: "private"
+    },
+    
+    "get /private/:name/:user":{
+        controller: "RoomController",
+        action: "private"
+    },
+    
+    "get /chat/:name/:user":{
+        controller: "RoomController",
+        action: "chat"
+    },
+    
+    // this.route('get', '/broadcast/:name', require('../api/controllers/room').broadcast);
+    // this.route('get', '/broadcast/:name/:user', require('../api/controllers/room').broadcast);
+    //
+    // this.route('get', '/chat/:name/:user', require('../api/controllers/room').chat);
 };
