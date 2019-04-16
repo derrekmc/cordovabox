@@ -1,14 +1,14 @@
 // var ModelSchema = new mongoose.Schema({
-//     id: Number,
-//     username: String,
-//     name: String,
-//     email: String,
+//     id: "Number",
+//     username: "String",
+//     name: "String",
+//     email: "String",
 //
-//     tips: Number,
-//     tipGoal: Number,
-//     tipTopic: String,
+//     tips: "Number",
+//     tipGoal: "Number",
+//     tipTopic: "String",
 //
-//     credits: Number,
+//     credits: "Number",
 //     inPrivate: Boolean,
 //
 //     updated: { type: Date, default: Date.now }
@@ -24,17 +24,17 @@
 
 module.exports = {
     attributes:{
-        id: Number,
-        username: String,
-        name: String,
-        email: String,
+        
+        username: "String",
+        name: "String",
+        email: "String",
 
-        tips: Number,
-        tipGoal: Number,
-        tipTopic: String,
+        tips: "Number",
+        tipGoal: "Number",
+        tipTopic: "String",
 
-        credits: Number,
-        inPrivate: Boolean,
+        credits: "Number",
+        inPrivate: "Boolean",
 
         updated: { type: Date, default: Date.now }
     },

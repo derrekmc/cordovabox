@@ -1,9 +1,9 @@
 module.exports = {
     attributes:{
-        id: String,
-        name: String,
+        
+        name: "String",
 
-        url: String,
+        url: "String",
 
         updated: { type: Date, default: Date.now }
     }
