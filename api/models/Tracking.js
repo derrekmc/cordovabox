@@ -1,11 +1,14 @@
 module.exports = {
     attributes:{
         
-        name: "String",
+        name: {
+            type: "string"
+        },
 
-        url: "String",
-
-        updated: { type: Date, default: Date.now }
+        url: {
+            type: "string"
+        },
+        
     }
 };
 

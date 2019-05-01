@@ -1,17 +1,17 @@
 module.exports = {
-
-    get: function get(req, res){
-        log.info("UserController.get");
-        User
-            .find({})
-            .exec()
-            .then(function (doc){
-                res.send(200, doc);
-            })
-            .catch(function (err) {
-                res.send(403, err)
-            });
-    },
+    
+    // get: function get(req, res){
+    //     log.info("UserController.get");
+    //     User
+    //         .find({})
+    //
+    //         .then(function (doc){
+    //             res.send(doc);
+    //         })
+    //         .catch(function (err) {
+    //             res.send(403, err)
+    //         });
+    // },
     
     post: function post(req, res){
         User
