@@ -69,7 +69,7 @@
   "author": "Derrek Cordova. <derrekmc@gmail.com>",
   "license": "BSD",
   "engines": {
-    "node": "0.12"
+    "node": "10.8.0"
   },
   "engineStrict": true,
   "devDependencies": {

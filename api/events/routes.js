@@ -44,8 +44,29 @@ module.exports = {
      * event.on('user', controller(){
      * })
      */
-    user: {
-        controller: 'EventControllerName'
+    
+    on: 'eventName', // on or event
+    
+    /**
+     * Option 1
+     */
+    controller: 'EventControllerName',
+    
+    /**
+     * Option 2
+     * @param data
+     */
+    controller: function(data){
+        
+    },
+    
+    /**
+     * Option 3 and the most compatible option is
+     *
+     */
+    "eventName": function (data, response) {
+        
     }
+    
     
 }
