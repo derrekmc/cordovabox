@@ -50,48 +50,25 @@ module.exports = {
         },
 
         redis: {
-            connectURI: process.env.REDIS_URL,
-            portNumber: 9429,
-            host: 'ec2-107-21-120-49.compute-1.amazonaws.com',
-            password: 'p87p0s8cabvh216prh5tu30po71',
-            database: ''
+            connectURI: process.env.REDIS_URL
         }
     },
 
     paymentGateway: {
-        authorizenet: {
-            "API_LOGIN_ID": "97esX3Ff",
-            "TRANSACTION_KEY": "66az49nD6SU8Tmbu"
-        },
-        stripe:{
-            test:{
-                secretKey: 'sk_test_tga5gOWvib4xU9GDJcEdT4F2',
-                publishKey: 'pk_test_zSrOID43LSPjDd5okqAHN2Vi'
-            },
-            production:{
-                secretKey: 'sk_live_fP445rXffypJexaYUaAlRVaQ ',
-                publishKey: 'pk_live_mmi6Z12XlU3SSVDPRJiqwC5E '
-            }
-        },
+        /**
+         * Add payment gateway objects here
+         */
         testMode: false
     },
 
     thirdParty:{
-        mandrill:{
-            key: '5-s-l8M5BKI45ojJ-5-Zdg'
-        },
+        /**
+         * Add payment thirdParty objects here
+         */
 
-        hipchat:{
-            key: 'a9aa7461190a47f51accabd3fc4d84',
-            rooms:{
-                newOrder: 1830957,
-                orderUpdates: 1833664,
-                codeUpdates: 1839237,
-                orderDeclines: 1833668,
-                mainRoom: 1449266
-            }
+        mandrill: {
+            key: ""
         }
-
     },
 
     sockets: {
@@ -108,12 +85,8 @@ module.exports = {
         author: "Derrek Cordova",
         rootDomain: "CordovaBox.com",
         favicon: '/images/favicon.ico',
-        address: "Delaware",
-        copyright: "© Derrek Cordova. All rights reserved. ",
-        navigation: {
-
-        },
-        blockedIps: ['173.0.36.47', '167.88.84.137', '167.88.84.244', '172.56.12.102', '24.248.60.130', '66.220.236.36']
+        navigation: {},
+        blockedIps: []
     },
 
     api: {
