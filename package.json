@@ -1,18 +1,17 @@
 {
   "name": "CordovaBox",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "server.js",
   "scripts": {
     "test": "mocha tests/index.js",
-    "start": "gulp build; node tcluster.js",
-    "startOne": "gulp build; node server.js",
-    "startAll": "redis-2.8.19/src/redis-server | NODE_CONFIG_DIR=../config node_modules/.bin/supervisor cluster.js",
+    "start": "gulp build && node tcluster.js",
+    "server": "gulp build && node server.js",
+    "all": "redis-2.8.19/src/redis-server | NODE_CONFIG_DIR=../config node_modules/.bin/supervisor cluster.js",
     "dev": "node_modules/.bin/supervisor server.js",
     "single": "node_modules/.bin/supervisor server.js",
     "cluster": "node_modules/.bin/supervisor cluster.js"
   },
   "dependencies": {
-    "authorize-net": "^1.0.3",
     "bluebird": "^2.9.3",
     "body-parser": "^1.9.3",
     "browserstack-webdriver": "^2.41.1",
@@ -27,14 +26,12 @@
     "ejs": "^2.5.5",
     "express": "^3.18.4",
     "express-session": "^1.9.2",
-    "google-adwords": "^1.1.2",
     "gulp": "^3.8.11",
     "gulp-cleancss": "^0.2.2",
     "gulp-compress": "0.0.9",
     "gulp-concat": "^2.6.1",
     "gulp-ejs": "^1.2.2",
     "gulp-gzip": "^1.4.0",
-    "gulp-imagemin": "^2.4.0",
     "gulp-minify-html": "^1.0.6",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.4",
@@ -42,14 +39,12 @@
     "gulp-yuicompressor": "0.0.3",
     "html-to-pdf": "^0.1.11",
     "imagemin-pngquant": "^4.2.2",
-    "jwt-simple": "^0.2.0",
-    "lodash": "^4.17.11",
+    "jwt-simple": "^0.5.6",
     "mandrill-api": "^1.0.41",
     "moment": "^2.10.0",
     "moment-timezone": "^0.3.1",
     "mongoose": "^4.13.15",
     "newrelic": "^1.17.1",
-    "node-authorize-net": "0.0.5",
     "node-hipchat": "^0.4.5",
     "node-redis": "^0.1.7",
     "redis": "^0.12.1",
@@ -68,23 +63,26 @@
   },
   "author": "Derrek Cordova. <derrekmc@gmail.com>",
   "license": "BSD",
+
   "engines": {
-    "node": "10.8.0"
+    "node": "12.0.0"
   },
   "engineStrict": true,
   "devDependencies": {
+    "braces": "^3.0.2",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-clean-css": "^2.3.2",
     "gulp-compressor": "^0.1.0",
     "gulp-ejs": "^1.1.0",
     "gulp-gzip": "^1.1.0",
-    "gulp-imagemin": "^2.2.1",
+    "gulp-imagemin": "^6.1.0",
     "gulp-minify-html": "^1.0.2",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.4",
     "gulp-watch": "^4.3.11",
     "gulp-yuicompressor": "0.0.3",
-    "imagemin-pngquant": "^4.0.0"
+    "imagemin-pngquant": "^4.0.0",
+    "lodash": "^4.17.15"
   }
 }
