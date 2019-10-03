@@ -29,10 +29,34 @@ module.exports = {
         method:"get",
         controller: "MainController"
     },
-    "/user":{
-      method:"get",
-      controller: "UserController"
+    
+    // "/user":{
+    //     method:"get",
+    //     controller: "UserController",
+    // },
+    //
+    "get /user":{
+        controller: "UserController"
     },
+    "get /user/:id":{
+        controller: "UserController"
+    },
+    "put /user/:id":{
+        controller: "UserController"
+    },
+    //
+    "post /user":{
+        controller: "UserController"
+    },
+    "delete /user/:id":{
+        controller: "UserController"
+    },
+    
+    "/api/stats":{
+        method:"get",
+        controller: "StatsController"
+    },
+    
     "/user/:id":{
         method:"get",
         controller: "UserController"
@@ -69,12 +93,43 @@ module.exports = {
         method:"get",
         controller: "RoomController.chat"
     },
-    "/api/stats":{
-        method:"get",
-        controller: "StatsController"
-    },
+    
+    // "/api/stats":{
+    //     method:"get",
+    //     controller: "StatsController"
+    // },
     "/iac":{
         method:"get",
         controller: "ExpressRouteController"
-    }
+    },
+    
+    "get /broadcast/:name":{
+        controller: "RoomController",
+        action: "broadcast"
+    },
+    
+    "get /broadcast/:name/:user":{
+        controller: "RoomController",
+        action: "broadcast"
+    },
+    
+    "get /private/:name":{
+        controller: "RoomController",
+        action: "private"
+    },
+    
+    "get /private/:name/:user":{
+        controller: "RoomController",
+        action: "private"
+    },
+    
+    "get /chat/:name/:user":{
+        controller: "RoomController",
+        action: "chat"
+    },
+    
+    // this.route('get', '/broadcast/:name', require('../api/controllers/room').broadcast);
+    // this.route('get', '/broadcast/:name/:user', require('../api/controllers/room').broadcast);
+    //
+    // this.route('get', '/chat/:name/:user', require('../api/controllers/room').chat);
 };

@@ -43,7 +43,7 @@
     "html-to-pdf": "^0.1.11",
     "imagemin-pngquant": "^4.2.2",
     "jwt-simple": "^0.2.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.11",
     "mandrill-api": "^1.0.41",
     "moment": "^2.10.0",
     "moment-timezone": "^0.3.1",
@@ -52,23 +52,24 @@
     "node-authorize-net": "0.0.5",
     "node-hipchat": "^0.4.5",
     "node-redis": "^0.1.7",
-
     "redis": "^0.12.1",
     "request": "^2.55.0",
-    "sails-mongo": "^0.10.5",
+    "sails-disk": "^1.1.0",
+    "sails-mongo": "^1.0.1",
     "socket.io": "^1.7.4",
     "socket.io-redis": "^0.1.4",
     "supervisor": "^0.5.7",
     "throng": "^1.0.0",
     "uuid": "^2.0.1",
     "walk": "^2.3.9",
+    "waterline": "^0.13.6",
     "webdriverio": "^2.4.5",
     "winston": "^0.8.3"
   },
   "author": "Derrek Cordova. <derrekmc@gmail.com>",
   "license": "BSD",
   "engines": {
-    "node": "0.12"
+    "node": "10.8.0"
   },
   "engineStrict": true,
   "devDependencies": {

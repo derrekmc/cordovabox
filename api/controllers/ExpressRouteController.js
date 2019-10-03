@@ -1,6 +1,6 @@
 module.exports = {
 
-    exec:  function bootstrap(req, res) {
+    get:  function bootstrap(req, res) {
 
         res.render('express_route.html', {
             socket: req.socket,

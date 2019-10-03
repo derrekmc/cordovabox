@@ -59,12 +59,7 @@ function listen(port, callback){
     /**************************************************
      * Server hooks - middleware
      ***************************************************/
-    require('./lib/hooks/index').register(app, server, function(app){
-        require('./lib/routes').register(app);
-        app.use(express.static(rootFolder));
-        app.use(app.router);
-        app.emit("cordovabox::" + "server_ready");
-    });
+    
             
     function startAppHttpListen(){
         var http = require('http').Server(app);
@@ -88,6 +83,13 @@ function listen(port, callback){
     }
 
     app.on("cordovabox::" + "server_ready", startAppHttpListen);
+    
+    require('./lib/hooks/index').register(app, server, function(app){
+        require('./lib/routes').register(app);
+        app.use(express.static(rootFolder));
+        app.use(app.router);
+        app.emit("cordovabox::" + "server_ready");
+    });
     
     _server = server;
     return server;

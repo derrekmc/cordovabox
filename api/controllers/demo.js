@@ -35,7 +35,7 @@ function endShow(req, res) {
 
 module.exports = {
 
-    exec: function exec(req, res) {
+    get: function exec(req, res) {
 
         res.render('demo/demo/chat.html', {
             socket: req.socket,

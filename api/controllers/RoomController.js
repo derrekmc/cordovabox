@@ -1,6 +1,6 @@
 module.exports = {
 
-    exec: function exec(req, res) {
+    get: function exec(req, res) {
     
         res.render('room_subscriber.html', {
             socket: req.socket,

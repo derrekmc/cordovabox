@@ -1,15 +1,19 @@
 module.exports = {
     attributes:{
-        name: { type: String, default: ''},
-        type: { type: String, default: ''}, // Transaction, Log Message,
-        description: { type: String, default: ''},
-        action: { type: String, default: ''}, // Create, Read, Update, Delete
+        name: { type: "string"},
+        type: { type: "string"}, // Transaction, Log Message,
+        description: { type: "string"},
+        action: { type: "string"}, // Create, Read, Update, Delete
 
-        user: { type: String, default: 'System' },
-        owner: { type: String, default: '' },
+        user: {
+            type: "string",
+            defaultsTo: 'System'
+        },
+        owner: {
+            type: "string",
+        }
 
-        createDate: { type: Date, default: Date.now},
-        updated: { type: Date, default: Date.now}
+        
     },
     methods:{}
 

@@ -1,15 +1,37 @@
 module.exports = {
-
-    exec: function exec(req, res){
-        log.info("working");
+    
+    // get: function get(req, res){
+    //     log.info("UserController.get");
+    //     User
+    //         .find({})
+    //
+    //         .then(function (doc){
+    //             res.send(doc);
+    //         })
+    //         .catch(function (err) {
+    //             res.send(403, err)
+    //         });
+    // },
+    
+    post: function post(req, res){
         User
-            .find({_id:req.param('id')})
-            .exec(function (err, model){
-                if(err) {
-                    res.send(403, err);
-                } else{
-                    res.send(200, model);
-                }
+            .create(req.body)
+            .then(function (doc){
+                res.send(201, doc._doc);
+            })
+            .catch(function (err) {
+                res.send(403, err)
+            });
+    },
+    
+    put: function post(req, res){
+        User
+            .findAndModify(req.body)
+            .then(function (doc){
+                res.send(203, doc._doc);
+            })
+            .catch(function (err) {
+                res.send(403, err)
             });
     },
 

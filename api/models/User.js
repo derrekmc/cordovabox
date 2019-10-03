@@ -1,14 +1,14 @@
 // var ModelSchema = new mongoose.Schema({
-//     id: Number,
-//     username: String,
-//     name: String,
-//     email: String,
+//     id: { type: "number" },
+//     username: { type: "string" },
+//     name: { type: "string" },
+//     email: { type: "string" },
 //
-//     tips: Number,
-//     tipGoal: Number,
-//     tipTopic: String,
+//     tips: { type: "number" },
+//     tipGoal: { type: "number" },
+//     tipTopic: { type: "string" },
 //
-//     credits: Number,
+//     credits: { type: "number" },
 //     inPrivate: Boolean,
 //
 //     updated: { type: Date, default: Date.now }
@@ -24,19 +24,21 @@
 
 module.exports = {
     attributes:{
-        id: Number,
-        username: String,
-        name: String,
-        email: String,
+        
+        username: { type: "string" },
+        name: { type: "string" },
+        email: { type: "string" },
 
-        tips: Number,
-        tipGoal: Number,
-        tipTopic: String,
+        tips: { type: "number" },
+        tipGoal: { type: "number" },
+        tipTopic: { type: "string" },
 
-        credits: Number,
-        inPrivate: Boolean,
+        credits: { type: "number" },
+        inPrivate: {
+            type: "boolean"
+        }
+    
 
-        updated: { type: Date, default: Date.now }
     },
     methods:{
         canTip: function canTip(amount) {
