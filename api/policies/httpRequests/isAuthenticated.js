@@ -8,7 +8,7 @@ module.exports = function isAuthenticated(req, res, next){
         next();
     }else {
         //next(new Error('Session not authenticated'));
-        log.warn('Session not authenticated');
+        log.debug('Http Policy Warning! - Session Not Authenticated');
         next();
     }
 };
