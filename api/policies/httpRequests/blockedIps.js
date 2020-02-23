@@ -6,7 +6,8 @@ module.exports = function isBlockedIp(req, res, next){
 
     if(_Config.site.blockedIps.indexOf(req.connection.remoteAddress) != -1){
         display404(req, res, next);
-    }else{ 
+    }else{
+        log.debug("Authorized Ip Access");
         next();
     }
    

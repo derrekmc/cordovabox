@@ -23,7 +23,7 @@ module.exports = {
                 res.send(403, err)
             });
     },
-    
+
     put: function post(req, res){
         User
             .findAndModify(req.body)
