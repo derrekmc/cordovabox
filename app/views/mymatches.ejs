@@ -1,0 +1,25 @@
+<section class="application-section" ng-controller="MyMatchesController as myMatchesController" >
+        <!-- MAIN
+        ================================================== -->
+        <main class="main">
+
+            <!--START PROFILE BOX-->
+            <div class="profile-box ng-cloak" ng-class-odd="bg-whitesmoke" ng-repeat="match in matches" ng-show="matches.length">
+                <!--PROFILE IMAGE-->
+                <div class="profile-img">
+                    <a href="/profile/{{ match.name }}/"><img src="{{  match.profile_image }}" alt=""></a>
+                </div>
+                <!--/PROFILE IMAGE-->
+                <!--PROFILE TEXT-->
+                <div class="profile-text">
+                    <h2><span ><a style="overflow: hidden" href="/profile/{{ match.name }}/">{{ match.name }} </a></span><span style="float: right;"> <img src="/images/signs/{{ match.sign }}_symbol.gif"></span></h2>
+                    <h4>{{ match.age }} {{ match.location }}</h4>                    
+                    <p style="overflow: hidden; height: 40px;">{{ match.bio }}</p>
+                    <!-- <button class="btn btn-info" href="/profile/{{ match.name }}/">View Profile</a> -->
+                </div>
+                <!--/PROFILE TEXT-->
+            </div>
+            <!--END PROFILE BOX-->
+
+        </main>
+</section>
