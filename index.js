@@ -1,4 +1,4 @@
-const path = require("");
+const path = require("path");
 const server = require('./lib/app');
 async function start () {
     const port = process.env.PORT || 3000;

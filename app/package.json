@@ -1,6 +1,6 @@
 {
-  "name": "CordovaBox",
-  "version": "0.1.0",
+  "name": "cordovabox",
+  "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node app.js",
@@ -54,6 +54,7 @@
     "jwt-simple": "^0.5.6",
     "moment": "^2.10.0",
     "moment-timezone": "^0.3.1",
+    "cordovabox": "^1.0.0",
     "mongoose": "^4.13.15",
     "newrelic": "^1.17.1",
     "ng-croppie": "^1.0.0",
