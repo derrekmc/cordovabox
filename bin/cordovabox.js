@@ -1,18 +1,16 @@
 #!/usr/bin/env node
 
-var cordovaBuild = require('./build.js');
-const package = require('../package.json');
-const server = require('../lib/app');
-
 // Delete the 0 and 1 argument (node and script.js)
 var args = process.argv.splice(process.execArgv.length + 2);
 
 switch (args[0]){
     case "-v":
+        const package = require('../package.json');
         console.log("v" + package.version)
         break;
     case "new":
         if (args[1]){
+            const cordovaBuild = require('./build.js');
             console.log("Generating App", args[0]);
             cordovaBuild.new(args[1]);
         }else{
@@ -20,6 +18,7 @@ switch (args[0]){
         }
         break;
     case "start":
+        const server = require('../lib/app');
         console.error("CordovaBox - Starting Server...");
         const port = process.env.PORT || 3000;
         try{

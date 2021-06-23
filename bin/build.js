@@ -2,7 +2,7 @@ module.exports = {
     new: function (name){
         const fse = require('fs-extra');
 
-        const srcDir = __dirname + `/../app`;
+        const srcDir = require('path').resolve('.') + `/app`;
         const destDir = `${name}`;
 
         fse.copySync(srcDir, destDir, { overwrite: false });
