@@ -7,9 +7,10 @@
 ### Install & Launch
 ```
 
-git clone https://github.com/derrekmc/CordovaBox.git
-
+npm install cordovabox
+cordovabox new appname
 npm install
+npm start
 npm start - to run in cluster mode. Vertical scaling
 npm run-script single - Run in single instance mode
 node server.js - Run in single instance mode without gulp

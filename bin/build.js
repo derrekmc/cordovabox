@@ -1,14 +1,67 @@
 module.exports = {
-    new: function (name){
+    new: async function (name){
+        const fse = require('fs-extra');
+        const srcDir = require('path').resolve('.') + `/app`;
+        const destDir = require('path').resolve(`./${name}`) ;
+        try{
+            fse.copySync(srcDir, destDir, { overwrite: false });
+            const packageJson = require(`${destDir}/package.json`);
+            packageJson.name = name;
+            await fse.outputFile(`${destDir}/package.json`, JSON.stringify(packageJson, null, 2), { overwrite: true });
+            console.log(`Done creating app ${name}`);
+        }catch (err){
+            let message =``;
+            if(err.message.indexOf(`EEXIST`) != -1) message = `Application ${name} already exists. Please select another name.`
+            console.error(`Something went wrong`, message);
+        }
+    },
+
+    "generate-api": async function (name) {
         const fse = require('fs-extra');
 
-        const srcDir = require('path').resolve('.') + `/app`;
-        const destDir = `${name}`;
-
-        fse.copySync(srcDir, destDir, { overwrite: false });
-
-        console.log(`Done creating app ${name}`);
+        const controllerDirectory = `./api/controllers/${name}Controller.js`;
+        try {
+            await fse.outputFile(controllerDirectory, `
+module.exports = {
+    example: function(req, res){
+        res.ok();
     }
+};`)
+
+        } catch (err) {
+            console.error(err)
+        }
+
+
+        const modelDirectory = `./api/models/${name}.js`;
+        try {
+            await fse.outputFile(modelDirectory, `
+module.exports = {
+    attributes:{
+        /**
+         * name: {
+         *   type: 'string',
+         *   defaultsTo: ''
+         * }
+         **/      
+    },
+    methods:{
+        /**
+         * beforeCreate: (data) => {
+         *   data.createdAt = new Date();
+         *   return data;
+         * }
+         **/      
+    }
+};`)
+            console.log(`${name} API creation complete `);
+        } catch (err) {
+            console.error(err)
+        }
+
+
+    }
+
 }
 
 

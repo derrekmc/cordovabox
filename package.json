@@ -16,7 +16,7 @@
     "buildApp": "node bin/build.js"
   },
   "bin": {
-    "cordovabox": "bin/cordovabox.js"
+    "cordovabox": "bin/index.js"
   },
   "preferGlobal": true,
   "directories": {

@@ -17,6 +17,17 @@ switch (args[0]){
             console.error("You did not specify a name for your application");
         }
         break;
+
+    case "generate-api":
+        if (args[1]){
+            const cordovaBuild = require('./build.js');
+            console.log("Generating App", args[0]);
+            cordovaBuild["generate-api"](args[1]);
+        }else{
+            console.error("You did not specify a name for your application");
+        }
+        break;
+
     case "start":
         const server = require('../lib/app');
         console.error("CordovaBox - Starting Server...");
