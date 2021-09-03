@@ -1,0 +1,71 @@
+<script>
+    var username = "<%= username %>";
+    console.log(username);
+</script>
+
+<section class="application-section" ng-controller="ProfileController as profileController" >
+        <!-- MAIN
+        ================================================== -->
+        <main class="main ng-cloak">
+
+            <!--START PROFILE BOX-->
+            <div ng-repeat="profile in profiles" ng-show="profiles.length">
+
+                <div class="profile-img-main">
+                    <!--<a href="/profile/{{ profile.name }}/"><img class="" src="{{ profile.profile_image_profile_pic }}" alt=""></a>-->
+                    <a href="/profile/{{profile.name}}/"><img class="" src="{{  profile.profile_image_profile_pic }}" alt=""></a>
+                </div>
+                <!--/PROFILE IMG-->
+
+                <div class="clearfix"></div>
+
+                <div class="profile-text-main">
+
+                    <h2 ><a href="/profile/{{ profile.name }}/" ng-model="profile.name">{{ profile.name }}</a></h2>
+
+                    <h4>{{ profile.age }} {{ profile.location }}</h4>
+                    <h4>{{ profile.sign }}</h4>
+
+                    <p style="overflow: hidden; height: 40px;">{{ profile.about_me }}</p>
+
+                    <div class="form-group col-xs-12" style="">
+                        <button type="submit" class="btn btn-block btn-send-message">Send Message</button>
+                    </div>
+
+                    <div class="form-group col-xs-6" style=" ">
+                        <button type="submit" class="btn btn-block btn-primary">Add Favorite</button>
+                    </div>
+
+                    <div class="form-group col-xs-6" style=" ">
+                        <button type="submit" class="btn btn-block btn-info">Wink</button>
+                    </div>
+
+                    <div class="basic_info_container">
+                        <table>
+                            <tr><td class="basic_info_title">Height:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.height }}</td></tr>
+                            <tr><td class="basic_info_title">Body Type:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.body_type }}</td></tr>
+                            <tr><td class="basic_info_title">Exercise:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.exercise }}</td></tr>
+                            <tr><td class="basic_info_title">Status:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.relationship_status }}</td></tr>
+                            <tr><td class="basic_info_title">Children:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.children }}</td></tr>
+                            <tr><td class="basic_info_title">Ethnicity:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.ethnicity }}</td></tr>
+                            <tr><td class="basic_info_title">Religion:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.religion }}</td></tr>
+                            <tr><td class="basic_info_title">Education:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.education }}</td></tr>
+                            <tr><td class="basic_info_title">Smoking:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.smoking }}</td></tr>
+                            <tr><td class="basic_info_title">Drinking:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.drinking }}</td></tr>
+                            <tr><td class="basic_info_title">Income:</td><td class="basic_info_container_td_spacing"></td><td>{{ profile.income }}</td></tr>
+
+                        </table>
+                    </div>
+                    
+                    <div>
+                        {{ profile }}
+                    </div>
+
+                </div>
+                <!--/PROFILE TEXT-->
+            </div>
+            <!--END PROFILE BOX-->
+
+        </main>
+</section>
+

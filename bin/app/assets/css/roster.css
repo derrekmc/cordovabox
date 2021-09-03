@@ -1,0 +1,64 @@
+.chatUsersContainer {
+    font-family: arial, sans-serif;
+    float: left;
+    width: 150px;
+    height: 264px;
+    overflow: auto;
+    color: #00a2ff;
+    background: #fff;
+    display: block;
+    border: #dcdcdc 2px solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.chatHeaderSpan {
+    display: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#chatUsers{
+    text-decoration: none;
+    list-style: none;
+}
+
+a {
+    color: #4160ff;
+    text-decoration: none;
+}
+
+.hoverMenu {
+    background: #000000;
+    border: 1px solid #fff;
+    font-size: 14px;
+    display:    none;
+    position:   absolute;
+}
+
+.hoverMenu a {
+    color:#FFFFFF;
+    text-decoration:none;
+    padding:7px;
+}
+
+.hoverMenu a:hover {
+    font-weight:bold;
+    color: #F00880;
+    background: #ccc7c4;
+}
+
+ul, li {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+li {
+    margin-bottom:4px;
+}
+
+.blockMenuItem{
+    float: left;
+}

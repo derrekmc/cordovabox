@@ -1,0 +1,1115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>All States</title>
+    <link href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/css/broadcast.css" rel="stylesheet" type="text/css">
+    <link id="chngStsCSS" href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/css/initial.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/css/jquery.ui.all.css">
+    <link rel="stylesheet" href="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/jquery.js"></script>
+    <script type="text/javascript" src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/homeMod.js"></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/jquery.dropkick-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/jquery.ui.core.js"></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/jquery.ui.widget.js"></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/jquery.ui.mouse.js"></script>
+    <script src="http://test-media.isprime.com/design-tasks/revised-model-broadcaster/allMode/files-3/js/jquery.ui.resizable.js"></script>
+    <script>
+        $(function() {
+            $( "#resizable" ).resizable({
+                aspectRatio: 4 / 3
+            });
+            $("#resizable").bind("resize", function (event, ui){
+                resizeConsole();
+            });
+
+            resizeConsole();
+        });
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            $('.extndtimedd').dropkick();
+            $('.default').dropkick();
+            $('.showDur').dropkick();
+            $('.showGoal').dropkick();
+            $('.showRate').dropkick();
+        });
+    </script>
+</head>
+<body>
+
+
+
+<!-- --------------------------------------------- config tip show overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-configTipShowMod ">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Configure Tip Show</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-configTipShow">
+                        <div class="octs-arTxt"><i class="fa fa-play"></i> IMPORTANT - TIP SHOW RULES</div>
+                        <div class="octs-ylBg">You must perform the entire Tip Show as you specify below. Failure to do so may result in loss of the Tip Show feature. <a href="#">more..</a></div>
+                        <div class="octs-arTxt"><i class="fa fa-play"></i> SET SHOW LENGTH AND MINIMUM AMOUT</div>
+                        <div class="octs-ddOpt clearfix">
+                            <div class="otg-lft otg-br"><div class="ddTpBtn"><select class="showRate grndBtn"><option>Show rate</option><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select></div>
+                            </div>
+                            <div class="otg-lft otg-br"><div class="ddTpBtn"><select class="showGoal grndBtn"><option>Show goal</option><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select></div>
+                            </div>
+                            <div class="otg-lft otg-br"><div class="ddTpBtn"><select class="showDur grndBtn"><option>Duration</option><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select></div>
+                            </div>
+                        </div>
+                        <div class="octs-arTxt"><i class="fa fa-play"></i> WHAT I WILL DO IN MY SHOW</div>
+                        <div class="octs-arTxtArea"><textarea></textarea></div>
+                        <div class="octs-btmBtns osrt-ata clearfix">
+                            <div class="osrtata-lft"><a href="#">Learn about Tip Show feature</a></div>
+                            <div class="osrtata-rgt clearfix">
+                                <div class="osrtatr-lft"><a href="#" class="ndBtn ndBtn-gray closeOvrlyBt">Cancel</a></div>
+                                <div class="osrtatr-rgt"><a href="#" class="ndBtn ndBtn-green closeOvrlyBt bfrNtrTpShw">Submit</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- config tip show overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- HD mode overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-HDMode ">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Stream in HD (external encoding)</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-HDMode">
+                        <div class="oychdm-row-instruc">
+                            <div class="oychdmri-er clearfix">
+                                <div class="oychdmrier-lft">1</div>
+                                <div class="oychdmrier-rgt">You must copy/paste the FMS Url and Stream into the FMLE app.</div>
+                            </div>
+                            <div class="oychdmri-er clearfix">
+                                <div class="oychdmrier-lft">2</div>
+                                <div class="oychdmrier-rgt">Click start on the FMLE application.</div>
+                            </div>
+                            <div class="oychdmri-er clearfix">
+                                <div class="oychdmrier-lft">3</div>
+                                <div class="oychdmrier-rgt">Once online this window will close automatically. <a href="#">HD tutorial and help</a></div>
+                            </div>
+                        </div>
+                        <div class="oychdm-row oychdmRw-2 clearfix">
+                            <div class="oychdmr-1">FMS Url:</div>
+                            <div class="oychdmr-2"><input type="text" value="rtmp://encoder.fmle.com/whateveritneed"></div>
+                            <div class="oychdmr-3"><a class="grndBtn" href="javascript:void(0);">Click to copy</a></div>
+                        </div>
+                        <div class="oychdm-row oychdmRw-3 clearfix">
+                            <div class="oychdmr-1">Stream:</div>
+                            <div class="oychdmr-2"><input type="text" value="stream.info.inserted.here"></div>
+                            <div class="oychdmr-3"><a class="grndBtn" href="javascript:void(0);">Click to copy</a></div>
+                        </div>
+                        <div class="oychdm-rTxt">YOUR FMLE VIDEO IS EITHER NOT STARTED OR IF IT IS STARTED PLEASE "STOP" AND "START" VIDEO AGAIN IN FMLE. THEN CLICK THE GO ONLINE BUTTON TO TRY AGAIN. <a href="#">more help</a></div>
+                        <div class="oychdm-gBtn"><a class="btn_1 bt_green" href="javascript:void(0)">Go Online</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- HD mode overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- chat disconnected 1 overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-disconnected-1 ">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">This chat has been disconnected</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-disconnected-1">
+                        <div class="chtDscnt-error">WE WERE UNABLE TO CONNECT YOUR VIDEO STREAM AND CAN NOT CONNECT YOU TO CHAT. PLEASE MAKE SURE YOUR WEBCAM IS CONNECTED, CLOSE THIS WINDOW AND CLICK THE "GO ONLINE" BUTTON AGAIN. &nbsp;<a href="#">more help</a></div>
+                        <div class="chtDscnt-btn"><a href="javascript:void(0)" class="btn_1 bt_dgray closeOvrlyBt">CLOSE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- chat disconnected 1 overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- chat disconnected 2 overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-disconnected-2 ">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">This chat has been disconnected</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-disconnected-2">
+                        <div class="chtDscnt-error">
+                            YOU OR SOMEONE WENT ONLINE IN ANOTHER BROWSER AND YOU HAVE BEEN DISCONNECTED FROM THIS CHAT.
+                            <div class="cder-tSpc">IF THIS WAS NOT YOU, PLEASE CHANGE YOUR PASSWORD OR CONTACT SUPPORT FOR FURTHER ASSISTANCE. &nbsp;<a href="#">more help</a></div></div>
+                        <div class="chtDscnt-btn"><a href="javascript:void(0)" class="btn_1 bt_dgray closeOvrlyBt">CLOSE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- chat disconnected 2 overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- set topic overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-setRoomTopic">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Set room topic</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-setRoomTopic">
+                        <div class="osrt-ta"><textarea></textarea></div>
+                    </div>
+                    <div class="osrt-ata clearfix">
+                        <div class="osrtata-lft"><a href="#">Need help with topic ideas?</a></div>
+                        <div class="osrtata-rgt clearfix">
+                            <div class="osrtatr-lft">140</div>
+                            <div class="osrtatr-rgt"><a href="#" class="ndBtn">Save</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- set topic overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- Report concern overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-reportConcern">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Report a concern</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-reportConcern">
+                        <div class="osrt-ta"><textarea></textarea></div>
+                    </div>
+                    <div class="osrt-ata clearfix">
+                        <div class="osrtata-lft"><a href="#">Need immediate help? Call us</a></div>
+                        <div class="osrtata-rgt clearfix">
+                            <div class="osrtatr-lft">140</div>
+                            <div class="osrtatr-rgt"><a href="#" class="ndBtn">Send</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- Report concern overlay end --------------------------------------------- -->
+
+
+
+<!-- --------------------------------------------- Force start of show overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-frceStrtShow ">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Force Start of Show</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-frceStrtShow">
+                        <div class="fssYll-ta">
+                            <div class="fssYllT-in">
+                                <p>By clicking submit you will automatically start the show and collect the current show tips. You will also earn additional tips for all users that enter the show after it starts.</p>
+                                <p>You must perform the entire Tip Show as you specify below. Failure to do so many result in loss of the Tip Show feature. <a href="#">more..</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="osrt-ata clearfix">
+                        <div class="osrtata-lft"><a href="#">Learn about Tip Show feature</a></div>
+                        <div class="osrtata-rgt clearfix">
+                            <div class="osrtatr-lft"><a href="#" class="ndBtn ndBtn-gray closeOvrlyBt">Cancel</a></div>
+                            <div class="osrtatr-rgt"><a href="#" class="ndBtn ndBtn-green">Submit</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- Force start of show overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- Report concern overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-tipGoal">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Set Tip Goal</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-tipGoal">
+                        <div class="octg-1-row clearfix">
+                            <div class="otg-lft otg-tl">25<span class="otgl-sml"> tips</span></div>
+                            <div class="otg-mdl otg-tm">/</div>
+                            <div class="otg-lft otg-tr">150<span class="otgl-sml"> goal</span></div>
+                        </div>
+                        <div class="octg-2-row clearfix">
+                            <div class="otg-lft otg-bl"><a href="#" class="grndBtn">Reset counter</a></div>
+                            <div class="otg-mdl otg-bm">&nbsp;</div>
+                            <div class="otg-lft otg-br"><div class="ddTpBtn"><select class="default grndBtn"><option>Set goal</option><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select></div>
+                                <!--<div class="ddMnuMn">
+                                    <a href="#" class="grndBtn"><span class="ddMnuAr">▾</span>Set goal</a>
+                                    <div class="dd-subMnu">
+                                        <a href="#"></a>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="tg-btmMsg"><a href="#">Learn about how best to set your goals</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- Report concern overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- configure tip show overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-configTipShow">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Confiture Tip Show</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-configTipShow">
+                        <div class="octg-2-row clearfix">
+                            <div class="otg-lft otg-br"><div class="ddTpBtn"><select class="extndtimedd grndBtn"><option>Extend show duration</option><option>10</option><option>20</option><option>50</option><option>100</option><option>200</option></select></div>
+                            </div>
+                        </div>
+                        <div class="tg-btmMsg">
+                            <a class="ndBtn ndBtn-gray closeOvrlyBt" href="#">Cancel</a>
+                            <a class="ndBtn ndBtn-green" href="#">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- configure tip show overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- Block user overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-blockUsr">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Confirmation</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-blockUsr">
+                        <div class="confHdd">Are you sure you want to block this user?</div>
+                        <div class="confBtn clearfix">
+                            <div class="echConfB eConfB-yes"><a href="#" class="grndBtn">YES</a></div>
+                            <div class="echConfB eConfB-no"><a href="#" class="grndBtn">NO</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- Block user overlay end --------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------- Private show request overlay start --------------------------------------------- -->
+<div class="ovrlyMn overlay-pvtConf">
+    <div class="ol-table"><div class="ol-tr"><div class="ol-td">
+        <div class="ovrly-container">
+            <div class="ovrly-container-in">
+                <div class="ovrlyc-hdd clearfix">
+                    <a href="javascript:void(0);" class="closeOvrlyMn"><img src="images/t.gif" class="mpic"></a>
+                    <div class="ovrlych-txt">Private Show Request</div>
+                </div>
+                <div class="ovrlyc-cntnr">
+                    <div class="ovrlyc-pvtConf">
+                        <div class="confHdd">The following user wants to take you PRIVATE.</div>
+                        <div class="psr-user">drfancypants</div>
+                        <div class="confBtn clearfix">
+                            <div class="echConfB eConfB-yes"><a href="#" class="grndBtn">ACCEPT</a></div>
+                            <div class="echConfB eConfB-no"><a href="#" class="grndBtn">REJECT</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+</div>
+<!-- --------------------------------------------- Private show request overlay end --------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="headerSpacer"></div>-->
+
+<div class="main-container modelInNrmalChatMain modelInNrmalChatInt clearfix">
+
+<div class="modelLeftPanel clearfix">
+<div class="video-n-info">
+    <div id="resizable" class="ui-widget-content vidStreaming">
+        <div class="hdModeVdoOvr">
+            <div class="hdModeVdoOvr-in">
+                <div class="hmvo-1">YOU HAVE SELECTED HD MODE</div>
+                <div class="hmvo-2">YOUR VIDEO WILL NOT SHOW HERE</div>
+                <div class="hmvo-3">While in HD mode your video will display in the separate application (FMLE). To return to normal mode select a camera below.</div>
+                <div class="hmvo-4"><a href="#">Instructions on how to setup HD</a></div>
+            </div>
+        </div>
+        <div class="modelOffLineMsg"><div class="modelOffLineMsg-in"><b>START BROADCASTING</b>
+            <div class="molm-cmng molm-choose"><span class="oychdmrier-lft thisDeActive">1</span><span class="oychdmrier-lft thisActive">&#10004;</span> CHOOSE VIDEO MODE</div>
+            <div class="molm-cmng molm-select"><span class="oychdmrier-lft thisDeActive">2</span><span class="oychdmrier-lft thisActive">&#10004;</span> SELECT CAM & MIC BELOW</div>
+        </div></div>
+    </div>
+
+    <div class="adoVdoSttng adoVdoSttng-1 clearfix">
+        <div class="frstScrnHldr clearfix">
+            <div class="fsh-cmn fsh-1">Select mode:</div>
+            <div class="fsh-cmn fsh-2"><a class="btn_1 chngSt-2 bt_blue" href="javascript:void(0)"><b>FMLE</b> (HD)</a></div>
+            <div class="fsh-cmn fsh-3"><a class="btn_1 chngSt-2 bt_blue" href="javascript:void(0)"><b>Web Browser</b> (SD)</a></div>
+        </div>
+    </div>
+
+    <div class="adoVdoSttng adoVdoSttng-2 clearfix">
+        <div class="fsh-cmn fsh-1p1">You are in FLME video mode</div>
+        <div class="crssCS"><a href="#">x</a></div>
+        <select name="video" class="default av-video" tabindex="2">
+            <option value="">Camera</option>
+            <option value="hd">HD MODE</option>
+            <option value="lc920">Logitech C9</option>
+            <option value="lc921">Logitech C921</option>
+            <option value="lc922">Logitech C922</option>
+            <option value="lc923">Logitech C923 Logitech C923</option>
+            <option value="lc924">Logitech C924</option>
+            <option value="lc925">Logitech C925</option>
+        </select>
+        <select name="audio" class="default av-audio" tabindex="3">
+            <option value="">Select Mic</option>
+            <option value="lc920">Internal Mic</option>
+            <option value="lc921">Internal Mic 2</option>
+            <option value="lc922">Internal Mic 3</option>
+            <option value="lc923">Internal Mic 4</option>
+            <option value="lc924">Internal Mic 5</option>
+            <option value="lc925">Internal Mic 6</option>
+        </select>
+        <div class="goOffCam btn-initial"><a href="javascript:void(0)" class="btn_1 bt_green">Go Online</a></div>
+        <div class="goOffCam btn-goOff-4"><a href="javascript:void(0)" class="btn_1 bt_orng1">Go offline</a></div>
+        <div class="goOffCam btn-freechat"><a href="javascript:void(0)" class="btn_1 bt_gry1">Off Camera</a></div>
+        <div class="goOffCam btn-private"><a href="javascript:void(0)" class="btn_1 bt_orng1">End Private</a></div>
+    </div>
+
+    <div class="model-iActions">
+        <div class="each-mia clearfix">
+            <div class="each-mia-1">Allow Private Shows:</div>
+            <div class="each-mia-2"><input type="radio" name="allowPvtShow" id="allowPvtShow-y"><label for="allowPvtShow-y">yes</label></div>
+            <div class="each-mia-3"><input type="radio" name="allowPvtShow" id="allowPvtShow-n"><label for="allowPvtShow-n">no</label></div>
+        </div>
+
+        <div class="tipShowStarter">
+            <div class="tss-in clearfix">
+                <div class="tssi-lft">Tip Show:</div>
+                <div class="tssi-rgt"><a href="javascript:void(0)" class="btn_1 bt_blue chStc-tip"><b>Start Tip Show</b></a></div>
+            </div>
+        </div>
+
+        <!--<div class="changeStates-2 changeStates-3">
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-1 disCntnt-1">disconnected 1</a> &nbsp;&nbsp;
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-2 disCntnt-2">disconnected 2</a>
+        </div>-->
+
+
+        <!--<div class="changeStates-2">
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-1">1</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-2">2</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-3">3</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-4">4</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-5">5</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-6">6</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chStc-tipShowIn">7</a>
+            <a href="javascript:void(0);" class="chngSt-cmn chngSt-8">8</a>
+        </div>-->
+
+        <div class="changeStates-2">
+            <span class="chngSt-5">FMLE</span>
+        </div>
+        <span class="goto-tipShowEnd chngSt-8">Tip Show End</span>
+
+        <div class="chageStates clearfix">
+            <a href="javascript:void(0);" class="chSt-cmn chStc-int chStc-act">Initial</a><a href="javascript:void(0);" class="chSt-cmn chStc-fre">Freechat</a><a href="javascript:void(0);" class="chSt-cmn chStc-pvt">Private</a><a href="javascript:void(0);" class="chSt-cmn chStc-tipShowIn">Tip</a><a href="javascript:void(0);" class="chSt-cmn chStc-ovr">Over</a>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+<div class="chat-main">
+<!-- ---------------------------------------initial states start--------------------------------------- -->
+<div class="chatMain-cmn chatMain-initial">
+
+
+<!-- show over -->
+<div class="youarein_blnk showOver">
+    <div class="ybso-1"><b>Summary:</b> private user: drfancypants, 300 mins. Spy count: 12</div>
+    <div class="ybso-2m">
+        <div class="ybso-2">PRIVATE SHOW HAS ENDED</div>
+        <div class="ybso-3">This show has ended. There are no private/spy users remaining.</div>
+        <div class="ybso-4">Click the GO ONLINE button to re-enter freechat</div>
+    </div>
+</div>
+<!-- show over -->
+
+
+<!-- initial states -->
+<div class="hdr2strp-initial">
+    <div class="youarein_blnk">
+        <b class="youarein-bold">YOU ARE CURRENTLY AWAY</b>
+    </div>
+
+    <div class="topicMain clearfix">
+        <div class="topicMain-inner">
+            <div class="tpcMn-1">Topic:</div>
+            <div class="tpcMn-2"><div class="beforeSetTopic">[ <a href="javascript:void(0);" class="bfrStTpcLnk">Click here to set your freechat room topic</a> ]</div></div>
+            <div class="tpcMn-3">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<!-- initial states -->
+
+
+<!-- tip states -->
+<div class="hdr2strp-tip">
+    <div class="youarein_blnk">
+        <b class="youarein-bold">TIP SHOW</b>
+    </div>
+    <div class="topicMain clearfix">
+        <div class="topicMain-inner">
+            <div class="tpcMn-1">What I will do in my show:</div>
+            <div class="tpcMn-2">I am gonna bounce on a pogo stick in my butt and attempt some backflips while blah blah blah</div>
+            <div class="tpcMn-3">[ <a href="#">edit</a> ]</div>
+        </div>
+    </div>
+</div>
+<!-- tip states -->
+
+
+<!-- tip show in states -->
+<div class="hdr2strp-tipShowIn">
+    <div class="youarein_blnk">
+        <b class="youarein-bold">YOU ARE IN TIPSHOW</b>
+        <span class="youarein-span youarein-span-1">REMAINING: 9 mins 23 secs</span>
+        <span class="youarein-span youarein-span-2">&bull; TIME REACHED</span>
+    </div>
+    <div class="topicMain clearfix">
+        <div class="topicMain-inner">
+            <div class="tpcMn-1">What I will do in my show:</div>
+            <div class="tpcMn-2">I am gonna bounce on a pogo stick in my butt and attempt some backflips while blah blah blah</div>
+        </div>
+    </div>
+</div>
+<!-- tip show in states -->
+
+
+<!-- free chat states -->
+<div class="hdr2strp-freechat">
+    <div class="youarein_blnk">
+        <b class="youarein-bold">FREE CHAT</b>
+    </div>
+
+    <div class="topicMain clearfix">
+        <div class="topicMain-inner">
+            <div class="tpcMn-1">Topic:</div>
+            <div class="tpcMn-2">$10 for look at my biggens and $20 i will jiggle them all over the place</div>
+            <div class="tpcMn-3">[ <a href="#">edit</a> ]</div>
+        </div>
+    </div>
+</div>
+<!-- free chat states -->
+
+
+<!-- private states -->
+<div class="hdr2strp-private">
+    <div class="youarein_blnk">
+        <b class="youarein-bold">YOU ARE IN PRIVATE</b>
+        <span class="youarein-span">300 mins 30 secs</span>
+    </div>
+
+    <div class="topicMain clearfix">
+        <div class="topicMain-uName">User: drfancypants</div>
+    </div>
+</div>
+<!-- private states -->
+
+
+
+
+<div class="modelNuserInfo clearfix">
+    <div class="mnui-rmCount clearfix">
+        <div class="mnuiRmCnt-in">
+            <div class="mnui-cmn-1">Users:</div>
+            <div class="mnui-cmn-2 mnui-cmn-2-difC2">0</div>
+            <div class="clearAll"></div>
+        </div>
+        <div class="mnuirc-TipShowIn">
+            <div class="mnui-cmn-1">Users in show:</div>
+            <div class="mnui-cmn-2 mnui-cmn-2-difC2">123</div>
+            <div class="clearAll"></div>
+        </div>
+    </div>
+    <!-- initial states -->
+    <div class="hdr1strp-initial">
+        <div class="mnui-tipCount clearfix">
+            <div class="mnui-cmn-1">Tip counter:</div>
+            <div class="mnui-cmn-2">0 tips</div>
+            <div class="mnui-cmn-3"> / </div>
+            <div class="mnui-cmn-4"><span class="setGoalTxt"><nobr>[ <a href="javascript:void(0);" class="setGoalAction">set goal</a> ]</nobr></span></div>
+            <div class="clearAll"></div>
+            <div class="mnui-cmn-5">&nbsp;</div>
+        </div>
+    </div>
+    <!-- initial states -->
+
+    <!-- tip states -->
+    <div class="hdr1strp-tip">
+        <div class="mnui-tipCount mnuiTipCount-t1 clearfix">
+            <div class="mnui-cmn-1">Show goal:</div>
+            <div class="mnui-cmn-2 sliDiff">0</div>
+            <div class="mnui-cmn-3"> / </div>
+            <div class="mnui-cmn-2">150 </div>
+            <div class="mnui-cmn-4"><span class="setGoalTxt">tips</span></div>
+        </div>
+        <div class="mnui-tipCount mnuiTipCount-t2 clearfix">
+            <div class="mnui-cmn-1">Duration:</div>
+            <div class="mnui-cmn-2">30 </div>
+            <div class="mnui-cmn-4"><span class="setGoalTxt">mins</span></div>
+        </div>
+        <div class="mnui-frNcnBtns mnuiTipCount-t3 clearfix">
+            <a class="btn_1 bt_dgray cancelShowStart" href="javascript:void(0)">Cancel <span class="hdOnMin">show</span></a>
+            <a class="btn_1 bt_blue forceShowStart" href="javascript:void(0)">Force <span class="hdOnMin">Show</span> Start</a>
+            <a class="btnQM" href="javascript:void(0)">?</a>
+        </div>
+    </div>
+    <!-- tip states -->
+
+
+    <!-- tip show in states -->
+    <div class="hdr1strp-tipShowIn">
+        <div class="mnui-tipCount mnuiTipCount-t1 clearfix">
+            <div class="mnui-cmn-1">Show earnings:</div>
+            <div class="mnui-cmn-2">230 </div>
+            <div class="mnui-cmn-4"><span class="setGoalTxt">credits</span></div>
+        </div>
+        <div class="mnui-frNcnBtns mnuiTipCount-t3 clearfix">
+            <a class="btn_1 bt_dgray extendShow" href="javascript:void(0)">Extend Show</a>
+            <a class="btn_1 bt_dgray extendTime" href="javascript:void(0)">Extend Time</a>
+            <a class="btn_1 bt_orng1 endTipShow" href="javascript:void(0)">End tip show</a>
+        </div>
+    </div>
+    <!-- tip show in states -->
+
+
+    <!-- freechat states -->
+    <div class="hdr1strp-freechat">
+        <div class="mnui-tipCount clearfix">
+            <div class="mnui-cmn-1">Tip counter:</div>
+            <div class="mnui-cmn-2">0 tips</div>
+            <div class="mnui-cmn-3"> / </div>
+            <!--<div class="mnui-cmn-4">300</div>
+            <div class="clearAll"></div>-->
+            <div class="mnui-cmn-4"><span class="setGoalTxt"><nobr>[ <a href="javascript:void(0);" class="setGoalAction">set goal</a> ]</nobr></span></div>
+        </div>
+    </div>
+    <!-- freechat states -->
+
+
+    <!-- private states -->
+    <div class="hdr1strp-private">
+        <div class="mnui-grupShow clearfix">
+            <div class="modelAlrtInfo">you are in the paid, private chat area and are earning money per minute. please adhere to all <a href="#">rules &amp; guidelines</a>. This show is being monitored.</div>
+        </div>
+    </div>
+    <!-- private states -->
+</div>
+
+<div class="chatArea clearfix">
+    <div class="chatArea-lft">
+
+        <!-- chating panel start -->
+        <div class="cwp-user-chat">
+
+
+            <div class="echProcessing procc-connChatSrvr">: Connecting to chat server.. please wait</div>
+            <div class="echProcessing procc-cnctedChtSrvr">: Connected to chat server successfully</div>
+            <div class="echProcessing procc-authenticating">: Authenticating..please wait</div>
+            <div class="echProcessing procc-authenticated">: Authentication successful</div>
+            <div class="echProcessing procc-prprngLiveVdo">: Preparing live video stream</div>
+            <div class="echProcessing procc-confRoom">: Configuring room..</div>
+            <div class="echProcessing procc-start">: Start publishing live video stream</div>
+            <div class="echProcessing procc-configured">: Room successfully configured</div>
+
+
+            <div class="each-cuc color1 clearfix">
+                <span class="ecus-nm"><a href="#">Danzinger</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">gotta love the knee hights</span>
+            </div>
+            <div class="each-cuc color2 clearfix">
+                <span class="ecus-nm"><a href="#">Olli23</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">na na. keep em on dont take em off</span>
+            </div>
+            <div class="each-cuc color1 clearfix">
+                <span class="ecus-nm"><a href="#">Danzinger</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">I got the vanhalen reference olli..nice one there</span>
+            </div>
+            <div class="each-cuc color2 clearfix">
+                <span class="ecus-nm"><a href="#">Olli23</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">glad someone out there still has a little taste</span>
+            </div>
+            <div class="each-cuc color1 tipped clearfix">
+                <span class="ecus-nm"><b class="ico-tip"></b><a href="#"><b class="tipBy">Danzinger</b></a><img src="images/t.gif" class="mpic"> has tipped <b>25 credits</b></span>
+            </div>
+            <div class="each-cuc color3 clearfix">
+                <span class="ecus-nm"><a href="#">mecack069</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">i want to see it in your brown star plz</span>
+            </div>
+            <div class="each-cuc color1 clearfix">
+                <span class="ecus-nm"><a href="#">Danzinger</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">gotta love the knee hights</span>
+            </div>
+            <div class="each-cuc color2 clearfix">
+                <span class="ecus-nm"><a href="#">Olli23</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">na na. keep em on dont take em off</span>
+            </div>
+            <div class="each-cuc color1 clearfix">
+                <span class="ecus-nm"><a href="#">Danzinger</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">I got the vanhalen reference olli..nice one there</span>
+            </div>
+            <div class="each-cuc color2 clearfix">
+                <span class="ecus-nm"><a href="#">Olli23</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-msg">glad someone out there still has a little taste</span>
+            </div>
+            <div class="each-cuc color1 clearfix">
+                <span class="ecus-nm"><a href="#">Danzinger</a></span>
+                <span class="ecus-cln">:</span>
+                <span class="ecus-pic"><img src="images/ovrPic.jpg"></span>
+            </div>
+            <div class="each-cuc eachStrpCmn eachCuc-timeExtnd">TIP SHOW TIME EXTENDED</div>
+            <div class="each-cuc eachStrpCmn eachCuc-timeRechd">TIP SHOW TIME REACHED</div>
+
+        </div>
+        <!-- chatting panel end -->
+    </div>
+
+    <div class="chatArea-rgt">
+        <div class="eum-miniDtl">
+            <div class="closeMND">x</div>
+            <div class="eumMDtl-in clearfix">
+                <div class="eummdi-pic"><a href="#"><img src="images/ovrPic.jpg"></a></div>
+                <div class="eummdi-dtl">
+                    <a href="#" class="eummdid-nd">
+                        <span class="eummdidnd-n">Jeffinmiami</span>
+                        <span class="eummdidnd-d">Basic member</span>
+                    </a>
+                    <div class="eummdid-ico clearfix">
+                        <span class="eummdidi-cIco eummdidi-icoTrphy"><img src="images/t.gif" class="uolPic"></span>
+                        <span class="eummdidi-cIco eummdidi-icoMoney"><img src="images/t.gif" class="uolPic"></span>
+                    </div>
+                    <div class="eummdid-btn clearfix">
+                        <a href="#" class="uol-cmnBtn uol-gryBtn">Profile</a>
+                        <a href="#" class="uol-cmnBtn uol-redBtn">Block</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="model-userList">
+            <div class="echUsrMn"><a href="javascript:void(0);" class="eum-txt"><i class="fa fa-camera"></i> jeff</a></div>
+            <div class="echUsrMn"><a href="javascript:void(0);" class="eum-txt"><i class="fa fa-camera"></i> vikrant</a></div>
+            <div class="echUsrMn"><a href="javascript:void(0);" class="eum-txt"><i class="fa fa-camera"></i> Someguy432</a></div>
+            <div class="echUsrMn"><a href="javascript:void(0);" class="eum-txt"><i class="fa fa-camera"></i> jorge</a></div>
+            <div class="echUsrMn"><a href="javascript:void(0);" class="eum-txt"><i class="fa fa-camera"></i> kristopher</a></div>
+            <div class="echUsrMn"><a href="javascript:void(0);" class="eum-txt"><i class="fa fa-camera"></i> derrek</a></div>
+        </div>
+    </div>
+</div>
+<!-- chat textbox and submit button with smiliey faces start -->
+<div class="cwp-chat-control clearfix">
+<div class="cwpcc-cntrl clearfix">
+<div class="cwpcc-txt posRelative">
+<div class="chatReConnect">
+    <div class="chatReConnect-in">Connection lost..retry in <b>10s.</b> <a href="javascript:void(0)">Try again</a></div>
+</div>
+<div class="chatReAct"><a href="javascript:void(0)" class="reActivateLnk">Click here to re-activate chat</a></div>
+<div style="" class="emoticon_sets">
+<div class="emoticon_sets_inner">
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':))');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/laugh.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('B-)');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/cool.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':happyno');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/happyno.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':happyyes');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/happyyes.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':goodgrief');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/goodgrief.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('[-(');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/huh.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':interest');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/interest.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('X(');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/mad.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':mellow');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/mellow.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':D');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/biggrin.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':bleh');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/bleh.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':blink');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/blink.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':Edry');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/dry.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':-L');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/rant.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':rolleyes');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/rolleyes.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':(');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/sad.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(';)');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/wink.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':-O');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/ohmy.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':sadno');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/sadno.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':P');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/tongue.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':sweat');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/sweat.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':tears');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/tears.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':)');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/smile.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':shy');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/shy.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':-&amp;');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/sick.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':unsure');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/unsure.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':-?');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/chin.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':cheekkiss');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/cheekkiss.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('I-)');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/sleep.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':-h');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/bye.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':hug');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/hug.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('=))');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/rofl.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':therethere');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/therethere.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':whip');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/whip.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':cake');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/cake.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('\:D/');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/bop.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':Ehuglove');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/huglove.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('=P~');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/drool.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':Epcwhack');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/pcwhack.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':-/');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/what.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('O:-)');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/angel.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley('~X-(');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/bash.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':wiggle');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/wiggle.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':slaphead');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/slaphead.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':sex');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/sex.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':Epopcorn');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/popcorn.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':chaplin');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/chaplin.gif">
+    </a>
+</div>
+<div class="smly_wth">
+    <a class="stA st_1" onclick="insertSmiley(':flowers');return false;" href="javascript:void(0);">
+        <img src="http://media4.nk-img.com/images/siteImages/textImages/common/phtml/emoticons/flowers.gif">
+    </a>
+</div>
+<div class="clearAll"></div>
+</div>
+</div>
+
+<div class="cht-box-ovl"><span class="toggle-link-smilies"><b class="smiley" onmouseover="calPost('messageid');return false;"></b><b class="dp-arrow"></b></span></div>
+<input type="text" class="input-blk light-grey" id="messageid" name="messageid" placeholder="type here to chat...">
+
+</div>
+
+<span id="sendButtonHandler" class="cwpcc-snd"><a onclick="sendMessage();" class="btn_7 bt_gray send_width" id="sendButton" href="javascript:void(0)">Send</a></span>
+<span class="cwpcc-pChat cwpcc-pcPlay"><a class="btn_7 bt_gray" href="javascript:void(0)">&nbsp;<img src="images/t.gif" class="mpic">&nbsp;</a></span>
+</div>
+<div class="cwpcc-sttng">
+    <div class="cwpcc-sttng-btn cwpccSttngBtn-m-menus">
+        <a class="btn_1 rprtcncrnlnk" href="javascript:void(0);"><span class="mngUsrBtnStyle">Report <br>concern</span> </a>
+    </div>
+</div>
+</div>
+<!-- chat textbox and submit button with smiliey faces end -->
+</div>
+<!--  ---------------------------------------initial states end---------------------------------------  -->
+
+
+</div>
+</div>
+
+<div class="controlPanel">
+    <div class="modelMenus">
+        <div href="#" class="modelMenus-lnks clearfix">
+            <span class="mmsl-pic"><img src="images/mpic.jpg"></span>
+            <div class="mms1-mnuopnr clearfix">
+                <span class="mmsl-txt">Jessica Lynn</span>
+                <span class="mmsl-arr"><img class="seeMore-arr" src="images/t.gif"></span>
+                <div class="mms1mnuopnr-menus">
+                    <a href="#" class="mms1mnuopnrmnu-lnk">Setting</a>
+                    <a href="#" class="mms1mnuopnrmnu-lnk">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="controlLinks clearfix">
+        &nbsp;
+    </div>
+
+    <div class="myFriendList">
+        &nbsp;
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

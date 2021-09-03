@@ -1,14 +1,16 @@
 # CordovaBox
-##### A MVC Framework for nodejs
-#
-#
----
-#
+##### An MVC Framework for NodeJS
+
 ### Install & Launch
 ```
 npm install cordovabox -g
 cordovabox new applicationName
 cordovabox start 
+```
+
+### Generate APIS
+```
+cordovabox generate-api users
 ```
 
 ### Test

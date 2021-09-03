@@ -1,10 +1,18 @@
 module.exports = {
     new: async function (name){
         const fse = require('fs-extra');
-        const srcDir = require('path').resolve('.') + `/app`;
+        const srcDir = __dirname + `/app`;
         const destDir = require('path').resolve(`./${name}`) ;
         try{
+            console.log(srcDir);
             fse.copySync(srcDir, destDir, { overwrite: false });
+        } catch (err){
+            let message =``;
+            if(err.message.indexOf(`EEXIST`) != -1) message = `Application ${name} already exists. Please select another name.`
+            console.error(`Something went wrong with the generation`, message, err);
+            process.exit();
+        }
+        try {
             const packageJson = require(`${destDir}/package.json`);
             packageJson.name = name;
             await fse.outputFile(`${destDir}/package.json`, JSON.stringify(packageJson, null, 2), { overwrite: true });
@@ -12,7 +20,7 @@ module.exports = {
         }catch (err){
             let message =``;
             if(err.message.indexOf(`EEXIST`) != -1) message = `Application ${name} already exists. Please select another name.`
-            console.error(`Something went wrong`, message);
+            console.error(`Something went wrong`, message, err);
         }
     },
 

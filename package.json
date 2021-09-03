@@ -1,12 +1,12 @@
 {
   "name": "cordovabox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/index.js",
     "buildDev": "node_modules/.bin/gulp build",
     "build": "node_modules/.bin/gulp buildProd",
-    "start": "node tcluster.js",
+    "start": "node index.js",
     "production": "node_modules/.bin/gulp buildProd && PORT=80 node tcluster.js",
     "dev": "node_modules/.bin/gulp buildDev && gulp watch & node lib/server.js ",
     "server": "node_modules/.bin/gulp build && node server.js",
@@ -41,7 +41,7 @@
     "express-http-proxy": "^1.6.2",
     "express-session": "^1.9.2",
     "gulp": "^4.0.2",
-    "gulp-cleancss": "^0.2.2",
+    "gulp-clean-css": "^2.3.2",
     "gulp-cli": "^2.2.0",
     "gulp-compress": "0.0.9",
     "gulp-compressor": "^0.1.0",
