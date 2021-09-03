@@ -16,7 +16,7 @@
     "postinstall": "npm run-script build"
   },
   "dependencies": {
-    "cordovabox": "^0.0.2",
+    "cordovabox": "^0.0.3",
     "compression": "^1.4.3",
     "del": "^1.2.1",
     "gulp": "^4.0.2",

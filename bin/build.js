@@ -4,7 +4,7 @@ module.exports = {
         const srcDir = __dirname + `/app`;
         const destDir = require('path').resolve(`./${name}`) ;
         try{
-            console.log(srcDir);
+            // console.log(srcDir);
             fse.copySync(srcDir, destDir, { overwrite: false });
         } catch (err){
             let message =``;
