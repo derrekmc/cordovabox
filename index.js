@@ -1,6 +1,6 @@
 const path = require("path");
-// const server = require('./lib/app');
-// const hooks = require('./lib/hooks/index');
+const server = require('./lib/app');
+const hooks = require('./lib/hooks/index');
 async function start () {
     const port = process.env.PORT || 3000;
     try{
@@ -9,7 +9,6 @@ async function start () {
         console.error(err);
     }
 }
-console.log(`This is the main library repo. Try npm install cordovabox instead.`)
 module.exports = {
     start,
     server: require('./lib/app'),
