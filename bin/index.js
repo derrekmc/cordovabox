@@ -30,10 +30,25 @@ switch (args[0]){
 
     case "start":
         const server = require('../lib/app');
-        console.error("CordovaBox - Starting Server...");
+        console.log("CordovaBox - Starting Production Server...");
         const port = process.env.PORT || 3000;
         try{
             server.listen(port);
+        }catch (err){
+            console.error(err);
+        }
+        break;
+
+    case "dev":
+        const path = require('path');
+        const devServer = require('../lib/app');
+        const gulpTasks = require(path.resolve('gulpfile'));
+        console.log("CordovaBox - Starting Development Server...");
+        const devPort = process.env.PORT || 3000;
+        try{
+            gulpTasks.buildDev();
+            gulpTasks.watch();
+            devServer.listen(devPort);
         }catch (err){
             console.error(err);
         }

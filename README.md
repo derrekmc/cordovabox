@@ -8,10 +8,16 @@ cordovabox new applicationName
 cordovabox start 
 ```
 
-### Generate APIS
+### Run Development Server and Asset Pipelines
 ```
-cordovabox generate-api users
+cordovabox dev
 ```
+
+### Generate API (Controller, Model, Route)
+```
+cordovabox generate-api apiModelName
+```
+
 
 ### Test
 ```

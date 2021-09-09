@@ -1,4 +1,4 @@
-# CordovaBox Application
+# CordovaBox
 ##### An MVC Framework for NodeJS
 
 ### Install & Launch
@@ -8,17 +8,33 @@ cordovabox new applicationName
 cordovabox start 
 ```
 
-### Generate APIS
+### Run Development Server and Asset Pipelines
 ```
-cordovabox generate-api users
+cordovabox dev
 ```
+
+### Generate API (Controller, Model, Route)
+```
+cordovabox generate-api apiModelName
+```
+
 
 ### Test
 ```
 npm test
 ```
 
+### Environmental Variables
+
+`MONGO_URL` - Mongo database host url. Used for the primary data storage.
+`REDIS_URL` - Redis server host url. Used for socket clustering and clustered session support
+`db` - database namespace
+`prefix` - Session prefix
+`maxAge` - Max cookie age
+`secret` - Your applications secret identifier
+```
+MONGO_URL="mongodb://credentials:password@yourmongodbserver.com:port/db" npm start
+```
 ### Server Stats
-```
-localhost:3000/stats
-```
+**http://localhost:3000/stats
+
