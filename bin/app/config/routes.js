@@ -2,9 +2,7 @@ module.exports = [
     {
         route: '/',
         method: 'get',
-        controller: function(req, res){
-            res.render('index.html', {stats: _Config.stats});
-        },
+        controller: 'ApplicationController',
         action: 'homepage',
         policies: []
     }
