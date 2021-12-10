@@ -1,4 +1,4 @@
-module.exports.http = {
+module.exports = {
   allowedHeaders: ['get', 'post', 'put', 'delete'],
   csrf: true
 };

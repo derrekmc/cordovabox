@@ -99,7 +99,7 @@ module.exports = {
     logger:{
         level: 'silly',
         colorize : true,
-        timestamp: false,
+        timestamp: true,
         transports: []
     },
 
