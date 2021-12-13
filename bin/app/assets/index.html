@@ -1,3 +1,5 @@
+<html>
+<meta title="CordovaBox">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -5,17 +7,24 @@
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/css/theme.css" rel="stylesheet" type="text/css" />
 
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<body style="background: #030d18;">
+<div style=" background: transparent">
+    <img src="images/logo/cordovabox_bg.png" style="width: 100%; height: 100%; position: absolute; ">
+    <!--    <img src="images/logo/cordovabox_logo.png" style="width: 100%;  position: absolute; max-height: 600px; ">-->
+</div>
+<div class="container" >
 
-<div class="container">
     <div class="row">
         <div class="col-md-12">
             <h1>Cordova Box</h1>
         </div>
     </div>
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="panel panel-warning">
@@ -23,6 +32,8 @@
                     <h3 class="panel-title">
                         All Systems Operational
                         <small class="pull-right">Version: <%= stats.version %></small>
+
+
                     </h3>
                 </div>
             </div>
@@ -34,59 +45,48 @@
 
                         <div class="list-group-item">
                             <h4 class="list-group-item-heading">
-                                Frontend
-                                <a href="#"  data-toggle="tooltip" data-placement="bottom" title="Access website and use site API">
-<!--                                    <i class="fa fa-question-circle"></i>-->
-                                </a>
-                            </h4>
-                            <p class="list-group-item-text">
-<!--                                <span class="label label-danger">Not Operational</span>-->
-                                <span class="label label-success">Operational</span>
-                            </p>
-                        </div>
-
-                        <div class="list-group-item">
-                            <h4 class="list-group-item-heading">
                                 API
                                 <a href="#"  data-toggle="tooltip" data-placement="bottom" title="Access website and use site API">
-                                    <!--                                    <i class="fa fa-question-circle"></i>-->
+                                    <!--                                        <i class="fa fa-question-circle"> </i>-->
                                 </a>
                             </h4>
                             <p class="list-group-item-text">
                                 <!--                                <span class="label label-danger">Not Operational</span>-->
-                                <span class="label label-success">Operational</span>
+                                <span class="label label-success">/<%= ORM.Models || 'Operational' %></span>
+
+
                             </p>
                         </div>
-
-
-<!--                        <div class="list-group-item">-->
-<!--                            <h4 class="list-group-item-heading">-->
-<!--                                SSH-->
-<!--                                <a href="#"  data-toggle="tooltip" data-placement="bottom" title="Access site using SSH terminal">-->
-<!--                                    <i class="fa fa-question-circle"></i>-->
-<!--                                </a>-->
-<!--                            </h4>-->
-<!--                            <p class="list-group-item-text">-->
-<!--                                <span class="label label-success">Operational</span>-->
-<!--                            </p>-->
-<!--                        </div>-->
 
                         <div class="list-group-item">
                             <h4 class="list-group-item-heading">
                                 Database
                                 <a href="#"  data-toggle="tooltip" data-placement="bottom" title="Access database server and execute queries">
-<!--                                    <i class="fa fa-question-circle"></i>-->
+                                    <!--                                    <i class="fa fa-question-circle"></i>-->
                                 </a>
                             </h4>
                             <p class="list-group-item-text">
-                                <span class="label label-success">Operational</span>
+                                <span class="label label-success"><%= ORM.Models || 'Operational' %></span>
                             </p>
                         </div>
 
                     </div>
+
+                    <!--                        <div class="panel panel-heading">-->
+                    <!--                            Heading-->
+                    <!--                        </div>-->
+                    <div class="panel panel-body">
+                        Type <code>cordovabox generate-api modelName</code> in cli to generate a model and controller
+                    </div>
+
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
 
+</body>
+
+</html>

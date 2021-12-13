@@ -1,4 +1,4 @@
-(function() {
+(async function() {
     let cordovabox;
     try {
         cordovabox = require('cordovabox');
@@ -10,5 +10,5 @@
         return;
     }
     // Start server
-    cordovabox.start(process.env.PORT || 3000);
+    await cordovabox.start(process.env.PORT || 3000);
 })();

@@ -105,7 +105,8 @@ module.exports = {
 
     globals: {
         lodash: true,
-        async: false
+        async: true,
+        helpers: true
     }
 
 };

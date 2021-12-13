@@ -1,0 +1,29 @@
+body{
+    color: white;
+}
+
+.panel {
+    border: 1px solid #2697df;
+    background-color: RGBA(4, 23, 41, 0.95) !important;
+}
+.panel-heading {
+    /*background-color: #041729 !important;*/
+    background-color: RGBA(4, 23, 41, 0.95) !important;
+
+
+}
+.panel-title {
+    color: white;
+}
+
+.list-group-item {
+    border: 1px solid #2697df;
+    /*background-color: #041729;*/
+    background-color: RGBA(4, 23, 41, 0.95);
+}
+
+code{
+    background-color: #0f0f0f;
+    color: #4cae4c;
+    border: 1px solid #1f451f;
+}
