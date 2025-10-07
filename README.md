@@ -5,6 +5,8 @@
 ```
 npm install cordovabox -g
 cordovabox new applicationName
+cd applicationName
+npm install 
 cordovabox start 
 ```
 
