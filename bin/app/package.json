@@ -1,18 +1,18 @@
 {
   "name": "cordovabox application",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "production": "node_modules/.bin/gulp buildProd && PORT=80 node app.js",
-    "dev": "node_modules/.bin/gulp buildDev && gulp watch & node app.js ",
+    "production": "gulp buildProd && PORT=80 node app.js",
+    "dev": "gulp buildDev && gulp watch & node app.js ",
     "test": "mocha tests/index.js",
-    "buildDev": "node_modules/.bin/gulp build",
-    "build": "node_modules/.bin/gulp buildProd",
-    "server": "node_modules/.bin/gulp build && node server.js",
+    "buildDev": "gulp build",
+    "build": "gulp buildProd",
+    "server": "gulp build && node server.js",
     "watch": "gulp watch",
     "single": "gulp build; node server.js",
-    "cluster": "node_modules/forever/bin/forever cluster.js",
+    "cluster": "forever cluster.js",
     "postinstall": "npm run-script build"
   },
   "dependencies": {
