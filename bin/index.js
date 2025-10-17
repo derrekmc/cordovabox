@@ -29,9 +29,16 @@ switch (args[0]){
         break;
 
     case "start":
+
+        let port = process.env.PORT || 3000;
+
+        if (args[1]){
+            port = args[1]
+        }
+
         const server = require('../lib/app');
         console.log("CordovaBox - Starting Production Server...");
-        const port = process.env.PORT || 3000;
+
         try{
             server.listen(port);
         }catch (err){

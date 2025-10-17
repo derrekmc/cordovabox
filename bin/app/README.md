@@ -18,6 +18,14 @@ cordovabox dev
 cordovabox generate-api apiModelName
 ```
 
+### Install & Launch
+```
+npm install cordovabox -g
+cordovabox new applicationName
+cordovabox start // Start with default port of 3000
+cordovabox start 4000 // Start with a specified port number
+```
+
 
 ### Test
 ```
@@ -32,6 +40,7 @@ npm test
 `prefix` - Session prefix
 `maxAge` - Max cookie age
 `secret` - Your applications secret identifier
+`PORT` - change the default server port
 ```
 MONGO_URL="mongodb://credentials:password@yourmongodbserver.com:port/db" npm start
 ```
