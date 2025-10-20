@@ -36,7 +36,7 @@
     "csurf": "^1.11.0",
     "del": "^1.2.1",
     "ejs": "^2.7.4",
-    "express": "^4.16.0",
+    "express": "^4.21.2",
     "express-handlebars": "^4.0.4",
     "express-http-proxy": "^1.6.2",
     "express-session": "^1.9.2",
