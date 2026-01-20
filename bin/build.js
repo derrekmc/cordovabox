@@ -68,7 +68,72 @@ module.exports = {
         }
 
 
+    },
+
+    "generate-service": async function (name) {
+        const fse = require('fs-extra');
+        const directory = `./api/services/${name}Service.js`;
+        try {
+            await fse.outputFile(directory, `
+module.exports = {
+    exampleService: function(){
+        return;
     }
+};`)
+        } catch (err) {
+            console.error(err)
+        }
+        console.log(`${name} Service creation complete.`);
+
+    },
+
+    "generate-controller": async function (name) {
+        const fse = require('fs-extra');
+        const directory = `./api/controllers/${name}Controller.js`;
+        try {
+            await fse.outputFile(directory, `
+module.exports = {
+    exampleControllerFunction: function(){
+        return;
+    }
+};`)
+        } catch (err) {
+            console.error(err)
+        }
+        console.log(`${name}Controller creation complete.`);
+
+    },
+
+    "generate-model": async function (name) {
+        const fse = require('fs-extra');
+        const directory = `./api/models/${name}.js`;
+        try {
+            await fse.outputFile(modelDirectory, `
+module.exports = {
+    attributes:{
+        /**
+         * name: {
+         *   type: 'string',
+         *   defaultsTo: ''
+         * }
+         **/      
+    },
+    methods:{
+        /**
+         * beforeCreate: (data) => {
+         *   data.createdAt = new Date();
+         *   return data;
+         * }
+         **/      
+    }
+};`)
+        } catch (err) {
+            console.error(err)
+        }
+        console.log(`${name} model creation complete.`);
+
+    }
+
 
 }
 

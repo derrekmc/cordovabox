@@ -47,3 +47,10 @@ MONGO_URL="mongodb://credentials:password@yourmongodbserver.com:port/db" npm sta
 ### Server Stats
 **http://localhost:3000/stats
 
+### Gotchas
+When using the cordovabox generate-api
+
+
+### Services
+Add api/services folder for service usage
+api/services/*Name*Service
