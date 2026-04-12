@@ -23,7 +23,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "axios": "^1.13.5",
+    "axios": "^1.15.0",
     "body-parser": "^1.9.3",
     "bson": "^1.0.4",
     "captains-log": "^2.0.3",
