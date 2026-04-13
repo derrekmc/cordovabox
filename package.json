@@ -73,7 +73,7 @@
     "throng": "^1.0.0",
     "walk": "^2.3.9",
     "waterline": "^0.13.6",
-    "webdriverio": "^2.4.5",
+    "webdriverio": "^9.24.0",
     "winston": "^0.8.3"
   },
   "author": "Derrek Cordova",
