@@ -73,7 +73,7 @@
     "throng": "^1.0.0",
     "walk": "^2.3.9",
     "waterline": "^0.13.6",
-    "webdriverio": "^2.4.5",
+    "webdriverio": "^9.27.0",
     "winston": "^0.8.3"
   },
   "author": "Derrek Cordova",
@@ -95,6 +95,6 @@
     "gulp-watch": "^4.3.11",
     "gulp-yuicompressor": "0.0.3",
     "imagemin-pngquant": "^4.0.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.18.1"
   }
 }
