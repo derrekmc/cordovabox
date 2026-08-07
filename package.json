@@ -69,7 +69,7 @@
     "sails-disk": "^2.1.2",
     "sails-mongo": "^1.0.1",
     "socket.io": "^4.0.0",
-    "socket.io-redis": "^0.1.4",
+    "socket.io-redis": "^5.4.0",
     "throng": "^1.0.0",
     "walk": "^2.3.9",
     "waterline": "^0.13.6",
