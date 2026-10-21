@@ -27,7 +27,7 @@
     "body-parser": "^1.9.3",
     "bson": "^1.0.4",
     "captains-log": "^2.0.3",
-    "compression": "^1.4.3",
+    "compression": "^1.8.2",
     "connect": "3.0.0",
     "connect-mongo": "^0.8.2",
     "connect-redis": "^2.1.0",
